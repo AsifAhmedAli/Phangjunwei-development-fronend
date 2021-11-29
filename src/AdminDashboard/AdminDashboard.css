@@ -1,0 +1,80 @@
+#admin-dashboard{
+    
+}
+
+#admin-dashboard .login-screen{
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+}
+
+#admin-dashboard .login-screen .title{
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#admin-dashboard .login-screen .content .texts{
+    text-align: center;
+    margin-bottom: 2.8rem;
+}
+
+#admin-dashboard .login-screen .content .inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+#admin-dashboard .login-screen .content .inputs>input{
+    margin-bottom: 2rem;
+    padding: .4rem 0;
+    border: none;
+    font-size: .9rem;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}
+
+#admin-dashboard .login-screen .content .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#admin-dashboard .login-screen .content .remember-forgot .remember input{
+    margin-right: .5rem;
+}
+
+#admin-dashboard .login-screen .content .remember-forgot .forgot{
+    margin-bottom: .5rem;
+}
+
+#admin-dashboard .login-screen .content .remember-forgot .forgot span{
+    color:#FECB2E;
+}
+
+#admin-dashboard .login-screen .content .remember-forgot .forgot span:hover{
+    cursor: pointer;
+    color: black;
+}
+
+#admin-dashboard .login-screen .content .btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#admin-dashboard .login-screen .content .btns .btn{
+    width: 8rem;
+    border: 2px solid #43425D;
+    margin-top: 2.5rem;
+}
+
+#admin-dashboard .login-screen .content .btns .btn:hover{
+    background-color: #43425D;
+    color: #fff;
+    border: 1px solid #43425D;
+    outline: none;
+}
+
+
+
