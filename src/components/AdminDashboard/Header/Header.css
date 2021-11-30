@@ -1,0 +1,76 @@
+#dashboard-navbar{
+    background: white;
+    padding: 0 3rem;
+    z-index: 5;
+}
+
+#dashboard-navbar .content{
+    padding: 1rem 0;
+    margin-left: 17%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#dashboard-navbar .content .search{
+    background-color: red;
+    min-width: 300px;
+}
+
+#dashboard-navbar .content .search input{
+    border: none;
+    width: 100%;
+    outline: none;
+    padding: .3rem 0;
+}
+
+#dashboard-navbar .content .search input:focus{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.247);
+}
+
+#dashboard-navbar .content .right-section{
+    display: flex;
+    align-items: center;
+}
+
+#dashboard-navbar .content .right-section img{
+    margin: 0 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+#dashboard-navbar .content .right-section .profile {
+    border: none;
+    outline: none;
+    padding: 0 1.5rem;
+    background-color: transparent;
+    border-left: 2px solid rgba(0, 0, 0, 0.219);
+}
+
+#dashboard-navbar .content .right-section .profile:hover{
+    background-color: rgba(0, 0, 0, 0.219);
+}
+
+
+@media only screen and (max-width: 768px) {
+    #dashboard-navbar .content{
+        margin-left: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #dashboard-navbar{
+        background: white;
+        padding: 0 3rem;
+        z-index: 5;
+        margin-top: 3rem;
+    }
+
+    #dashboard-navbar .content .search{
+        margin-bottom: 1rem;
+    }
+
+    #dashboard-navbar .content .right-section img{
+        margin: 0 .6rem;
+    }
+}

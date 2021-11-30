@@ -1,0 +1,73 @@
+#dashboard-sidebar{
+    background-color: white;
+    border-right: 1px solid #e7e7e7;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    width: 17%;
+    z-index: 10;
+    padding: 1rem 0;
+}
+
+.dashboard-sidebar-open{
+    transform: translateX(0%);
+}
+
+.dashboard-sidebar-close{
+    transform: translateX(-100%);
+}
+
+#dashboard-sidebar .close-toggle{
+    padding: 0 1rem;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#dashboard-sidebar .close-toggle-hide{
+    display: none;
+}
+
+#dashboard-sidebar .close-toggle:hover{
+    background-color: #e7e7e7;
+}
+
+#dashboard-sidebar .content{
+    display: flex;
+    flex-direction: column;
+}
+
+#dashboard-sidebar .content .logo{
+    font-size: 1.2rem;
+    margin-top: .5rem;
+    padding-left: 2rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-family: "Avenir-black", sans-serif;
+    letter-spacing: .1rem;
+}
+
+#dashboard-sidebar .content .items{
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#dashboard-sidebar .content .items> *{
+    padding: 1rem 2rem;
+    color: black;
+    opacity: .5;
+}
+
+#dashboard-sidebar .content .items> *:hover{
+    background-color: #F5F7F9;
+    border-left: 4px solid orange;
+    opacity: 1;
+}
+
+@media only screen and (max-width: 768px){
+    #dashboard-sidebar{
+        width: 80%;
+    }
+}

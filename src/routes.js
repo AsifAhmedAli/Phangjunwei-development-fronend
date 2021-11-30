@@ -44,6 +44,30 @@ import DiscoverShop from "./product/DiscoverShop";
 export default function Routes() {
     return (
         <Switch>
+
+            <Route path="/" exact>
+                <div className='home-page'>
+                    <PageCarousel isHomePage={true} isCategory={false} />
+                    <StripPromo />
+
+                    <StyleInspire title="Style Inspirations" />
+                    <RecentView />
+                    <Discover title="Discover" />
+
+                    <Recommended />
+                    {/*<MerchantDiscover/>*/}
+                    {/*Client asked to remove this above section*/}
+                    <DiscoverShop title="Discover shop" />
+                    <MoreIdea />
+                </div>
+            </Route>
+
+
+            <Route path="/dashboard/admin">
+                <AdminDashboard />
+            </Route>
+
+
             <Route path="/careers">
                 <PageCarousel isHomePage={true} isCategory={false} />
                 <StripPromo />
@@ -191,25 +215,6 @@ export default function Routes() {
                 <PageCarousel isHomePage={true} isCategory={false} />
                 <StripPromo />
                 <BlogHome />
-            </Route>
-
-            <Route path="/" component={AdminDashboard} />
-
-            <Route path="/">
-                <div className='home-page'>
-                    <PageCarousel isHomePage={true} isCategory={false} />
-                    <StripPromo />
-
-                    <StyleInspire title="Style Inspirations" />
-                    <RecentView />
-                    <Discover title="Discover" />
-
-                    <Recommended />
-                    {/*<MerchantDiscover/>*/}
-                    {/*Client asked to remove this above section*/}
-                    <DiscoverShop title="Discover shop" />
-                    <MoreIdea />
-                </div>
             </Route>
 
         </Switch>

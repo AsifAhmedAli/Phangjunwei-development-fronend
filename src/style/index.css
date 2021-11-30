@@ -1,6 +1,19 @@
 @font-face {
   font-family: 'SFPro';
   src: local('SFPro'), url('../fonts/FontsFree-Net-SFProDisplay-Regular.ttf') format('truetype');
+
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: local('Avenir'), url('../fonts/AvenirLTStd-Roman.otf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Avenir-black';
+  src: local('Avenir-black'), url('../fonts/AvenirLTStd-Black.otf') format('truetype');
+  font-weight: 700;
 }
 
 
@@ -8,7 +21,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'SFPro';
+  font-family: 'Avenir', sans-serif;
 }
 
 

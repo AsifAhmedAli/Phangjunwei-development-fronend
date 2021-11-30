@@ -1,0 +1,87 @@
+.login-screen{
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+}
+/* 
+.login-screen .content{
+    width: 30%;
+    margin: 0 auto;
+} */
+
+.login-screen .texts .title{
+    font-size: clamp(1.3rem, 6vw, 2.2rem);
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: .4rem;
+    font-family: "Avenir-black", sans-serif;
+}
+
+.login-screen .texts .desc{
+    font-size: clamp(.8rem, 3vw, 1rem);
+    opacity: .6;
+}
+
+.login-screen .content .texts{
+    text-align: center;
+    margin-bottom: 2.8rem;
+}
+
+.login-screen .content .inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-screen .content .inputs>input{
+    margin-bottom: 2rem;
+    padding: .4rem 0;
+    border: none;
+    font-size: .9rem;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}
+
+.login-screen .content .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .9rem;
+}
+
+.login-screen .content .remember-forgot .remember input{
+    margin-right: .5rem;
+}
+
+.login-screen .content .remember-forgot .forgot{
+    margin-bottom: .5rem;
+}
+
+.login-screen .content .remember-forgot .forgot span{
+    color:#FECB2E;
+}
+
+.login-screen .content .remember-forgot .forgot span:hover{
+    cursor: pointer;
+    color: black;
+}
+
+.login-screen .content .btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.login-screen .content .btns .btn{
+    flex: 1;
+    border: 1px solid #43425D;
+    margin-top: 2.5rem;
+    margin-left: .4rem;
+    margin-right: .4rem;
+}
+
+.login-screen .content .btns .btn:hover{
+    background-color: #43425D;
+    color: #fff;
+    outline: none;
+}

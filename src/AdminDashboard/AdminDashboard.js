@@ -1,36 +1,22 @@
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Auth from '../components/AdminDashboard/Auth/Auth'
+import Controls from '../components/AdminDashboard/Controls/Controls';
 import './AdminDashboard.css';
 
 export default function AdminDashboard() {
+    const [user, setUser] = useState(true);
+
+    const [toggleSidebar, setToggleSidebar] = useState(typeof window !== 'undefined' && window.matchMedia("(max-width: 768px)").matches);
+
+    useEffect(() => {
+        window.matchMedia("(max-width: 768px)").addEventListener('change', e => {
+            setToggleSidebar(e.matches);
+        });
+    }, [])
+
     return (
         <div id="admin-dashboard">
-            <div className="login-screen">
-                <div className="content">
-                    <div className="texts">
-                        <h1 className="title">Burrows Admin</h1>
-                        <p>Welcome back! Please login to your account.</p>
-                    </div>
-                    <div className="inputs">
-                        <input type="text" placeholder="Username" />
-                        <input type="password" placeholder="Password" />
-                    </div>
-                    <div className="remember-forgot">
-                        <div className="remember">
-                            <input type="checkbox" id="remember" />
-                            <label htmlFor="remember">Remember me</label>
-                        </div>
-                        <div className="forgot">
-                            <Link to='/'>
-                                <span>Forgot password?</span>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="btns">
-                        <button className="btn">Login</button>
-                        <button className="btn">Register</button>
-                    </div>
-                </div>
-            </div>
+            {user ? <Controls toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} /> : <Auth />}
         </div>
     )
 }
