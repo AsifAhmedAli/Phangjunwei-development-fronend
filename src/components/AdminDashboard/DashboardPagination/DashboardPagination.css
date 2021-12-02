@@ -1,0 +1,14 @@
+#dashboard-pagination .pagination .page-item .page-link{
+    color: black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.116);
+    padding-right: .8rem;
+    padding-left: .8rem;
+}
+
+#dashboard-pagination .pagination .page-item.active .page-link{
+    color: white;
+    background-color: orange;
+    border-color: gray ;
+}
+
+ 

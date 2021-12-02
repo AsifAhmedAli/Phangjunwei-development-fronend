@@ -1,6 +1,24 @@
 /* Importing straight from google fonts, can do better from <link> or downloading.  */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
+/* Global */
+
+.orange-link{
+  color: #FECB2E;
+  transition: color 0.3s ease;
+}
+
+.orange-link:hover{
+  text-decoration: underline;
+  color: rgb(255, 60, 0) !important;
+}
+
+.avenir-black{
+  font-family: "Avenir-black", sans-serif;
+}
+
+/* Global ends */
+
 .page-header-top .currency img {
   width: 1rem !important;
   height: 1rem !important;

@@ -1,0 +1,43 @@
+#show-merchants{
+    margin-left: 17%;
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+#show-merchants .show-merchants-table{
+    background-color: white;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    border-spacing: 0;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+
+#show-merchants .title{
+    font-size: clamp(1rem, 2vw, 1.4rem);
+}
+
+#show-merchants th, #show-merchants td, #show-merchants td button{
+    font-size: .9rem;
+}
+
+#show-merchants .show-merchants-table .table-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+#show-merchants .show-merchants-table .merchant-table-head{
+    background: #F5F6FA;
+    border: 3px solid white;
+    color: #A3A6B4;
+}
+
+
+@media only screen and (max-width: 768px) {
+    #show-merchants{
+        margin-left: 0;
+    padding: 2rem 1rem 1rem 1rem;
+    }
+}

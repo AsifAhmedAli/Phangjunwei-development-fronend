@@ -16,7 +16,11 @@ export default function AdminDashboard() {
 
     return (
         <div id="admin-dashboard">
-            {user ? <Controls toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} /> : <Auth />}
+            {user ?
+                <Controls
+                    toggleSidebar={toggleSidebar}
+                    setToggleSidebar={setToggleSidebar}
+                /> : <Auth />}
         </div>
     )
 }

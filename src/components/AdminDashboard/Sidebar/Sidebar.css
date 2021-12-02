@@ -22,12 +22,12 @@
 #dashboard-sidebar .close-toggle{
     padding: 0 1rem;
     cursor: pointer;
-    display: inline-block;
-}
-
-#dashboard-sidebar .close-toggle-hide{
     display: none;
 }
+/* 
+#dashboard-sidebar .close-toggle-hide{
+    display: none;
+} */
 
 #dashboard-sidebar .close-toggle:hover{
     background-color: #e7e7e7;
@@ -66,8 +66,23 @@
     opacity: 1;
 }
 
+
+@media only screen and (max-width: 900px){
+    #dashboard-sidebar .content .logo{
+        padding-left: 1rem;
+    }
+}
+
 @media only screen and (max-width: 768px){
     #dashboard-sidebar{
         width: 80%;
     }
+
+    #dashboard-sidebar .close-toggle{
+        display: initial;
+    }
+
+    #dashboard-sidebar .content .logo{
+        padding-left: 2rem;
+    }    
 }
