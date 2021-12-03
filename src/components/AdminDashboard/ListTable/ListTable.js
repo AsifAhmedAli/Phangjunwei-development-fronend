@@ -1,15 +1,13 @@
-import './ShowMerchants.css';
+import './ListTable.css';
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import DashboardPagination from '../DashboardPagination/DashboardPagination';
 
-export default function ShowMerchants({ setRoute }) {
+export default function ListTable({ product }) {
     return (
-        <section id="show-merchants">
-            <h1 className="title mb-4">Merchants</h1>
+        <div id="table_lister">
             <div className="show-merchants-table">
                 <div className="table-title mb-3 mt-2">
-                    <h5>All Merchants</h5>
+                    {product ? <h5>All Products</h5> : <h5>All Merchants</h5>}
                     <Link href="/" className="orange-link">
                         See all
                     </Link>
@@ -17,8 +15,8 @@ export default function ShowMerchants({ setRoute }) {
                 <Table hover responsive center>
                     <thead className="merchant-table-head avenir-black">
                         <tr>
-                            <th>Merchant</th>
-                            <th>Products</th>
+                            {product ? <th>Product ID</th> : <th>Merchant</th>}
+                            {product ? <th>Product Name</th> : <th>Products</th>}
                             <th>Total Orders</th>
                             <th>Pending Orders</th>
                             <th>Total Income</th>
@@ -28,7 +26,9 @@ export default function ShowMerchants({ setRoute }) {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Mark</td>
+                            <td>
+                                {product ? '1212' : <Link to="merchant/2" className="text-dark text-decoration-underline">Company A</Link>}
+                            </td>
                             <td>Otto</td>
                             <td>Otto</td>
                             <td>Otto</td>
@@ -41,7 +41,9 @@ export default function ShowMerchants({ setRoute }) {
                             </td>
                         </tr>
                         <tr>
-                            <td>Jacob</td>
+                            <td>
+                                {product ? '1212' : <Link to="merchant/2" className="text-dark text-decoration-underline">Company A</Link>}
+                            </td>
                             <td>Thornton</td>
                             <td>Thornton</td>
                             <td>Thornton</td>
@@ -54,7 +56,9 @@ export default function ShowMerchants({ setRoute }) {
                             </td>
                         </tr>
                         <tr>
-                            <td>Larry</td>
+                            <td>
+                                {product ? '1212' : <Link to="merchant/2" className="text-dark text-decoration-underline">Company A</Link>}
+                            </td>
                             <td>@twitter</td>
                             <td>@twitter</td>
                             <td>@twitter</td>
@@ -67,7 +71,9 @@ export default function ShowMerchants({ setRoute }) {
                             </td>
                         </tr>
                         <tr>
-                            <td>Larry</td>
+                            <td>
+                                {product ? '1212' : <Link to="merchant/2" className="text-dark text-decoration-underline">Company A</Link>}
+                            </td>
                             <td>@twitter</td>
                             <td>@twitter</td>
                             <td>@twitter</td>
@@ -80,7 +86,9 @@ export default function ShowMerchants({ setRoute }) {
                             </td>
                         </tr>
                         <tr>
-                            <td>Larry</td>
+                            <td>
+                                {product ? '1212' : <Link to="merchant/2" className="text-dark text-decoration-underline">Company A</Link>}
+                            </td>
                             <td>@twitter</td>
                             <td>@twitter</td>
                             <td>@twitter</td>
@@ -93,7 +101,9 @@ export default function ShowMerchants({ setRoute }) {
                             </td>
                         </tr>
                         <tr>
-                            <td>Larry</td>
+                            <td>
+                                {product ? '1212' : <Link to="merchant/2" className="text-dark text-decoration-underline">Company A</Link>}
+                            </td>
                             <td>@twitter</td>
                             <td>@twitter</td>
                             <td>@twitter</td>
@@ -109,11 +119,13 @@ export default function ShowMerchants({ setRoute }) {
                     </tbody>
 
                 </Table>
-                <a href="#" onClick={() => setRoute('add')} className="orange-link py-2 px-2">
+                {product ? <Link to={{ pathname: 'product/add' }} className="orange-link py-2 px-2">
+                    Add new Product
+                </Link> : <Link to={{ pathname: 'merchant/add' }} className="orange-link py-2 px-2">
                     Add new Merchant
-                </a>
+                </Link>}
+
             </div>
-            <DashboardPagination />
-        </section>
+        </div>
     )
 }

@@ -24,6 +24,9 @@ body {
   font-family: 'Avenir', sans-serif;
 }
 
+:root{
+  --default-box-shadow:0 0 3px rgba(0,0,0,0.1);
+}
 
 /**Utilities*/
 w-1200 {

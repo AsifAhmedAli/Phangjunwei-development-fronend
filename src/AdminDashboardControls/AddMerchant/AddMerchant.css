@@ -1,11 +1,4 @@
-#add-merchant{
-    margin-left: 17%;
-    padding: 2rem 2rem 4rem 2rem;
-}
 
-#add-merchant .title{
-    font-size: clamp(1rem, 2vw, 1.4rem);
-}
 
 #add-merchant a{
     color: black;
@@ -87,9 +80,6 @@
 
 #add-merchant .save-btns button{
     background-color: #FECB2E;
-}
-
-#add-merchant .save-btns:hover{
 }
 
 @media only screen and (max-width: 780px){

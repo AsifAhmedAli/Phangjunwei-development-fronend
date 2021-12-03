@@ -1,4 +1,5 @@
 import AdminDashboard from './AdminDashboard/AdminDashboard';
+import AdminDashboardControls from './AdminDashboardControls/AdminDashboardControls';
 import MoreIdea from './common/MoreIdea';
 import MerchantDiscover from './common/MerchantDiscover';
 import Recommended from './product/Recommended';
@@ -40,6 +41,8 @@ import OrderFailed from './account/OrderFailed';
 import MerchantBanner from "./components/MerchantBanner";
 import ReviewSlider from "./components/ReviewSlider";
 import DiscoverShop from "./product/DiscoverShop";
+import AddMerchant from './AdminDashboardControls/AddMerchant/AddMerchant';
+import CompanyProducts from './AdminDashboardControls/CompanyProducts/CompanyProducts';
 
 export default function Routes() {
     return (
@@ -63,8 +66,20 @@ export default function Routes() {
             </Route>
 
 
-            <Route path="/dashboard/admin">
+            <Route path="/dashboard/admin" exact>
                 <AdminDashboard />
+            </Route>
+
+            <Route path="/dashboard/admin/controls" exact>
+                <AdminDashboardControls />
+            </Route>
+
+            <Route path="/dashboard/admin/merchant/add" exact>
+                <AddMerchant />
+            </Route>
+
+            <Route path="/dashboard/admin/merchant/:companyId" exact>
+                <CompanyProducts />
             </Route>
 
 

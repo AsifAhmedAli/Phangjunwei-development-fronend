@@ -1,0 +1,9 @@
+.dashboard-gray-bg{
+    background-color: #F5F7F9;
+}
+
+.sidebar-toggle{
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+}

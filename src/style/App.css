@@ -17,6 +17,10 @@
   font-family: "Avenir-black", sans-serif;
 }
 
+.text-decoration-underline{
+  text-decoration: underline;
+}
+
 /* Global ends */
 
 .page-header-top .currency img {

@@ -20,8 +20,8 @@ const styles = {
 
 function App({ location }) {
   return (
-    <div style={location.pathname === '/dashboard/admin' ? styles.customContainer : styles.customContainerFluid}>
-      {location.pathname !== '/dashboard/admin' && (
+    <div style={location.pathname.startsWith('/dashboard') ? styles.customContainer : styles.customContainerFluid}>
+      {!location.pathname.startsWith('/dashboard') && (
         <>
           <Header />
           <div className='fourth-navigations' >
@@ -30,8 +30,8 @@ function App({ location }) {
         </>
       )}
       <Routes />
-      {location.pathname !== '/dashboard/admin' && <Partners />}
-      {location.pathname !== '/dashboard/admin' && <Footer />}
+      {!location.pathname.startsWith('/dashboard') && <Partners />}
+      {!location.pathname.startsWith('/dashboard') && <Footer />}
     </div >
   );
 }

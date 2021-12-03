@@ -1,0 +1,42 @@
+#add-merchant,
+#show-merchants,
+#merchant-company-products{
+    margin-left: 17%;
+    padding: 2rem 2rem 4rem 2rem;
+}
+
+#add-merchant .title,
+#show-merchants .title,
+#merchant-company-products 
+.title{
+    font-size: clamp(1rem, 2vw, 1.4rem);
+}
+
+#add-merchant .title a,
+#show-merchants .title a,
+#merchant-company-products 
+.title a{
+    color: black;
+    cursor: pointer;
+}
+
+#add-merchant .title a:hover,
+#show-merchants .title a:hover,
+#merchant-company-products 
+.title a:hover{
+    color: rgb(209, 80, 47);
+}
+
+@media only screen and (max-width: 780px){
+    #add-merchant{
+        margin-left: 0;
+    }
+    #show-merchants{
+        margin-left: 0;
+        padding: 2rem 1rem 1rem 1rem;
+    }
+    #merchant-company-products{
+        margin-left: 0;
+        padding: 2rem 1rem 1rem 1rem;
+    }
+}
