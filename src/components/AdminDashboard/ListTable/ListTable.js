@@ -1,15 +1,21 @@
 import './ListTable.css';
 import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import goBack from '../../../helpers/goBack';
 
 export default function ListTable({ product }) {
+    let history = useHistory();
+
+    // check if location is ending with /products
+    let isProducts = history.location.pathname.endsWith('/products');
+
     return (
         <div id="table_lister">
             <div className="show-merchants-table">
                 <div className="table-title mb-3 mt-2">
                     {product ? <h5>All Products</h5> : <h5>All Merchants</h5>}
-                    <Link href="/" className="orange-link">
-                        See all
+                    <Link to={product && `${history.location.pathname}products`} className="orange-link">
+                        {isProducts ? `` : 'See all'}
                     </Link>
                 </div>
                 <Table hover responsive center>
@@ -119,7 +125,7 @@ export default function ListTable({ product }) {
                     </tbody>
 
                 </Table>
-                {product ? <Link to={{ pathname: 'product/add' }} className="orange-link py-2 px-2">
+                {product ? <Link to={isProducts ? `./product/add` : history.location.pathname + 'product/add'} className="orange-link py-2 px-2">
                     Add new Product
                 </Link> : <Link to={{ pathname: 'merchant/add' }} className="orange-link py-2 px-2">
                     Add new Merchant

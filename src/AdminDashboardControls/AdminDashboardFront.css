@@ -1,19 +1,25 @@
 #add-merchant,
+#add-product,
 #show-merchants,
+#merchant-company-info,
 #merchant-company-products{
     margin-left: 17%;
     padding: 2rem 2rem 4rem 2rem;
 }
 
 #add-merchant .title,
+#add-product .title,
 #show-merchants .title,
+#merchant-company-info .title,
 #merchant-company-products 
 .title{
     font-size: clamp(1rem, 2vw, 1.4rem);
 }
 
 #add-merchant .title a,
+#add-product .title a,
 #show-merchants .title a,
+#merchant-company-info .title a,
 #merchant-company-products 
 .title a{
     color: black;
@@ -21,20 +27,19 @@
 }
 
 #add-merchant .title a:hover,
+#add-product .title a:hover,
 #show-merchants .title a:hover,
-#merchant-company-products 
-.title a:hover{
+#merchant-company-info .title a:hover,
+#merchant-company-products .title a:hover{
     color: rgb(209, 80, 47);
 }
 
 @media only screen and (max-width: 780px){
-    #add-merchant{
+    #add-merchant, #add-product{
         margin-left: 0;
     }
-    #show-merchants{
-        margin-left: 0;
-        padding: 2rem 1rem 1rem 1rem;
-    }
+    #show-merchants,
+    #merchant-company-info,
     #merchant-company-products{
         margin-left: 0;
         padding: 2rem 1rem 1rem 1rem;

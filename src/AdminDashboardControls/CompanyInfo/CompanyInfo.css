@@ -1,0 +1,138 @@
+#merchant-company-info .revenue-cards{
+    display: flex;
+    gap: 2;
+    justify-content: space-around;
+}
+
+#merchant-company-info .revenue-cards .revenue-card{
+    padding: .5rem 1rem;
+    display: flex;
+    width: 31%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    box-shadow: var(--default-box-shadow);
+}
+
+#merchant-company-info .revenue-cards .revenue-card img{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+#merchant-company-info .revenue-cards .revenue-card .revenue_card_left{
+    display: flex;
+    align-items: center;
+}
+
+#merchant-company-info .revenue-cards .revenue-card .revenue-text{
+    padding-left: 1rem;
+    margin-top: 1rem;   
+}
+
+#merchant-company-info .revenue-cards .revenue-card .revenue-text h3{
+    font-size: 1rem;
+    margin-bottom: -.0025rem;
+}
+
+#merchant-company-info .revenue-cards .revenue-card:nth-child(1) .revenue-text h3{
+    color: #56D9FE;
+}
+
+#merchant-company-info .revenue-cards .revenue-card:nth-child(2) .revenue-text h3{
+    color: #A3A0FB;
+}
+
+#merchant-company-info .revenue-cards .revenue-card:nth-child(3) .revenue-text h3{
+    color: #4AD991;
+}
+
+#merchant-company-info .revenue-cards .revenue-card .revenue-text p{
+    font-size: .9rem;
+}
+
+
+/* Info Cards */
+#merchant-company-info .info-cards{
+    margin: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2;
+    justify-content: space-around;
+}
+
+#merchant-company-info .info-cards .info_card{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.7rem 1rem;
+    background-color: white;
+    box-shadow: var(--default-box-shadow);
+    width: 48%;
+    line-height: .7rem;
+    position: relative;
+}
+
+#merchant-company-info .info-cards .info_card img{
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+#merchant-company-info .info-cards .info_card .info_text .info_name{
+    padding-bottom: .4rem;
+    font-size: 1rem;
+}
+
+#merchant-company-info .info-cards .info_card .info_text p{
+    font-size: .9rem;
+    opacity: .6;
+}
+
+#merchant-company-info .info-cards .info_card .left-section{
+    display: flex;
+}
+
+#merchant-company-info .info-cards .info_card .right_section{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+#merchant-company-info .info-cards .info_card .right_section div{
+    cursor: pointer;
+    color: gray;
+}
+
+#merchant-company-info .info-cards .info_card .right_section div:hover{
+    color: black;
+}
+
+#merchant-company-info .info-cards .info_card .right_section div:first-child{
+    margin-right: 1rem;
+}
+
+
+@media screen and (max-width: 900px){
+    #merchant-company-info .info-cards .info_card{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #merchant-company-info .revenue-cards{
+        flex-direction: column;
+    }
+
+    #merchant-company-info .revenue-cards .revenue-card{
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    #merchant-company-info .info-cards .info_card{
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}

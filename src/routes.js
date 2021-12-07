@@ -1,5 +1,5 @@
 import AdminDashboard from './AdminDashboard/AdminDashboard';
-import AdminDashboardControls from './AdminDashboardControls/AdminDashboardControls';
+import AdminDashboardFront from './AdminDashboardControls/AdminDashboardFront';
 import MoreIdea from './common/MoreIdea';
 import MerchantDiscover from './common/MerchantDiscover';
 import Recommended from './product/Recommended';
@@ -42,7 +42,9 @@ import MerchantBanner from "./components/MerchantBanner";
 import ReviewSlider from "./components/ReviewSlider";
 import DiscoverShop from "./product/DiscoverShop";
 import AddMerchant from './AdminDashboardControls/AddMerchant/AddMerchant';
-import CompanyProducts from './AdminDashboardControls/CompanyProducts/CompanyProducts';
+import CompanyInfo from './AdminDashboardControls/CompanyInfo/CompanyInfo';
+import CompanyProducts from './AdminDashboardControls/CompanyInfo/CompanyProducts';
+import AddProduct from './AdminDashboardControls/AddProduct/AddProduct';
 
 export default function Routes() {
     return (
@@ -66,12 +68,13 @@ export default function Routes() {
             </Route>
 
 
+            {/* Dashboard Routes */}
             <Route path="/dashboard/admin" exact>
                 <AdminDashboard />
             </Route>
 
-            <Route path="/dashboard/admin/controls" exact>
-                <AdminDashboardControls />
+            <Route path="/dashboard/admin/merchants" exact>
+                <AdminDashboardFront />
             </Route>
 
             <Route path="/dashboard/admin/merchant/add" exact>
@@ -79,9 +82,17 @@ export default function Routes() {
             </Route>
 
             <Route path="/dashboard/admin/merchant/:companyId" exact>
+                <CompanyInfo />
+            </Route>
+
+            <Route path="/dashboard/admin/merchant/:companyId/products" exact>
                 <CompanyProducts />
             </Route>
 
+            <Route path="/dashboard/admin/merchant/:companyId/product/add" exact>
+                <AddProduct />
+            </Route>
+            {/* Dashboard Routes End*/}
 
             <Route path="/careers">
                 <PageCarousel isHomePage={true} isCategory={false} />
@@ -232,6 +243,10 @@ export default function Routes() {
                 <BlogHome />
             </Route>
 
+            {/* unknown route */}
+            <Route path="*">
+                <div>404 error</div>
+            </Route>
         </Switch>
 
     )

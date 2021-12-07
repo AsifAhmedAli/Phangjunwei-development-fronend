@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import DashboardBars from '../../components/DashboardBars/DashboardBars';
-import goBack from '../../helpers/goBack';
-import './AddMerchant.css';
+import { useState } from "react";
+import DashboardBars from "../../components/DashboardBars/DashboardBars";
+import goBack from "../../helpers/goBack";
+import './AddProduct.css';
 
-export default function AddMerchant() {
+export default function AddProduct() {
     const [collectionShots, setCollectionShots] = useState(3);
     const [bannerImages, setbannerImages] = useState(3);
     const [img, setImg] = useState('');
@@ -24,14 +24,14 @@ export default function AddMerchant() {
 
     return (
         <DashboardBars>
-            <section id="add-merchant">
+            <section id="add-product">
                 <h4 className="title mb-4">
-                    <a onClick={goBack}>Merchants </a>
-                    <span>&#x3e; Add New Merchant</span>
+                    <a onClick={goBack}>Products </a>
+                    <span>&#x3e; Add New Product</span>
                 </h4>
 
-                <div className="add-merchant-card">
-                    <h5 className="mb-4">New Merchant</h5>
+                <div className="add-product-card">
+                    <h5 className="mb-4">New Product</h5>
                     <form className="form-cols">
                         <div className="colm-1">
                             <h5 className="mb-3">Details:</h5>
@@ -40,7 +40,7 @@ export default function AddMerchant() {
                             <input type="text" placeholder="Phone" />
                             <input type="text" placeholder="Email" />
 
-                            <h5 className="mb-3">Merchant collection shots: </h5>
+                            <h5 className="mb-3">Product collection shots: </h5>
                             <div>
                                 {
                                     Array.from({ length: collectionShots }, (v, i) => i).map(i => (

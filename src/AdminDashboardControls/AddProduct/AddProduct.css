@@ -1,31 +1,31 @@
-#add-merchant a{
+#add-product a{
     color: black;
 }
 
-#add-merchant .add-merchant-card{
+#add-product .add-product-card{
     padding: 3rem;
     background-color: white;
     box-shadow: 0 0 .2rem rgba(0,0,0,0.1);
 }
 
-#add-merchant .form-cols{
+#add-product .form-cols{
     display: flex;
     justify-content: space-between;
 }
 
-#add-merchant .form-cols button{
+#add-product .form-cols button{
     background-color: #F5F7F9;
 }
 
-#add-merchant .form-cols button:hover{
+#add-product .form-cols button:hover{
     background-color: #e9e9e9;
 }
 
-#add-merchant .form-cols .colm-1{
+#add-product .form-cols .colm-1{
     width: 50%;
 }
 
-#add-merchant .form-cols input{
+#add-product .form-cols input{
     border-radius: 5px;
     outline: none;
     width: 80%;
@@ -36,67 +36,67 @@
     transition: all .3s ease-out;
 }
 
-#add-merchant .form-cols input[type="text"]:focus{
+#add-product .form-cols input[type="text"]:focus{
     border: 2px solid #4C84FF;
 }
 
-#add-merchant .form-cols .colm-2{
+#add-product .form-cols .colm-2{
     width: 50%;
 }
 
-#add-merchant .previewer {
+#add-product .previewer {
     width: 300px;
     margin-top: 1rem;
     height: 300px;
     overflow: hidden;
 }
 
-#add-merchant .previewer img{
+#add-product .previewer img{
     width: 100%;
     object-fit: contain;
 }
 
-#add-merchant .save-btns{
+#add-product .save-btns{
     display: flex;
     padding: 1rem 0;
     float: right;
 }
 
-#add-merchant .save-btns .btn{
+#add-product .save-btns .btn{
     border-radius: 0;
     width: 6rem;
     color: white;
 }
 
-#add-merchant .save-btns .btn:hover{
+#add-product .save-btns .btn:hover{
     color: black;
 }
 
-#add-merchant .save-btns>:first-child{
+#add-product .save-btns>:first-child{
     background-color: #43425D;
 }
 
-#add-merchant .save-btns button{
+#add-product .save-btns button{
     background-color: #FECB2E;
 }
 
 @media only screen and (max-width: 780px){
-    #add-merchant{
+    #add-product{
         margin-left: 0;
     }
-    #add-merchant .form-cols input{
+    #add-product .form-cols input{
         width: 100%;
     }
-    #add-merchant .form-cols{
+    #add-product .form-cols{
         flex-wrap: wrap;
     }
-    #add-merchant .form-cols .colm-1{
+    #add-product .form-cols .colm-1{
         width: 100%;
     }
-    #add-merchant .form-cols .colm-2{
+    #add-product .form-cols .colm-2{
         width: 100%;
     }
-    #add-merchant .save-btns{
+    #add-product .save-btns{
         float: none;
     }
 }

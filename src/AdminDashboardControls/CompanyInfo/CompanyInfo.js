@@ -1,23 +1,20 @@
 import { useHistory } from "react-router-dom";
 import DashboardBars from "../../components/DashboardBars/DashboardBars";
-import './CompanyProducts.css';
+import './CompanyInfo.css';
 import { company_revenue_img_1, company_revenue_img_2, company_revenue_img_3 } from '../../images/dashboard';
 import { ThreeDots, PencilFill, XLg } from 'react-bootstrap-icons';
 import { person_info_image } from '../../images/dashboard';
 import ListTable from "../../components/AdminDashboard/ListTable/ListTable";
+import goBack from '../../helpers/goBack';
 
-export default function CompanyProducts({ location }) {
-    let history = useHistory();
-
-    const goToPreviousPath = () => {
-        history.goBack()
-    }
+export default function CompanyInfo() {
+    const history = useHistory();
 
     return (
         <DashboardBars>
-            <section id="merchant-company-products">
+            <section id="merchant-company-info">
                 <h4 className="title mb-4">
-                    <a onClick={goToPreviousPath}>Merchants </a>
+                    <a onClick={goBack}>Merchants </a>
                     <span>&#x3e; Company A</span>
                 </h4>
                 <div className="revenue-cards">
@@ -36,7 +33,7 @@ export default function CompanyProducts({ location }) {
                     <div className="revenue-card">
                         <div className="revenue_card_left">
                             <div className="revenue-icon">
-                                <img src={company_revenue_img_2} alt="asset1" />
+                                <img src={company_revenue_img_2} alt="asset2" />
                             </div>
                             <div className="revenue-text">
                                 <h3 className="count">$50,000</h3>
@@ -49,7 +46,7 @@ export default function CompanyProducts({ location }) {
                     <div className="revenue-card">
                         <div className="revenue_card_left">
                             <div className="revenue-icon">
-                                <img src={company_revenue_img_3} alt="asset1" />
+                                <img src={company_revenue_img_3} alt="asset3" />
                             </div>
                             <div className="revenue-text">
                                 <h3 className="count">$50,000</h3>
@@ -101,7 +98,7 @@ export default function CompanyProducts({ location }) {
                     </div>
                 </div>
 
-                <ListTable product />
+                <ListTable product location={history.location.pathname} />
             </section>
         </DashboardBars>
     )
