@@ -99,10 +99,10 @@ export default function Routes() {
             <Route path="/dashboard/admin/merchant/:companyId/customers" exact>
                 <ShowCustomers/>
             </Route>
-            <Route path="/dashboard/admin/merchant/:companyId/customers/:customerid/orders" exact>
+            <Route path="/dashboard/admin/merchant/:companyId/customers/:customerid" exact>
                 <CustomerOrder />
             </Route>
-            <Route path="/dashboard/admin/merchant/:companyId/customers/:customerid/orders/:orderid" exact>
+            <Route path="/dashboard/admin/merchant/:companyId/customers/:customerid/:orderid" exact>
                 <OrderInvoice></OrderInvoice>
             </Route>
            

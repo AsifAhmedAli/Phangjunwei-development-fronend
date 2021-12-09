@@ -4,12 +4,12 @@ const ListTable2 = ({cols,data,buttontxt,buttondis}) => {
 
 
   return (
-    <div>
-      <table class="table table-hover">
-        <thead>
-          <tr>
+    <div className="table-responsive ">
+      <table class="table table-hover text-muted  ">
+        <thead className="table-secondary ">
+          <tr >
             {cols.map((value,index)=>{
-                return <th scope="col">{value}</th>
+                return <th scope="col ">{value}</th>
             })}
             {
               !buttondis?   <th scope="col">Operation</th>:<></>
@@ -43,9 +43,13 @@ const ListTable2 = ({cols,data,buttontxt,buttondis}) => {
             <td>@mdo</td>
             <td>@mdo</td>
           </tr> */}
-         
+
         </tbody>
+
+
       </table>
+      <hr style={{marginTop:-10}} />
+
     </div>
   );
 };
