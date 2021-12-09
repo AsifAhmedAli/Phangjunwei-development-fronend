@@ -45,6 +45,7 @@ import AddMerchant from './AdminDashboardControls/AddMerchant/AddMerchant';
 import CompanyInfo from './AdminDashboardControls/CompanyInfo/CompanyInfo';
 import CompanyProducts from './AdminDashboardControls/CompanyInfo/CompanyProducts';
 import AddProduct from './AdminDashboardControls/AddProduct/AddProduct';
+import ShowCustomers from './AdminDashboardControls/ShowCustomers/ShowCustomers'
 
 export default function Routes() {
     return (
@@ -92,6 +93,10 @@ export default function Routes() {
             <Route path="/dashboard/admin/merchant/:companyId/product/add" exact>
                 <AddProduct />
             </Route>
+            <Route path="/dashboard/admin/merchant/:companyId/customers" exact>
+                <ShowCustomers/>
+            </Route>
+            
             {/* Dashboard Routes End*/}
 
             <Route path="/careers">

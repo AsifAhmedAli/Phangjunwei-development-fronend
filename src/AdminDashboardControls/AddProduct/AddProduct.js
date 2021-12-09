@@ -1,83 +1,104 @@
-import { useState } from "react";
+import { useState,useEffect,useRef } from "react";
 import DashboardBars from "../../components/DashboardBars/DashboardBars";
 import goBack from "../../helpers/goBack";
-import './AddProduct.css';
-
+import "./AddProduct.css";
+import { Tab,Tabs } from "react-bootstrap";
+import Product from "./SubComponents/Product";
+import SubProduct from "./SubComponents/SubProduct";
 export default function AddProduct() {
-    const [collectionShots, setCollectionShots] = useState(3);
-    const [bannerImages, setbannerImages] = useState(3);
-    const [img, setImg] = useState('');
+  // const [collectionShots, setCollectionShots] = useState(3);
+  // const [bannerImages, setbannerImages] = useState(3);
+  const [img, setImg] = useState("");
+  const [key, setKey] = useState('product');
+  const tabref = useRef(null)
+  const tab=[{
+    eventKey: "product",
+    title: "Product",
+    content: <Product />
+  },{
+    eventKey: "subproduct",
+    title: "Sub Product",
+    content: <SubProduct/>
+  }
+]
+const [tabss, settabss] = useState(tab)
+// const index=useState(0)
+const [index, setindex] = useState(1)
+  
 
-    const addCollectionShots = (e) => {
-        e.preventDefault();
-        setCollectionShots(() => collectionShots + 1);
-    }
+  // const addBannerImages = (e) => {
+  //   e.preventDefault();
+  //   setbannerImages(() => bannerImages + 1);
+  // };
 
-    const addBannerImages = (e) => {
-        e.preventDefault();
-        setbannerImages(() => bannerImages + 1);
-    }
+  const previewImage = (e) => {
+    setImg(e.target.files[0]);
+  };
+  const addTab=async()=>{
+    if(key=="add"){
+      const ch=await settabss([
+         ...tabss,{
+           eventKey : `subproduct${tabss.length}`,
+           title : `Sub Product${index}`,
+           content : <SubProduct/>
+         }
+       ])
+       setindex(index+1)
+       // setKey(tabss[tabss.length-1].eventKey)
+            
+       
+ 
+      
+       // console.log()
+       
+     }
+  }
+  
+  useEffect(() => {
+     addTab().then(()=>console.log(tabss))
+    
+    setKey(tabss[tabss.length-1].eventKey) 
+    console.log(tabref.current)
 
-    const previewImage = (e) => {
-        setImg(e.target.files[0]);
-    }
+  }, [key=="add"])
+  useEffect(()=>{
+    setKey("product")
+  },[])
 
-    return (
-        <DashboardBars>
-            <section id="add-product">
-                <h4 className="title mb-4">
-                    <a onClick={goBack}>Products </a>
-                    <span>&#x3e; Add New Product</span>
-                </h4>
+  return (
+    <DashboardBars>
+      <section id="add-product">
+        <h4 className="title mb-4">
+          <a onClick={goBack}>Products </a>
+          <span>&#x3e; Add New Product</span>
+        </h4>
 
-                <div className="add-product-card">
-                    <h5 className="mb-4">New Product</h5>
-                    <form className="form-cols">
-                        <div className="colm-1">
-                            <h5 className="mb-3">Details:</h5>
-                            <input type="text" placeholder="Company Name" />
-                            <input type="text" placeholder="Address" />
-                            <input type="text" placeholder="Phone" />
-                            <input type="text" placeholder="Email" />
-
-                            <h5 className="mb-3">Product collection shots: </h5>
-                            <div>
-                                {
-                                    Array.from({ length: collectionShots }, (v, i) => i).map(i => (
-                                        <input type="file" onChange={previewImage} />
-                                    ))
-                                }
-                                <br />
-                                <button className="btn mb-4" onClick={addCollectionShots}>Add more</button>
-                            </div>
-                        </div>
-                        <div className="colm-2">
-                            <h5 className="mb-3">CTA Banner Images: </h5>
-                            <div>
-
-                                {
-                                    Array.from({ length: bannerImages }, (v, i) => i).map(i => (
-                                        <input type="file" onChange={previewImage} />
-                                    ))
-                                }
-                                <br />
-                                <button className="btn" onClick={addBannerImages}>Add more</button>
-                            </div>
-                            <div className="previewer">
-                                {img && <img src={URL.createObjectURL(img)} alt="preview" />}
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div className="save-btns">
-                    <button className='btn'>
-                        Cancel
-                    </button>
-                    <button className='btn'>
-                        Save
-                    </button>
-                </div>
-            </section>
-        </DashboardBars>
-    )
+        <div className="add-product-card">
+          <Tabs
+            id="controlled-tab-example"
+            activeKey={key}
+            onSelect={(k) => setKey(k)}
+            className="mb-3"
+          >
+            {
+              tabss.map((value,index)=>{
+                return (<Tab key={index }eventKey={value.eventKey} title={value.title}>
+                {value.content}
+              </Tab>)
+              })
+            }
+            
+            <Tab eventKey="add" title="+" ref={tabref}>
+              
+              
+            </Tab>
+          </Tabs>
+        </div>
+        {/* <div className="save-btns">
+          <button className="btn">Cancel</button>
+          <button className="btn">Save</button>
+        </div> */}
+      </section>
+    </DashboardBars>
+  );
 }
