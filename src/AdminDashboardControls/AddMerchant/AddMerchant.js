@@ -93,7 +93,7 @@ export default function AddMerchant() {
                            onChange={previewImage}
                          />
                          <label class="custom-file-label" for="customFile2">
-                           Choose file
+                           Upload Image # {i}
                          </label>
                        </div>
 
@@ -126,7 +126,7 @@ export default function AddMerchant() {
                            onChange={previewImage}
                          />
                          <label class="custom-file-label" for="customFile2">
-                           Choose file
+                           Upload Image #{i}
                          </label>
                        </div>
 

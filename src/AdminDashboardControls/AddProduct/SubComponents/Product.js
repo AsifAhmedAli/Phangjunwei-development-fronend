@@ -220,7 +220,7 @@ const Product = () => {
                             onChange={previewImage}
                           />
                           <label class="custom-file-label" for="customFile2">
-                            Choose file
+                            Upload Image #{i}
                           </label>
                         </div>
 
@@ -298,7 +298,7 @@ const Product = () => {
                            onChange={previewImage}
                          />
                          <label class="custom-file-label" for="customFile2">
-                           Choose file
+                             Upload image #{i}
                          </label>
                        </div>
 
