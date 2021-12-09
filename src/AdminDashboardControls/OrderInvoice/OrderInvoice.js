@@ -91,7 +91,10 @@ const OrderInvoice = () => {
                 <div>
                 <strong>Sub Total: </strong> Nov 15,2021 <br />
                     <strong>Discount: </strong> Pending <br />
-                    <strong>Vat: </strong> #12345 <br />
+                    <strong className="">  Vat: </strong> #12345 <br />
+
+                    <h4 className="mt-3"><strong>SGD 2436</strong></h4>
+                    <button className="btn btn-warning py-1 px-4">Submit</button>
                 </div>
                    
                 </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import DashboardBars from '../../components/DashboardBars/DashboardBars'
 import DashboardPagination from '../../components/AdminDashboard/DashboardPagination/DashboardPagination'
 import ListTable2 from '../../components/AdminDashboard/ListTable2/ListTable2'
+import goBack from '../../helpers/goBack'
 
 const CustomerOrder = () => {
     const person=[
@@ -38,7 +39,11 @@ const CustomerOrder = () => {
         <div>
             <DashboardBars>
             <section id="show-merchants">
-            <h1 className="title mb-4">Customers</h1>
+            {/* <h1 className="title mb-4"> All Customers</h1> */}
+            <h4 className="title mb-4">
+                    <a onClick={goBack}>All Customers</a>
+                    <span>&#x3e; Company ID #1234</span>
+                </h4>
             <ListTable2 cols={["Order ID","Transaction Date","Item", "Pending Orders", "Amount","Status",]}  data={person} buttontxt={"View Invoice"}/>
             
             <DashboardPagination />
