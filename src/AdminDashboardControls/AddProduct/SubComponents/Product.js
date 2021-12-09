@@ -94,7 +94,7 @@ const Product = () => {
               <div className="mb-3 ">
                 <input
                   type="text"
-                  className="form-control "
+                  className="form-control  "
                   name="product_name"
                   id=""
                   placeholder="Product Name"
