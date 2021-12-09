@@ -44,10 +44,10 @@ const OrderInvoice = () => {
                 </div>
                
               </div>
-              <div className=" ">
+              <div className=" d-flex flex-column justify-content-cneter text-center ">
                     <h4 className="mb-3">Invoice</h4>
                     <div>
-                    <button className="btn btn-primary">Invoice</button>
+                    <button className="btn text-white  px-5" style={{backgroundColor : "#43425d"}}>Print</button>
 
                     </div>
               </div>
