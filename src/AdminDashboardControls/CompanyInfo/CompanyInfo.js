@@ -49,6 +49,7 @@ export default function CompanyInfo() {
                                 <img src={company_revenue_img_3} alt="asset3" />
                             </div>
                             <div className="revenue-text">
+
                                 <h3 className="count">$50,000</h3>
                                 <p className="title">Growth</p>
                             </div>
