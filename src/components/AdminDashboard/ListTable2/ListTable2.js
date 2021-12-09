@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListTable2 = ({cols,data}) => {
+const ListTable2 = ({cols,data,buttontxt,buttondis}) => {
 
 
   return (
@@ -11,6 +11,10 @@ const ListTable2 = ({cols,data}) => {
             {cols.map((value,index)=>{
                 return <th scope="col">{value}</th>
             })}
+            {
+              !buttondis?   <th scope="col">Operation</th>:<></>
+            }
+           
           </tr>
         </thead>
         <tbody>
@@ -23,6 +27,10 @@ const ListTable2 = ({cols,data}) => {
                             return <td>{tds}</td>
                         })
                       }
+                      {
+                        !buttondis  ?  <td> <button className='btn btn-primary'>{buttontxt}</button></td>: <></>
+                      }
+                     
                   </tr>
               })
             }

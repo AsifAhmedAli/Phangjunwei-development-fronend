@@ -46,6 +46,9 @@ import CompanyInfo from './AdminDashboardControls/CompanyInfo/CompanyInfo';
 import CompanyProducts from './AdminDashboardControls/CompanyInfo/CompanyProducts';
 import AddProduct from './AdminDashboardControls/AddProduct/AddProduct';
 import ShowCustomers from './AdminDashboardControls/ShowCustomers/ShowCustomers'
+import CustomerOrder from './AdminDashboardControls/Customer Order/CustomerOrder';
+import CompanyOrder from './AdminDashboardControls/CompanyOrder/CompanyOrder';
+import OrderInvoice from './AdminDashboardControls/OrderInvoice/OrderInvoice';
 
 export default function Routes() {
     return (
@@ -95,6 +98,16 @@ export default function Routes() {
             </Route>
             <Route path="/dashboard/admin/merchant/:companyId/customers" exact>
                 <ShowCustomers/>
+            </Route>
+            <Route path="/dashboard/admin/merchant/:companyId/customers/:customerid/orders" exact>
+                <CustomerOrder />
+            </Route>
+            <Route path="/dashboard/admin/merchant/:companyId/customers/:customerid/orders/:orderid" exact>
+                <OrderInvoice></OrderInvoice>
+            </Route>
+           
+            <Route path="/dashboard/admin/merchant/:companyId/orders" exact>
+                <CompanyOrder />
             </Route>
             
             {/* Dashboard Routes End*/}
