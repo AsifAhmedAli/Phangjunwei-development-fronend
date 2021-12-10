@@ -5,40 +5,40 @@ import DashboardBars from '../../components/DashboardBars/DashboardBars'
 
 import DashboardPagination from '../../components/AdminDashboard/DashboardPagination/DashboardPagination'
 const ShowCustomers = () => {
-    const person=[
+    const person = [
         {
-            td1 : "1",
-            td2 : "Muhammad Awais Shah",
-            td3 : "50",
-            td4:  "70",
-            td5 : "34937974",
+            td1: "1",
+            td2: "Muhammad Awais Shah",
+            td3: "50",
+            td4: "70",
+            td5: "34937974",
             td6: "active",
 
         },
         {
-            td1 : "1",
-            td2 : "Muhammad Awais Shah",
-            td3 : "50",
-            td4:  "70",
-            td5 : "34937974",
+            td1: "1",
+            td2: "Muhammad Awais Shah",
+            td3: "50",
+            td4: "70",
+            td5: "34937974",
             td6: "active",
 
         },
         {
-            td1 : "1",
-            td2 : "Muhammad Awais Shah",
-            td3 : "50",
-            td4:  "70",
-            td5 : "34937974",
+            td1: "1",
+            td2: "Muhammad Awais Shah",
+            td3: "50",
+            td4: "70",
+            td5: "34937974",
             td6: "active",
 
         },
         {
-            td1 : "1",
-            td2 : "Muhammad Awais Shah",
-            td3 : "50",
-            td4:  "70",
-            td5 : "34937974",
+            td1: "1",
+            td2: "Muhammad Awais Shah",
+            td3: "50",
+            td4: "70",
+            td5: "34937974",
             td6: "active",
             
 
@@ -54,8 +54,8 @@ const ShowCustomers = () => {
             <DashboardPagination />
         </section>
             </DashboardBars>
-           
-          
+
+
         </div>
     )
 }

@@ -1,4 +1,7 @@
 import React from "react";
+import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import './ListTable2.css'
 
 const ListTable2 = ({cols,data,buttontxt,buttondis,table_title}) => {
 
@@ -35,7 +38,7 @@ const ListTable2 = ({cols,data,buttontxt,buttondis,table_title}) => {
                   </tr>
               })
             }
-          {/* <tr>
+            {/* <tr>
             <th scope="row">1</th>
             <td>Mark</td>
             <td>Otto</td>
