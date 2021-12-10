@@ -37,41 +37,19 @@ const Product = () => {
     },
   ];
   const [collectionShots, setCollectionShots] = useState(3);
+  // let newImages=new Array(6)
+  let newImages=[]
   const [img, setImg] = useState("");
   const [images, setImages] = useState([])
 
-  const handleChangeImages=(e)=>{
-      console.log(e.target.files)
-      console.log("hi")
-    // const files = [...e.target.files]
-    // console.log(files)
-    // setImages([...images,e.target.files[0]])
-    // let newImages = [...images]
-    // newImages.push(e.target.files[0])
-    setImages([...images, e.target.files[0]])
+  const handleChangeImages=(e,i)=>{
 
-
-    console.log(images)
-    setImg(e.target.files[0])
-    
-    let err = ""
-
-
-    // files.forEach(file => {
-    //     // console.log(file)
-    //     // if(!file) return err = "File does not exist."
-
-    //     // if(file.size > 1024 * 1024 * 5){
-    //     //     console.log("done")
-    //     //     return err = "The image/video largest is 5mb."
-    //     // }
-    //     //  setImg()
-    //     // setImg(e.target.files)
-    //     return newImages.push(file)
-    // })
-
-    
-    // setImages([...images, ...newImages])
+      
+      newImages=[...images]
+      newImages[i]=e.target.files[0]
+      console.log(newImages) 
+      setImages(newImages)    
+   
   }
 
 
@@ -81,8 +59,11 @@ const Product = () => {
     e.preventDefault();
     setCollectionShots(() => collectionShots + 1);
   };
-  const previewImage = (e) => {
+  const previewImage = (e,i) => {
     setImg(e.target.files[0]);
+    // console.log(e.target.files[0])
+    handleChangeImages(e,i)
+
   };
   return (
 
@@ -104,9 +85,9 @@ const Product = () => {
               </div>
               <div className="mb-3 row">
                 <div className="col input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">
-                      $GD
+                  <div class="input-group-prepend" >
+                    <span  class="input-group-text" id="basic-addon1" >
+                      $
                     </span>
                   </div>
                   <input
@@ -115,6 +96,7 @@ const Product = () => {
                     name=""
                     id=""
                     placeholder="00"
+                    
                   />
                   <small className="text-primary">This field is required</small>
                 </div>
@@ -139,14 +121,14 @@ const Product = () => {
                 />
                 <small className="text-primary">This field is required</small>
               </div>
-              <div className="mb-3 row">
-                <div className="col">
+              <div className=" row">
+                <div className="col mb-3">
                   <Select options={colorOptions} placeholder="Color"></Select>
                 </div>
-                <div className="col">
+                <div className="col mb-3">
                   <Select
                     options={deliveryOptions}
-                    placeholder="Delivery Day"
+                    placeholder="Delivery"
                   ></Select>
                 </div>
               </div>
@@ -204,7 +186,7 @@ const Product = () => {
             </div>
             <div className="col-lg-7 col-md-12">
               <div className="d-flex flex-column">
-                <div className="d-flex mb-4 ">
+                <div className="d-flex mb-4 file-cust ">
                   <div className="mx-2">
 
                     {
@@ -217,10 +199,13 @@ const Product = () => {
                             class="custom-file-input change"
                             id="customFile1"
                             
-                            onChange={previewImage}
+                            onChange={(e)=>previewImage(e,i)}
                           />
                           <label class="custom-file-label" for="customFile2">
-                            Upload Image #{i}
+                            {
+                              images[i]? images[i].name  : <> Upload Image #{i+1}</>
+
+                            }
                           </label>
                         </div>
 
@@ -271,18 +256,7 @@ const Product = () => {
                         Choose file
                       </label>
                     </div> */}
-                    <div
-                      class="btn-group"
-                      role="group"
-                      aria-label="Basic example"
-                    >
-                      <button type="button" class="btn btn-primary">
-                        In Stock
-                      </button>
-                      <button type="button" class="btn btn-primary " disabled>
-                        No Stock
-                      </button>
-                    </div>
+                   
                   </div>
                   <div className="mx-2">
                   {
@@ -295,10 +269,13 @@ const Product = () => {
                            class="custom-file-input change"
                            id="customFile1"
                            
-                           onChange={previewImage}
+                           onChange={(e)=>previewImage(e,i+3)}
                          />
                          <label class="custom-file-label" for="customFile2">
-                             Upload image #{i}
+                         {
+                              images[i+3]? images[i+3].name  : <> Upload Image #{i+4}</>
+
+                            }
                          </label>
                        </div>
 
@@ -340,6 +317,18 @@ const Product = () => {
                     </div> */}
                   </div>
                 </div>
+                <div
+                      class="btn-group mb-3 d-inline"
+                      role="group"
+                      aria-label="Basic example"
+                    >
+                      <button type="button" class="btn btn-primary">
+                        In Stock
+                      </button>
+                      <button type="button" class="btn btn-primary " disabled>
+                        No Stock
+                      </button>
+                    </div>
                 <div
                   className="  text-white w-100 text-center  "
                   
