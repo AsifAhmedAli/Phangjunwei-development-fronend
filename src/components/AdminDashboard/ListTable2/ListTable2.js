@@ -1,16 +1,21 @@
 import React from "react";
 
-const ListTable2 = ({cols,data}) => {
+const ListTable2 = ({cols,data,buttontxt,buttondis,table_title}) => {
 
 
   return (
-    <div>
-      <table class="table table-hover">
-        <thead>
-          <tr>
+    <div className="table-responsive bg-white p-4 rounded ">
+      <h5 className="table-title mb-3 mt-2">{table_title}</h5>
+      <table class="table table-hover text-muted  ">
+        <thead className="table-secondary ">
+          <tr >
             {cols.map((value,index)=>{
-                return <th scope="col">{value}</th>
+                return <th scope="col ">{value}</th>
             })}
+            {
+              !buttondis?   <th scope="col">Operation</th>:<></>
+            }
+           
           </tr>
         </thead>
         <tbody>
@@ -23,6 +28,10 @@ const ListTable2 = ({cols,data}) => {
                             return <td>{tds}</td>
                         })
                       }
+                      {
+                        !buttondis  ?  <td> <button className='btn btn-primary py-0 px-4'>{buttontxt}</button></td>: <></>
+                      }
+                     
                   </tr>
               })
             }
@@ -35,9 +44,13 @@ const ListTable2 = ({cols,data}) => {
             <td>@mdo</td>
             <td>@mdo</td>
           </tr> */}
-         
+
         </tbody>
+
+
       </table>
+      <hr style={{marginTop:-10}} />
+
     </div>
   );
 };
