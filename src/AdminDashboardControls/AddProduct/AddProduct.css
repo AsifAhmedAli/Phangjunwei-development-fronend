@@ -100,4 +100,8 @@
     #add-product .save-btns{
         float: none;
     }
+    .file-cust{
+        flex-direction: column;
+    }
+    
 }
