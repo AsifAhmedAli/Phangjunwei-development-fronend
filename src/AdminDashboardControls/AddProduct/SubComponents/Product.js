@@ -90,7 +90,7 @@ const Product = () => {
       <div className="container py-4">
         <form>
           <div className="row">
-            <div className="col-md-5">
+            <div className="col-lg-5 col-md-12">
               <div className="mb-3 ">
                 <input
                   type="text"
@@ -202,7 +202,7 @@ const Product = () => {
                 />
               </div>
             </div>
-            <div className="col-md-7">
+            <div className="col-lg-7 col-md-12">
               <div className="d-flex flex-column">
                 <div className="d-flex mb-4 ">
                   <div className="mx-2">
