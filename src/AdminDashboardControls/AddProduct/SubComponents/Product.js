@@ -98,7 +98,7 @@ const Product = () => {
                     placeholder="00"
                     
                   />
-                  <small className="text-primary">This field is required</small>
+                  {/* <small className="text-primary">This field is required</small> */}
                 </div>
                 <div className="col">
                   <input
