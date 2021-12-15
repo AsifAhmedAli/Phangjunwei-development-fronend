@@ -117,7 +117,7 @@ export default function Routes() {
       <Route path="/dashboard/admin/merchant/:id/orders" exact>
         <CompanyOrder />
       </Route>
-     
+
 
       {/* Dashboard Routes End*/}
 
