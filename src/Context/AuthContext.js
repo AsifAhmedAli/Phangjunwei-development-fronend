@@ -33,26 +33,28 @@ export function AuthContextProvider(props) {
   // }
 
   //httplink
-  const httpLink = new HttpLink({ uri: 'http://localhost:4000/graphql' });
+//   const httpLink = new HttpLink({ uri: 'http://localhost:4000/graphql' });
 
-const authMiddleware = new ApolloLink((operation, forward) => {
-  // add the authorization to the headers
-  operation.setContext(({ headers = {} }) => ({
-    headers: {
-      ...headers,
-      'x-access-token': token || null,
-    }
-  }));
+// const authMiddleware = new ApolloLink((operation, forward) => {
+//   // add the authorization to the headers
+//   operation.setContext(({ headers = {} }) => ({
+//     headers: {
+//       ...headers,
+//       'x-access-token': token || null,
+//     }
+//   }));
 
-  return forward(operation);
-})
+//   return forward(operation);
+// })
 
   
   const client = new ApolloClient({
-    // uri: 'http://localhost:4000/graphql',
+
+    uri: 'http://localhost:4000/graphql',
     credentials: 'include',
     cache: new InMemoryCache(),
-    link: concat(authMiddleware, httpLink),
+    // link: concat(authMiddleware, httpLink),
+
   });
 
   return (

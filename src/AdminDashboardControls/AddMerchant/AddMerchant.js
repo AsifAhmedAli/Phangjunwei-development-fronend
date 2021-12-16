@@ -80,27 +80,24 @@ export default function AddMerchant() {
                     <input type="file" onChange={previewImage} />
                   )
                 )} */}
-                 {
-                       
-                       Array.from({ length: collectionShots }, (v, i) => i).map(i => (
-                         <div class="custom-file mb-3">
-                         <input
-                           type="file"
-                           name="file"
-                           class="custom-file-input change"
-                           id="customFile1"
-                           
-                           onChange={previewImage}
-                         />
-                         <label class="custom-file-label" for="customFile2">
-                           Upload Image # {i}
-                         </label>
-                       </div>
+                {Array.from({ length: collectionShots }, (v, i) => i).map(
+                  (i) => (
+                    <div class="custom-file mb-3">
+                      <input
+                        type="file"
+                        name="file"
+                        class="custom-file-input change"
+                        id="customFile1"
+                        onChange={previewImage}
+                      />
+                      <label class="custom-file-label" for="customFile2">
+                        Upload Image # {i}
+                      </label>
+                    </div>
 
-                           // <input type="file" onChange={previewImage} />
-                       ))
-                   
-                   }
+                    // <input type="file" onChange={previewImage} />
+                  )
+                )}
                 <br />
                 <button className="btn mb-4" onClick={addCollectionShots}>
                   Add more
@@ -113,27 +110,22 @@ export default function AddMerchant() {
                 {/* {Array.from({ length: bannerImages }, (v, i) => i).map((i) => (
                   <input type="file" onChange={previewImage} />
                 ))} */}
-                 {
-                       
-                       Array.from({ length: bannerImages }, (v, i) => i).map(i => (
-                         <div class="custom-file mb-3">
-                         <input
-                           type="file"
-                           name="file"
-                           class="custom-file-input change"
-                           id="customFile1"
-                           
-                           onChange={previewImage}
-                         />
-                         <label class="custom-file-label" for="customFile2">
-                           Upload Image #{i}
-                         </label>
-                       </div>
+                {Array.from({ length: bannerImages }, (v, i) => i).map((i) => (
+                  <div class="custom-file mb-3">
+                    <input
+                      type="file"
+                      name="file"
+                      class="custom-file-input change"
+                      id="customFile1"
+                      onChange={previewImage}
+                    />
+                    <label class="custom-file-label" for="customFile2">
+                      Upload Image #{i}
+                    </label>
+                  </div>
 
-                           // <input type="file" onChange={previewImage} />
-                       ))
-                   
-                   }
+                  // <input type="file" onChange={previewImage} />
+                ))}
                 <br />
                 <button className="btn" onClick={addBannerImages}>
                   Add more
@@ -142,20 +134,15 @@ export default function AddMerchant() {
               {/* <div className="previewer">
                 {img && <img src={URL.createObjectURL(img)} alt="preview" />}
               </div> */}
-              <div
-                  className="  text-white w-100 text-center  "
-                  
-                >
-                  {/* <span className="my-auto">Preview</span> */}
-                  {/* {img && <img src={URL.createObjectURL(img)} alt="preview" />} */}
-                  <div className="previewer my-auto">
-                                {img && <img src={URL.createObjectURL(img)} alt="preview" />}
-                            </div>
-
-                  
-                  {/* <img src={img} alt="images" style={{objectFit:"contain",width:"100%",height:"100%"}} className="" /> */}
-
+              <div className="  text-white w-100 text-center  ">
+                {/* <span className="my-auto">Preview</span> */}
+                {/* {img && <img src={URL.createObjectURL(img)} alt="preview" />} */}
+                <div className="previewer my-auto">
+                  {img && <img src={URL.createObjectURL(img)} alt="preview" />}
                 </div>
+
+                {/* <img src={img} alt="images" style={{objectFit:"contain",width:"100%",height:"100%"}} className="" /> */}
+              </div>
             </div>
           </form>
         </div>
