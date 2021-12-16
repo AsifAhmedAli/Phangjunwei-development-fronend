@@ -3,18 +3,11 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style/index.css';
 import App from './App';
-
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-} from "@apollo/client";
+import {AuthContextProvider} from './Context/AuthContext';
 import { BrowserRouter } from 'react-router-dom';
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
-  credentials: 'include',
-  cache: new InMemoryCache()
-});
+
+
+
 //import { initFacebookSdk } from './helpers/initFacebookSdk';
 //import reportWebVitals from './reportWebVitals';
 
@@ -29,12 +22,19 @@ function startApp () {
   );
 }*/
 
+
 ReactDOM.render(
-  <ApolloProvider client={client}>
+
+
+    <AuthContextProvider>
+        
+
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </ApolloProvider>,
+
+    </AuthContextProvider>,
+   
   document.getElementById('root')
 );
 

@@ -25,6 +25,14 @@ mutation Login
   }
 
 `
+const REFRESH_TOKEN=gql`
+mutation GenerateAccessToken {
+    generateAccessToken {
+    token  
+    }
+  }
+
+`
 
 const CREATE_MERCHANT = gql
     `
@@ -108,4 +116,4 @@ const ADD_TO_WISHLIST = gql
 `
 
 
-export { CREATE_USER, CREATE_MERCHANT, CREATE_PRODUCT, ADD_TO_WISHLIST,LOGIN_USER };
+export { CREATE_USER, CREATE_MERCHANT, CREATE_PRODUCT, ADD_TO_WISHLIST,LOGIN_USER,REFRESH_TOKEN };
