@@ -24,6 +24,7 @@ export default function AddMerchant() {
 }
 const handleChangeInputFile=(e,i)=>{
       console.log(e.target.files[0])
+      // setimages([...images,image])
 }
   const addCollectionShots = (e) => {
     e.preventDefault();

@@ -12,9 +12,9 @@ export default function Auth() {
     const initialState={email:'',password:''}
     const [userData, setUserData] = useState(initialState)
     const {email,password}=userData
-    
+    const history=useHistory()
 
-    const {setToken}=useContext(AuthContext)
+    const {token,setToken}=useContext(AuthContext)
 
     const [login_user, { data, loading, error }] = useMutation(LOGIN_USER);
 
@@ -30,6 +30,10 @@ export default function Auth() {
       const result= await login_user({variables: userData})
     //   console.log(result.data.login.token)
     setToken(result.data.login.token)
+    if(token){
+        history.push('/dashboard/admin/merchants')
+    }
+   
     
     
      
