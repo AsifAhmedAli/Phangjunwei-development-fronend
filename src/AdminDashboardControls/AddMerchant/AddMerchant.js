@@ -2,12 +2,29 @@ import { useState } from "react";
 import DashboardBars from "../../components/DashboardBars/DashboardBars";
 import goBack from "../../helpers/goBack";
 import "./AddMerchant.css";
+// import {CREATE_MERCHANT} from '../../graphql/mutations'
+
 
 export default function AddMerchant() {
+  
   const [collectionShots, setCollectionShots] = useState(3);
   const [bannerImages, setbannerImages] = useState(3);
   const [img, setImg] = useState("");
+  const [images, setimages] = useState([])
 
+  const initialState={name:'',address:'', phone:'', email:''}
+  const [userData, setuserData] = useState(initialState)
+  const {name,address,phone,email}=userData
+
+
+
+  const handleChangeInput=(e)=>{
+    const {name,value}=e.target
+    setuserData({...userData,[name]:value})
+}
+const handleChangeInputFile=(e,i)=>{
+      console.log(e.target.files[0])
+}
   const addCollectionShots = (e) => {
     e.preventDefault();
     setCollectionShots(() => collectionShots + 1);
@@ -18,9 +35,13 @@ export default function AddMerchant() {
     setbannerImages(() => bannerImages + 1);
   };
 
-  const previewImage = (e) => {
+  const previewImage = (e,i) => {
     setImg(e.target.files[0]);
+    handleChangeInputFile(e,i)
+
   };
+
+
 
   return (
     <DashboardBars>
@@ -39,34 +60,56 @@ export default function AddMerchant() {
                 <input
                   type="text"
                   className="form-control "
-                  name="product_name"
+                  name="name"
                   id=""
-                  placeholder="Product Name"
+                  placeholder="Company Name"
+                  value={name}
+                  onChange={handleChangeInput}
                 />
                 {/* <label for="product_name">Hi</label> */}
-                <small className="text-primary">This field is required</small>
+                {/* <small className="text-primary">This field is required</small> */}
               </div>
               <div className="mb-3 ">
                 <input
                   type="text"
                   className="form-control "
-                  name="product_name"
+                  name="address"
+                  name="address"
                   id=""
-                  placeholder="Product Name"
+                  placeholder="Adress"
+                  value={address}
+                  onChange={handleChangeInput}
                 />
                 {/* <label for="product_name">Hi</label> */}
-                <small className="text-primary">This field is required</small>
+                {/* <small className="text-primary">This field is required</small> */}
               </div>
               <div className="mb-3 ">
                 <input
                   type="text"
                   className="form-control "
-                  name="product_name"
+                  name="phone"
                   id=""
-                  placeholder="Product Name"
+                  placeholder="Phone"
+                  value={phone}
+                  onChange={handleChangeInput}
+
                 />
                 {/* <label for="product_name">Hi</label> */}
-                <small className="text-primary">This field is required</small>
+                {/* <small className="text-primary">This field is required</small> */}
+              </div>
+              <div className="mb-3 ">
+                <input
+                  type="text"
+                  className="form-control "
+                  name="email"
+                  id=""
+                  placeholder="Email"
+                  value={email}
+                  onChange={handleChangeInput}
+
+                />
+                {/* <label for="product_name">Hi</label> */}
+                {/* <small className="text-primary">This field is required</small> */}
               </div>
               {/* <input type="text" placeholder="Company Name" />
                             <input type="text" placeholder="Address" />
@@ -88,7 +131,7 @@ export default function AddMerchant() {
                         name="file"
                         class="custom-file-input change"
                         id="customFile1"
-                        onChange={previewImage}
+                        onChange={(e)=>previewImage(e,i)}
                       />
                       <label class="custom-file-label" for="customFile2">
                         Upload Image # {i}
@@ -117,7 +160,7 @@ export default function AddMerchant() {
                       name="file"
                       class="custom-file-input change"
                       id="customFile1"
-                      onChange={previewImage}
+                      onChange={(e)=>previewImage(e,i)}
                     />
                     <label class="custom-file-label" for="customFile2">
                       Upload Image #{i}
