@@ -5,6 +5,7 @@ import {
     ApolloClient,
     InMemoryCache,
     ApolloProvider,
+    from
   } from "@apollo/client";
 //   import { ApolloClient, InMemoryCache,  } from '@apollo/client';
 
@@ -47,12 +48,31 @@ export function AuthContextProvider(props) {
 //   return forward(operation);
 // })
 
+
+const httpLink = new HttpLink({ uri: 'http://localhost:4000/graphql',credentials: 'include' });
+
+const authMiddleware = new ApolloLink((operation, forward) => {
+  // add the authorization to the headers
+  operation.setContext(({ headers = {} }) => ({
+    headers: {
+      ...headers,
+      authorization: token|| null,
+    }
+  }));
+
+  return forward(operation);
+})
   
   const client = new ApolloClient({
 
-    uri: 'http://localhost:4000/graphql',
-    credentials: 'include',
+    // uri: 'http://localhost:4000/graphql',
+    // credentials: 'include',
     cache: new InMemoryCache(),
+    link: from([
+      authMiddleware,
+      // activityMiddleware,
+      httpLink
+    ]),
     // link: concat(authMiddleware, httpLink),
 
   });
