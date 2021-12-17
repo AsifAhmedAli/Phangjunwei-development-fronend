@@ -7,6 +7,7 @@ import {
     ApolloProvider,
     from
   } from "@apollo/client";
+import axios from "axios";
 //   import { ApolloClient, InMemoryCache,  } from '@apollo/client';
 
 // import { REFRESH_TOKEN } from "../graphql/mutations";
@@ -23,7 +24,7 @@ export function AuthContextProvider(props) {
   }
   // async  function refreshToken(){
 
-  //     const firstLogin =localStorage.getItem("firstLogin")
+      // const firstLogin =localStorage.getItem("firstLogin")
   //     if(firstLogin){
   //         const res=await refresh_token()
   //          console.log(res)
@@ -53,12 +54,28 @@ const httpLink = new HttpLink({ uri: 'http://localhost:4000/graphql',credentials
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   // add the authorization to the headers
-  operation.setContext(({ headers = {} }) => ({
+  operation.setContext(async({ headers = {} }) => {
+    
+    // const firstLogin =localStorage.getItem("firstLogin")
+    
+      // const tok=await axios.post("http://localhost:4000/graphql",{
+      //    query:`
+      //    mutation Mutation {
+      //     generateAccessToken {
+      //     token  
+      //     }
+      //   }
+      //    `
+      //  })
+      //  console.log("ima in")
+      // console.log("hi")
+    
+    return {
     headers: {
       ...headers,
       authorization: token|| null,
     }
-  }));
+  }});
 
   return forward(operation);
 })
