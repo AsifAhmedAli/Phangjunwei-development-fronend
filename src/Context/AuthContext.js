@@ -1,107 +1,75 @@
 import { createContext, useEffect, useState } from "react";
 import {
-    HttpLink, ApolloLink,
-    concat,
-    ApolloClient,
-    InMemoryCache,
-    ApolloProvider,
-    from
-  } from "@apollo/client";
+  HttpLink,
+  ApolloLink,
+  concat,
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  from,
+} from "@apollo/client";
 import axios from "axios";
-//   import { ApolloClient, InMemoryCache,  } from '@apollo/client';
-
-// import { REFRESH_TOKEN } from "../graphql/mutations";
 
 const AuthContext = createContext();
 export function AuthContextProvider(props) {
   const [token, settoken] = useState("");
+  axios.defaults.withCredentials = true;
 
-  // const [refresh_token,{data,loading,error}]=useMutation(REFRESH_TOKEN)
-  // const firsLogin = false
   async function setToken(tok) {
     localStorage.setItem("firstLogin", true);
     settoken(tok);
   }
-  // async  function refreshToken(){
 
+  const httpLink = new HttpLink({
+    uri: "http://localhost:4000/graphql",
+    credentials: "include",
+  });
+
+  const authMiddleware = new ApolloLink((operation, forward) => {
+    // add the authorization to the headers
+    operation.setContext(async ({ headers = {} }) => {
       // const firstLogin =localStorage.getItem("firstLogin")
-  //     if(firstLogin){
-  //         const res=await refresh_token()
-  //          console.log(res)
-  //     }
-  //     console.log("hi")
+      const firstLogin = localStorage.getItem("firstLogin");
+      if (firstLogin) {
+        const tok = await axios.post("http://localhost:4000/graphql", {
+          query: `
+          mutation Mutation {
+           generateAccessToken {
+           token  
+           }
+         }
+          `,
+        });
 
-  //     settoken(r)
-  // }
+        settoken(tok.data.data.generateAccessToken.token);
+      }
 
-  //httplink
-//   const httpLink = new HttpLink({ uri: 'http://localhost:4000/graphql' });
+      return {
+        headers: {
+          ...headers,
+          authorization: token || null,
+        },
+      };
+    });
 
-// const authMiddleware = new ApolloLink((operation, forward) => {
-//   // add the authorization to the headers
-//   operation.setContext(({ headers = {} }) => ({
-//     headers: {
-//       ...headers,
-//       'x-access-token': token || null,
-//     }
-//   }));
+    return forward(operation);
+  });
 
-//   return forward(operation);
-// })
-
-
-const httpLink = new HttpLink({ uri: 'http://localhost:4000/graphql',credentials: 'include' });
-
-const authMiddleware = new ApolloLink((operation, forward) => {
-  // add the authorization to the headers
-  operation.setContext(async({ headers = {} }) => {
-    
-    // const firstLogin =localStorage.getItem("firstLogin")
-    
-      // const tok=await axios.post("http://localhost:4000/graphql",{
-      //    query:`
-      //    mutation Mutation {
-      //     generateAccessToken {
-      //     token  
-      //     }
-      //   }
-      //    `
-      //  })
-      //  console.log("ima in")
-      // console.log("hi")
-    
-    return {
-    headers: {
-      ...headers,
-      authorization: token|| null,
-    }
-  }});
-
-  return forward(operation);
-})
-  
   const client = new ApolloClient({
-
     // uri: 'http://localhost:4000/graphql',
     // credentials: 'include',
     cache: new InMemoryCache(),
     link: from([
       authMiddleware,
       // activityMiddleware,
-      httpLink
+      httpLink,
     ]),
     // link: concat(authMiddleware, httpLink),
-
   });
 
   return (
     <AuthContext.Provider value={{ token, setToken }}>
-        <ApolloProvider client={client}>
-        {props.children}
-
-        </ApolloProvider>
-      
-
+      <ApolloProvider client={client}>{props.children}</ApolloProvider>
     </AuthContext.Provider>
   );
 }
