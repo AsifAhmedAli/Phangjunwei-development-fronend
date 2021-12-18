@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState ,useContext} from "react";
 import DashboardBars from "../../components/DashboardBars/DashboardBars";
 import goBack from "../../helpers/goBack";
 import "./AddMerchant.css";
+import axios from "axios";
+import AuthContext from "../../Context/AuthContext";
 // import {CREATE_MERCHANT} from '../../graphql/mutations'
 
 
@@ -11,11 +13,16 @@ export default function AddMerchant() {
   const [bannerImages, setbannerImages] = useState(3);
   const [img, setImg] = useState("");
   const [images, setimages] = useState([])
+  const {token} = useContext(AuthContext)
 
-  const initialState={name:'',address:'', phone:'', email:''}
+  const initialState={name:'',address:'', phone:'', email:'',password:''}
   const [userData, setuserData] = useState(initialState)
-  const {name,address,phone,email}=userData
+  const {name,address,phone,email,password}=userData
 
+
+
+
+  
 
 
   const handleChangeInput=(e)=>{
@@ -23,8 +30,13 @@ export default function AddMerchant() {
     setuserData({...userData,[name]:value})
 }
 const handleChangeInputFile=(e,i)=>{
-      console.log(e.target.files[0])
-      // setimages([...images,image])
+      // console.log(e.target.files[0])
+      let imagess=[...images]
+      imagess[i]=e.target.files[0]
+      // console.log(imagess[i].name)
+      setimages(imagess)
+      // setimages([...images,images[i]=e.target.files[0]])
+      // console.log(images)
 }
   const addCollectionShots = (e) => {
     e.preventDefault();
@@ -41,6 +53,25 @@ const handleChangeInputFile=(e,i)=>{
     handleChangeInputFile(e,i)
 
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const mImage=images
+    const data={userData,mImage}
+    console.log(data)
+    // console.log(data)
+    // const tok = await axios.post("http://localhost:4000/api/merchant/create", data,{
+    //   headers:{
+    //     authorization : token
+    //   }
+    // })
+    // console.log(tok)
+
+
+
+   
+
+
+ }
 
 
 
@@ -54,7 +85,7 @@ const handleChangeInputFile=(e,i)=>{
 
         <div className="add-merchant-card">
           <h5 className="mb-4">New Merchant</h5>
-          <form className="form-cols">
+          <form className="form-cols" >
             <div className="colm-1 ">
               <h5 className="mb-3">Details:</h5>
               <div className="mb-3 ">
@@ -112,6 +143,20 @@ const handleChangeInputFile=(e,i)=>{
                 {/* <label for="product_name">Hi</label> */}
                 {/* <small className="text-primary">This field is required</small> */}
               </div>
+              <div className="mb-3 ">
+                <input
+                  type="text"
+                  className="form-control "
+                  name="password"
+                  id=""
+                  placeholder="Password"
+                  value={password}
+                  onChange={handleChangeInput}
+
+                />
+                {/* <label for="product_name">Hi</label> */}
+                {/* <small className="text-primary">This field is required</small> */}
+              </div>
               {/* <input type="text" placeholder="Company Name" />
                             <input type="text" placeholder="Address" />
                             <input type="text" placeholder="Phone" />
@@ -135,7 +180,9 @@ const handleChangeInputFile=(e,i)=>{
                         onChange={(e)=>previewImage(e,i)}
                       />
                       <label class="custom-file-label" for="customFile2">
-                        Upload Image # {i}
+                        {
+                          images[i]? images[i].name: <> Upload Image # {i}</>
+                        }
                       </label>
                     </div>
 
@@ -161,10 +208,12 @@ const handleChangeInputFile=(e,i)=>{
                       name="file"
                       class="custom-file-input change"
                       id="customFile1"
-                      onChange={(e)=>previewImage(e,i)}
+                      onChange={(e)=>previewImage(e,i+3)}
                     />
                     <label class="custom-file-label" for="customFile2">
-                      Upload Image #{i}
+                    {
+                          images[i+3]? images[i+3].name: <> Upload Image # {i}</>
+                        }
                     </label>
                   </div>
 
@@ -192,7 +241,7 @@ const handleChangeInputFile=(e,i)=>{
         </div>
         <div className="save-btns">
           <button className="btn">Cancel</button>
-          <button className="btn">Save</button>
+          <button className="btn" onClick={handleSubmit}>Save</button>
         </div>
       </section>
     </DashboardBars>

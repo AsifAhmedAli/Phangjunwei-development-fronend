@@ -45,7 +45,7 @@ export function AuthContextProvider(props) {
                 authorization : token
               }
             })
-            settoken(tok.data.data.generateAccessToken.token)
+            setToken(tok.data.data.generateAccessToken.token)
             
       }
         
@@ -68,6 +68,28 @@ export function AuthContextProvider(props) {
       httpLink,
     ]),
   });
+  useEffect(async() => {
+    
+    const firsLogin=localStorage.getItem('firstLogin')
+    if(firsLogin){
+           const tok = await axios.post("http://localhost:4000/graphql", {
+            query: `
+            mutation Mutation {
+             generateAccessToken {
+             token  
+             }
+           }
+            `,
+          },{
+            headers:{
+              authorization : token 
+            }
+          })
+          setToken(tok.data.data.generateAccessToken.token)
+          
+    }
+    
+  },[token] )
 
   return (
     <AuthContext.Provider value={{ token, setToken }}>

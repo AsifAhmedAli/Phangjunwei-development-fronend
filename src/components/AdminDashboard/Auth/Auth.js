@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import './Auth.css';
 import { useMutation } from "@apollo/client";
 import  {LOGIN_USER} from '../../../graphql/mutations'
@@ -30,15 +30,18 @@ export default function Auth() {
       const result= await login_user({variables: userData})
     //   console.log(result.data.login.token)
     setToken(result.data.login.token)
-    if(token){
-        history.push('/dashboard/admin/merchants')
-    }
+    
    
     
     
      
     }
     
+    useEffect(() => {
+        if(token){
+            history.push('/dashboard/admin/merchants')
+        }
+    })
 
 
     return (
