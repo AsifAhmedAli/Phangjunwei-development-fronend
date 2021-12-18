@@ -70,8 +70,8 @@ export function AuthContextProvider(props) {
   });
   useEffect(async() => {
     
-    // const firsLogin=localStorage.getItem('firstLogin')
-    // if(firsLogin){
+    const firsLogin=localStorage.getItem('firstLogin')
+    if(firsLogin){
            const tok = await axios.post("http://localhost:4000/graphql", {
             query: `
             mutation Mutation {
@@ -87,7 +87,7 @@ export function AuthContextProvider(props) {
           })
           settoken(tok.data.data.generateAccessToken.token)
           
-    // }
+    }
     
   },[token] )
 
