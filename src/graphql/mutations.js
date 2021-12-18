@@ -6,16 +6,14 @@ const CREATE_USER = gql
         register(
             name: $name, 
             email: $email, 
-            password: $password, 
-            role: $role
+            password: $password
         ){
             name
             email
-            role
         }
 }`
 
-const LOGIN_USER=gql`
+const LOGIN_USER = gql`
 mutation Login
 ($email: String!, $password: String!) 
 {
@@ -25,7 +23,7 @@ mutation Login
   }
 
 `
-const REFRESH_TOKEN=gql`
+const REFRESH_TOKEN = gql`
 mutation GenerateAccessToken {
     generateAccessToken {
     token  
@@ -116,4 +114,4 @@ const ADD_TO_WISHLIST = gql
 `
 
 
-export { CREATE_USER, CREATE_MERCHANT, CREATE_PRODUCT, ADD_TO_WISHLIST,LOGIN_USER,REFRESH_TOKEN };
+export { CREATE_USER, CREATE_MERCHANT, CREATE_PRODUCT, ADD_TO_WISHLIST, LOGIN_USER, REFRESH_TOKEN };
