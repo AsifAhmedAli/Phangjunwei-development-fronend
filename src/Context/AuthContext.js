@@ -30,24 +30,24 @@ export function AuthContextProvider(props) {
     // add the authorization to the headers
     operation.setContext(async({ headers = {} }) => {
 
-      const firsLogin=localStorage.getItem('firstLogin')
-      if(firsLogin){
-             const tok = await axios.post("http://localhost:4000/graphql", {
-              query: `
-              mutation Mutation {
-               generateAccessToken {
-               token  
-               }
-             }
-              `,
-            },{
-              headers:{
-                authorization : token
-              }
-            })
-            setToken(tok.data.data.generateAccessToken.token)
+      // const firsLogin=localStorage.getItem('firstLogin')
+      // if(firsLogin){
+      //        const tok = await axios.post("http://localhost:4000/graphql", {
+      //         query: `
+      //         mutation Mutation {
+      //          generateAccessToken {
+      //          token  
+      //          }
+      //        }
+      //         `,
+      //       },{
+      //         headers:{
+      //           authorization : token || null
+      //         }
+      //       })
+      //       setToken(tok.data.data.generateAccessToken.token)
             
-      }
+      // }
         
 
          return {
@@ -70,8 +70,8 @@ export function AuthContextProvider(props) {
   });
   useEffect(async() => {
     
-    const firsLogin=localStorage.getItem('firstLogin')
-    if(firsLogin){
+    // const firsLogin=localStorage.getItem('firstLogin')
+    // if(firsLogin){
            const tok = await axios.post("http://localhost:4000/graphql", {
             query: `
             mutation Mutation {
@@ -85,9 +85,9 @@ export function AuthContextProvider(props) {
               authorization : token 
             }
           })
-          setToken(tok.data.data.generateAccessToken.token)
+          settoken(tok.data.data.generateAccessToken.token)
           
-    }
+    // }
     
   },[token] )
 
