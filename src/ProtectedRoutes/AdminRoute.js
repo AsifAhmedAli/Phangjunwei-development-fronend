@@ -6,11 +6,11 @@ const AdminPrivateRouter = (props) => {
   const firstLogin = localStorage.getItem("firstLogin");
   const {token,profile} =useContext(AuthContext)
 
- if( firstLogin  && profile.role==='Superadmin' && token){
-     return   <Route {...props} />
+ if( firstLogin  && profile.role=='Superadmin' ){
+     return   <Route {...props}  exact />
  }
  else{
-     return <Redirect to="/dashboard/admin" /> 
+     return <Redirect to="/dashboard/admin"  exact/> 
  }
   
 //   return firstLogin && token && profile.role==='SuperAdmin' ? <Route {...props} /> : <Redirect to="/dashboard/admin" />;
