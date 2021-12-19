@@ -19,6 +19,9 @@ mutation Login
 {
     login(email: $email, password: $password) {
       token
+      email
+      role
+
     }
   }
 
@@ -27,6 +30,8 @@ const REFRESH_TOKEN = gql`
 mutation GenerateAccessToken {
     generateAccessToken {
     token  
+    email
+    role
     }
   }
 

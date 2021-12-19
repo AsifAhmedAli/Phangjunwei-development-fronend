@@ -12,13 +12,22 @@ import axios from "axios";
   axios.defaults.withCredentials = true;
 
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 export function AuthContextProvider(props) {
+  const [profile, setProfile] = useState({
+    email : '',
+    role : ''
+  })
   const [token, settoken] = useState("");
 
   async function setToken(toks) {
     localStorage.setItem("firstLogin", true);
     settoken(toks);
+  }
+  async function setProfileData(emails,roles) {
+    console.log(emails,roles)
+    setProfile({email: emails,role:roles})
+    // setProfile({...profile,role})
   }
 
   const httpLink = new HttpLink({
@@ -77,6 +86,8 @@ export function AuthContextProvider(props) {
             mutation Mutation {
              generateAccessToken {
              token  
+             email
+             role
              }
            }
             `,
@@ -86,13 +97,14 @@ export function AuthContextProvider(props) {
             }
           })
           settoken(tok.data.data.generateAccessToken.token)
+          setProfileData(tok.data.data.generateAccessToken.email,tok.data.data.generateAccessToken.role)
           
     }
     
   },[token] )
 
   return (
-    <AuthContext.Provider value={{ token, setToken }}>
+    <AuthContext.Provider value={{ token, setToken,profile,setProfileData }}>
       <ApolloProvider client={client}>{props.children}</ApolloProvider>
     </AuthContext.Provider>
   );

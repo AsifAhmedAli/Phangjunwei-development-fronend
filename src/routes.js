@@ -50,8 +50,12 @@ import CustomerOrder from "./AdminDashboardControls/Customer Order/CustomerOrder
 import CompanyOrder from "./AdminDashboardControls/CompanyOrder/CompanyOrder";
 import OrderInvoice from "./AdminDashboardControls/OrderInvoice/OrderInvoice";
 // import AdminInbox from './AdminDashboardControls/AdminInbox/AdminInbox'
+import AdminPrivateRouter from "./ProtectedRoutes/AdminRoute";
+import AuthContext from "./Context/AuthContext";
+import { useContext } from "react";
 
 export default function Routes() {
+  const {token,profile} = useContext(AuthContext)
   return (
     <Switch>
       <Route path="/" exact>
@@ -73,50 +77,54 @@ export default function Routes() {
 
       {/* Dashboard Routes */}
       <Route path="/dashboard/admin" exact>
-        <AdminDashboard />
+        {
+          token ?         <AdminDashboardFront /> :  <AdminDashboard />
+
+        }
+        
       </Route>
 
-      <Route path="/dashboard/admin/merchants" exact>
+      <AdminPrivateRouter path="/dashboard/admin/merchants" exact>
         <AdminDashboardFront />
-      </Route>
+      </AdminPrivateRouter>
 
-      <Route path="/dashboard/admin/merchant/add" exact>
+      <AdminPrivateRouter path="/dashboard/admin/merchant/add" exact>
         <AddMerchant />
-      </Route>
+      </AdminPrivateRouter>
 
-      <Route path="/dashboard/admin/merchant/:companyId" exact>
+      <AdminPrivateRouter path="/dashboard/admin/merchant/:companyId" exact>
         <CompanyInfo />
-      </Route>
+      </AdminPrivateRouter>
       {/* <Route path="/dashboard/admin/merchant/:companyId/inbox" exact>
         <AdminInbox></AdminInbox>
       </Route> */}
 
-      <Route path="/dashboard/admin/merchant/:companyId/products" exact>
+      <AdminPrivateRouter path="/dashboard/admin/merchant/:companyId/products" exact>
         <CompanyProducts />
-      </Route>
+      </AdminPrivateRouter>
 
-      <Route path="/dashboard/admin/merchant/:companyId/product/add" exact>
+      <AdminPrivateRouter path="/dashboard/admin/merchant/:companyId/product/add" exact>
         <AddProduct />
-      </Route>
-      <Route path="/dashboard/admin/customers" exact>
+      </AdminPrivateRouter>
+      <AdminPrivateRouter path="/dashboard/admin/customers" exact>
         <ShowCustomers />
-      </Route>
-      <Route
+      </AdminPrivateRouter>
+      <AdminPrivateRouter
         path="/dashboard/admin/customer/:customerid"
         exact
       >
         <CustomerOrder />
-      </Route>
-      <Route
+      </AdminPrivateRouter>
+      <AdminPrivateRouter
         path="/dashboard/admin/customer/:customerid/:orderid"
         exact
       >
         <OrderInvoice></OrderInvoice>
-      </Route>
+      </AdminPrivateRouter>
 
-      <Route path="/dashboard/admin/merchant/:id/orders" exact>
+      <AdminPrivateRouter path="/dashboard/admin/merchant/:id/orders" exact>
         <CompanyOrder />
-      </Route>
+      </AdminPrivateRouter>
 
 
       {/* Dashboard Routes End*/}
