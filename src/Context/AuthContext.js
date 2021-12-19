@@ -12,7 +12,7 @@ import axios from "axios";
   axios.defaults.withCredentials = true;
 
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 export function AuthContextProvider(props) {
   const [profile, setProfile] = useState({
     email : '',
@@ -26,7 +26,7 @@ export function AuthContextProvider(props) {
   }
   async function setProfileData(emails,roles) {
     console.log(emails,roles)
-    setProfile({email: emails,role:roles})
+     setProfile({email: emails,role:roles})
     // setProfile({...profile,role})
   }
 
