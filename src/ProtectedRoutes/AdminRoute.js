@@ -5,13 +5,11 @@ const AdminPrivateRouter = (props) => {
 
   const firstLogin = localStorage.getItem("firstLogin");
   const {token,profile} =useContext(AuthContext)
-  useEffect(()=>{
-     
-  })
+  
 
  if( firstLogin  ){
     //  console.log(profile)
-     return   <Route {...props}  exact >
+     return  (token && profile.role=='Superadmin') &&  <Route {...props}  exact >
                     {props.children}
                </Route>
  }
