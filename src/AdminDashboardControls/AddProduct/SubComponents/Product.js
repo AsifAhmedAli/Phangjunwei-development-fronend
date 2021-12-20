@@ -40,17 +40,44 @@ const Product = () => {
   // let newImages=new Array(6)
   let newImages=[]
   const [img, setImg] = useState("");
-  const [images, setImages] = useState([])
+  const [images, setimages] = useState([])
+  const initialState={skuName:'',skuCompany:'', skuStyle:'', skuColor:'',skuPrice:'',skuTag:''}
+  const [productData, setproductData] = useState(initialState)
+  const {skuName,skuCompany, skuStyle, skuColor,skuprice,skuTag}=productData
+  
 
-  const handleChangeImages=(e,i)=>{
+  const handleChangeInput=(e)=>{
+    const {name,value}=e.target
+    setproductData({...productData,[name]:value})
+}
+ const handleChangeInputFile=(e,i)=>{
+      // console.log(e.target.files[0])
+      let imagess=[...images]
+      imagess[i]=e.target.files[0]
+      // console.log(imagess[i].name)
+      setimages(imagess)
+      // setimages([...images,images[i]=e.target.files[0]])
+      // console.log(images)
+}
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const mImage=images
+  const data={productData,mImage}
+  console.log(data)
+  // console.log(data)
+  // const tok = await axios.post("http://localhost:4000/api/product/create", data,{
+  //   headers:{
+  //     authorization : token
+  //   }
+  // })
+  // console.log(tok)
 
-      
-      newImages=[...images]
-      newImages[i]=e.target.files[0]
-      console.log(newImages) 
-      setImages(newImages)    
-   
-  }
+
+
+ 
+
+
+}
 
 
 
@@ -62,7 +89,7 @@ const Product = () => {
   const previewImage = (e,i) => {
     setImg(e.target.files[0]);
     // console.log(e.target.files[0])
-    handleChangeImages(e,i)
+    // handleChangeImages(e,i)
 
   };
   return (
@@ -76,15 +103,17 @@ const Product = () => {
                 <input
                   type="text"
                   className="form-control  "
-                  name="product_name"
+                  name="skuName"
                   id=""
                   placeholder="Product Name"
+                  onChange={handleChangeInput}
+                  valu={skuName}
                 />
                 {/* <label for="product_name">Hi</label> */}
-                <small className="text-primary">This field is required</small>
+                {/* <small className="text-primary">This field is required</small> */}
               </div>
-              <div className="mb-3 row">
-                <div className="col input-group">
+              <div className="mb-3 row  d-flex file_cust ">
+                <div className="col input-group mb-3">
                   <div class="input-group-prepend" >
                     <span  class="input-group-text" id="basic-addon1" >
                       $
@@ -93,31 +122,49 @@ const Product = () => {
                   <input
                     className="form-control "
                     type="text"
-                    name=""
+                    name="skuprice"
                     id=""
                     placeholder="00"
+                    onChange={handleChangeInput}
+                    value={skuprice}
                     
                   />
                   {/* <small className="text-primary">This field is required</small> */}
                 </div>
-                <div className="col">
+                {/* <div className="col">
                   <input
                     className="form-control"
                     type="text"
-                    name=""
+                    name="parentId"
                     id=""
                     placeholder="Product Id"
                   />
                 </div>
+              </div> */}
+
+                <div className="col">
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="skuCompany"
+                    id=""
+                    placeholder="Company"
+                    onChange={handleChangeInput}
+                  />
+                </div>
               </div>
+
+              
               <div className="mb-3">
                 <Select
                   options={options}
                   isMulti
-                  name="colors"
+                  name="skuTag"
                   className="basic-multi-select"
                   classNamePrefix="select"
                   placeholder="Tags"
+                  onChange={handleChangeInput}
+                  value={skuTag}
                 />
                 <small className="text-primary">This field is required</small>
               </div>
@@ -322,7 +369,7 @@ const Product = () => {
                       role="group"
                       aria-label="Basic example"
                     >
-                      <button type="button" class="btn btn-primary">
+                      <button type="button" class="btn btn-primary mb-3">
                         In Stock
                       </button>
                       <button type="button" class="btn btn-primary " disabled>
