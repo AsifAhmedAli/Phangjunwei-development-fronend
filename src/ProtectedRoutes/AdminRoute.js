@@ -4,20 +4,19 @@ import AuthContext from '../Context/AuthContext'
 const AdminPrivateRouter = (props) => {
 
   const firstLogin = localStorage.getItem("firstLogin");
-  const {token,profile} =useContext(AuthContext)
-  
+  const { token, profile } = useContext(AuthContext)
 
- if( firstLogin  ){
-    //  console.log(profile)
-     return  (token && profile.role=='Superadmin') &&  <Route {...props}  exact >
-                    {props.children}
-               </Route>
- }
- else{
-     return <Redirect to="/dashboard/admin"  exact/> 
- }
-  
-//   return firstLogin && token && profile.role==='SuperAdmin' ? <Route {...props} /> : <Redirect to="/dashboard/admin" />;
+  if (firstLogin) {
+    return (token && profile.role === 'Superadmin' || profile.role === "Admin") &&
+      <Route {...props} exact >
+        {props.children}
+      </Route>
+  }
+  else {
+    return <Redirect to="/dashboard/admin" exact />
+  }
+
+  //   return firstLogin && token && profile.role==='SuperAdmin' ? <Route {...props} /> : <Redirect to="/dashboard/admin" />;
 };
 
 export default AdminPrivateRouter;

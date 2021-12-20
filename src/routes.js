@@ -55,7 +55,7 @@ import AuthContext from "./Context/AuthContext";
 import { useContext } from "react";
 
 export default function Routes() {
-  const {token,profile} = useContext(AuthContext)
+  const { token, profile } = useContext(AuthContext)
   return (
     <Switch>
       <Route path="/" exact>
@@ -77,40 +77,40 @@ export default function Routes() {
 
       {/* Dashboard Routes */}
       <Route path="/dashboard/admin" exact>
-      {
-          token ?         <AdminDashboardFront /> :  <AdminDashboard />
+        {
+          token ? <AdminDashboardFront /> : <AdminDashboard />
 
         }
-        
+
       </Route>
 
-      <AdminPrivateRouter path="/dashboard/admin/merchants" exact>
+      <AdminPrivateRouter path="/dashboard/merchants" exact>
         <AdminDashboardFront />
       </AdminPrivateRouter>
 
-      <AdminPrivateRouter path="/dashboard/admin/merchant/add" exact>
+      <AdminPrivateRouter path="/dashboard/merchant/add" exact>
         <AddMerchant />
       </AdminPrivateRouter>
 
-      <AdminPrivateRouter path="/dashboard/admin/merchant/:companyId" exact>
+      <AdminPrivateRouter path="/dashboard/merchant/:companyId" exact>
         <CompanyInfo />
       </AdminPrivateRouter>
       {/* <Route path="/dashboard/admin/merchant/:companyId/inbox" exact>
         <AdminInbox></AdminInbox>
       </Route> */}
 
-      <AdminPrivateRouter path="/dashboard/admin/merchant/:companyId/products" exact>
+      <AdminPrivateRouter path="/dashboard/merchant/:companyId/products" exact>
         <CompanyProducts />
       </AdminPrivateRouter>
 
-      <AdminPrivateRouter path="/dashboard/admin/merchant/:companyId/product/add" exact>
+      <AdminPrivateRouter path="/dashboard/merchant/:companyId/product/add" exact>
         <AddProduct />
       </AdminPrivateRouter>
-      <AdminPrivateRouter path="/dashboard/admin/customers" exact>
+      <AdminPrivateRouter path="/dashboard/customers" exact>
         <ShowCustomers />
       </AdminPrivateRouter>
       <AdminPrivateRouter
-        path="/dashboard/admin/customer/:customerid"
+        path="/dashboard/customer/:customerid"
         exact
       >
         <CustomerOrder />

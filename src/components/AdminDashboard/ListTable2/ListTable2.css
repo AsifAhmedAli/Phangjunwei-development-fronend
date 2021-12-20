@@ -1,5 +1,4 @@
-
-#table_lister .show-merchants-table{
+.show-merchants-table{
     background-color: white;
     width: 100%;
     padding: 1rem;
@@ -8,20 +7,16 @@
     box-shadow: var(--default-box-shadow);
 }
 
-
-#table_lister th, #table_lister td, #table_lister td button{
-    font-size: .9rem;
-}
-
-#table_lister .show-merchants-table .table-title{
+.show-merchants-table .table-title{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 
-#table_lister .show-merchants-table .merchant-table-head{
+.show-merchants-table .merchant-table-head{
     background: #F5F6FA;
     border: 3px solid white;
     color: #A3A6B4;
 }
+

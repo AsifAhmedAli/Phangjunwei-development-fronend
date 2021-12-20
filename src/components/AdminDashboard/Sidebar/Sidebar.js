@@ -13,8 +13,8 @@ export default function Sidebar({ toggleSidebar, setToggleSidebar }) {
                     Burrows admin
                 </h1>
                 <div className="items">
-                    <Link to="/">Merchants</Link>
-                    <Link to="/">Customers</Link>
+                    <Link to="/dashboard/merchants">Merchants</Link>
+                    <Link to="/dashboard/customers">Customers</Link>
                     <Link to="/">Settings</Link>
                 </div>
             </div>

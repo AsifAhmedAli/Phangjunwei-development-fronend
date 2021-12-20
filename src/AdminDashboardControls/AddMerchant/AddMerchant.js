@@ -1,44 +1,40 @@
-import { useState ,useContext,useRef} from "react";
+import { useState, useContext, useRef } from "react";
 import DashboardBars from "../../components/DashboardBars/DashboardBars";
 import goBack from "../../helpers/goBack";
 import "./AddMerchant.css";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from "../../Context/AuthContext";
 // import {CREATE_MERCHANT} from '../../graphql/mutations'
 
 
 export default function AddMerchant() {
-  
+
   const [collectionShots, setCollectionShots] = useState(3);
   const [bannerImages, setbannerImages] = useState(3);
   const [img, setImg] = useState("");
-  const [images, setimages] = useState([])
-  const {token} = useContext(AuthContext)
+  const [images, setimages] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const { token } = useContext(AuthContext);
 
-  const initialState={name:'',address:'', contact:'', email:'',password:''}
+  const initialState = { name: '', address: '', contact: '', email: '', password: '' }
   const [userData, setuserData] = useState(initialState)
-  const {name,address,contact,email,password}=userData
+  const { name, address, contact, email, password } = userData
   const forms = useRef(null)
 
+  const notify = () => toast("Merchant Added Successfully");
 
+  const handleChangeInput = (e) => {
+    const { name, value } = e.target
+    setuserData({ ...userData, [name]: value })
+  }
+  const handleChangeInputFile = (e, i) => {
+    let imagess = [...images]
+    imagess[i] = e.target.files[0]
+    setimages(imagess)
+  }
 
-
-  
-
-
-  const handleChangeInput=(e)=>{
-    const {name,value}=e.target
-    setuserData({...userData,[name]:value})
-}
-const handleChangeInputFile=(e,i)=>{
-      // console.log(e.target.files[0])
-      let imagess=[...images]
-      imagess[i]=e.target.files[0]
-      // console.log(imagess[i].name)
-      setimages(imagess)
-      // setimages([...images,images[i]=e.target.files[0]])
-      // console.log(images)
-}
   const addCollectionShots = (e) => {
     e.preventDefault();
     setCollectionShots(() => collectionShots + 1);
@@ -49,53 +45,47 @@ const handleChangeInputFile=(e,i)=>{
     setbannerImages(() => bannerImages + 1);
   };
 
-  const previewImage = (e,i) => {
+  const previewImage = (e, i) => {
     setImg(e.target.files[0]);
-    handleChangeInputFile(e,i)
+    handleChangeInputFile(e, i)
 
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(data);
-    const mImage=images
-    const datas={...userData,mImage}
-    console.log(datas)
-    
-     let data = new FormData(forms.current)
-   
-     console.log(data)
+    const mImage = images
+    const datas = { ...userData, mImage }
+
+    let data = new FormData(forms.current)
 
     try {
-      const tok = await axios.post("http://localhost:4000/api/merchant/create", data,{
-        headers:{
-          authorization : token
+      setLoading(true)
+      const tok = await axios.post("http://localhost:4000/api/merchant/create", data, {
+        headers: {
+          authorization: token
         }
       })
-      
+
+      if (tok.status === 200) {
+        setLoading(false);
+        notify();
+        setuserData(initialState);
+      }
+
     } catch (error) {
       console.log(error)
     }
-   
-    // console.log(tok)
 
-
-
-   
-
-
- }
-
-
+  }
 
   return (
     <DashboardBars>
+      <ToastContainer />
       <section id="add-merchant">
         <h4 className="title mb-4">
           <a onClick={goBack}>Merchants </a>
           <span>&#x3e; Add New Merchant</span>
         </h4>
-
-        <div className="add-merchant-card">
+        {loading ? 'Adding Merchant' : <div className="add-merchant-card">
           <h5 className="mb-4">New Merchant</h5>
           <form className="form-cols" ref={forms} >
             <div className="colm-1 ">
@@ -189,11 +179,11 @@ const handleChangeInputFile=(e,i)=>{
                         name="mImage"
                         class="custom-file-input change"
                         id="customFile1"
-                        onChange={(e)=>previewImage(e,i)}
+                        onChange={(e) => previewImage(e, i)}
                       />
                       <label class="custom-file-label" for="customFile2">
                         {
-                          images[i]? images[i].name: <> Upload Image # {i}</>
+                          images[i] ? images[i].name : <> Upload Image # {i}</>
                         }
                       </label>
                     </div>
@@ -220,12 +210,12 @@ const handleChangeInputFile=(e,i)=>{
                       name="mImage"
                       class="custom-file-input change"
                       id="customFile1"
-                      onChange={(e)=>previewImage(e,i+3)}
+                      onChange={(e) => previewImage(e, i + 3)}
                     />
                     <label class="custom-file-label" for="customFile2">
-                    {
-                          images[i+3]? images[i+3].name: <> Upload Image # {i}</>
-                        }
+                      {
+                        images[i + 3] ? images[i + 3].name : <> Upload Image # {i}</>
+                      }
                     </label>
                   </div>
 
@@ -249,12 +239,12 @@ const handleChangeInputFile=(e,i)=>{
                 {/* <img src={img} alt="images" style={{objectFit:"contain",width:"100%",height:"100%"}} className="" /> */}
               </div>
             </div>
-    {/* <input type="submit" value="save" /> */}
+            {/* <input type="submit" value="save" /> */}
           </form>
-        </div>
+        </div>}
         <div className="save-btns">
-          <button className="btn">Cancel</button>
-          <button className="btn" onClick={handleSubmit}>Save</button>
+          <button className="btn" disabled={loading}>Cancel</button>
+          <button className="btn" onClick={handleSubmit} disabled={loading}>Save</button>
         </div>
       </section>
     </DashboardBars>
