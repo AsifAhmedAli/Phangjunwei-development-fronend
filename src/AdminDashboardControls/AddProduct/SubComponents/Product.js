@@ -1,9 +1,10 @@
-import React,{useState,useContext} from "react";
+import React,{useState,useContext,useRef} from "react";
 import Select from "react-select";
 import CreatableSelect from 'react-select/creatable';
 
 
 import AuthContext from "../../../Context/AuthContext";
+import axios from "axios";
 
 
 
@@ -58,6 +59,8 @@ const Product = () => {
   const [collectionShots, setCollectionShots] = useState(3);
   // let newImages=new Array(6)
   const {token} = useContext(AuthContext)
+  const forms = useRef(null)
+
 
   let newImages=[]
   const [img, setImg] = useState("");
@@ -124,9 +127,27 @@ const handleColors=(e)=>{
 }
 const handleSubmit = async (e) => {
   e.preventDefault();
-  const mImage=images
-  const data={...productData,mImage}
-  console.log(data)
+    // console.log(data);
+    const mImage=images
+    const datas={...productData,mImage}
+    console.log(datas)
+    
+     let data = new FormData(forms.current)
+   
+     console.log(data)
+
+
+     try {
+      const tok = await axios.post("http://localhost:4000/api/product/create", data,{
+        headers:{
+          authorization : token
+        }
+      })
+      console.log(tok)
+      
+    } catch (error) {
+      console.log(error)
+    }
   // console.log(data)
   // const tok = await axios.post("http://localhost:4000/api/product/create", data,{
   //   headers:{
@@ -163,7 +184,7 @@ const handleSubmit = async (e) => {
 
     <div>
       <div className="container py-4">
-        <form>
+        <form ref={forms}>
           <div className="row">
             <div className="col-lg-5 col-md-12">
               <div className="mb-3 ">

@@ -1,4 +1,4 @@
-import { useState ,useContext} from "react";
+import { useState ,useContext,useRef} from "react";
 import DashboardBars from "../../components/DashboardBars/DashboardBars";
 import goBack from "../../helpers/goBack";
 import "./AddMerchant.css";
@@ -15,9 +15,10 @@ export default function AddMerchant() {
   const [images, setimages] = useState([])
   const {token} = useContext(AuthContext)
 
-  const initialState={name:'',address:'', phone:'', email:'',password:''}
+  const initialState={name:'',address:'', contact:'', email:'',password:''}
   const [userData, setuserData] = useState(initialState)
-  const {name,address,phone,email,password}=userData
+  const {name,address,contact,email,password}=userData
+  const forms = useRef(null)
 
 
 
@@ -55,15 +56,26 @@ const handleChangeInputFile=(e,i)=>{
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // console.log(data);
     const mImage=images
-    const data={...userData,mImage}
-    console.log(data)
-    // console.log(data)
-    // const tok = await axios.post("http://localhost:4000/api/merchant/create", data,{
-    //   headers:{
-    //     authorization : token
-    //   }
-    // })
+    const datas={...userData,mImage}
+    console.log(datas)
+    
+     let data = new FormData(forms.current)
+   
+     console.log(data)
+
+    try {
+      const tok = await axios.post("http://localhost:4000/api/merchant/create", data,{
+        headers:{
+          authorization : token
+        }
+      })
+      
+    } catch (error) {
+      console.log(error)
+    }
+   
     // console.log(tok)
 
 
@@ -85,7 +97,7 @@ const handleChangeInputFile=(e,i)=>{
 
         <div className="add-merchant-card">
           <h5 className="mb-4">New Merchant</h5>
-          <form className="form-cols" >
+          <form className="form-cols" ref={forms} >
             <div className="colm-1 ">
               <h5 className="mb-3">Details:</h5>
               <div className="mb-3 ">
@@ -119,10 +131,10 @@ const handleChangeInputFile=(e,i)=>{
                 <input
                   type="text"
                   className="form-control "
-                  name="phone"
+                  name="contact"
                   id=""
                   placeholder="Phone"
-                  value={phone}
+                  value={contact}
                   onChange={handleChangeInput}
 
                 />
@@ -174,7 +186,7 @@ const handleChangeInputFile=(e,i)=>{
                     <div class="custom-file mb-3">
                       <input
                         type="file"
-                        name="file"
+                        name="mImage"
                         class="custom-file-input change"
                         id="customFile1"
                         onChange={(e)=>previewImage(e,i)}
@@ -190,9 +202,9 @@ const handleChangeInputFile=(e,i)=>{
                   )
                 )}
                 <br />
-                <button className="btn mb-4" onClick={addCollectionShots}>
+                {/* <button className="btn mb-4" onClick={addCollectionShots}>
                   Add more
-                </button>
+                </button> */}
               </div>
             </div>
             <div className="colm-2 ml-3">
@@ -205,7 +217,7 @@ const handleChangeInputFile=(e,i)=>{
                   <div class="custom-file mb-3">
                     <input
                       type="file"
-                      name="file"
+                      name="mImage"
                       class="custom-file-input change"
                       id="customFile1"
                       onChange={(e)=>previewImage(e,i+3)}
@@ -220,9 +232,9 @@ const handleChangeInputFile=(e,i)=>{
                   // <input type="file" onChange={previewImage} />
                 ))}
                 <br />
-                <button className="btn" onClick={addBannerImages}>
+                {/* <button className="btn" onClick={addBannerImages}>
                   Add more
-                </button>
+                </button> */}
               </div>
               {/* <div className="previewer">
                 {img && <img src={URL.createObjectURL(img)} alt="preview" />}
@@ -237,6 +249,7 @@ const handleChangeInputFile=(e,i)=>{
                 {/* <img src={img} alt="images" style={{objectFit:"contain",width:"100%",height:"100%"}} className="" /> */}
               </div>
             </div>
+    {/* <input type="submit" value="save" /> */}
           </form>
         </div>
         <div className="save-btns">
