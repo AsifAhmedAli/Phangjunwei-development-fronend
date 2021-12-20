@@ -148,6 +148,7 @@ const Product = () => {
         setLoading(false)
         console.log(res)
         notify();
+        setproductData(initialState)
       }).catch(err => {
         setLoading(false)
         history.go(0);
