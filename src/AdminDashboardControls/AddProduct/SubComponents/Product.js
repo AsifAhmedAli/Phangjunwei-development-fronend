@@ -1,5 +1,10 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
 import Select from "react-select";
+import CreatableSelect from 'react-select/creatable';
+
+
+import AuthContext from "../../../Context/AuthContext";
+
 
 
 const Product = () => {
@@ -8,20 +13,34 @@ const Product = () => {
     { value: "strawberry", label: "Strawberry" },
     { value: "vanilla", label: "Vanilla" },
   ];
-  const colorOptions = [
-    {
-      value: "red",
-      label: "Red",
-    },
-    {
-      value: "green",
-      label: "Green",
-    },
-    {
-      value: "yellow",
-      label: "Yellow",
-    },
-  ];
+  // const colorOptions = [
+  //   {
+  //     value: "red",
+  //     label: "Red",
+  //   },
+  //   {
+  //     value: "green",
+  //     label: "Green",
+  //   },
+  //   {
+  //     value: "yellow",
+  //     label: "Yellow",
+  //   },
+  // ];
+  const [colorOptions, setcolorOptions] = useState([
+       {
+          value: "red",
+          label: "Red",
+        },
+        {
+          value: "green",
+          label: "Green",
+        },
+        {
+          value: "yellow",
+          label: "Yellow",
+        },
+  ])
   const deliveryOptions = [
     {
       value: "week",
@@ -38,12 +57,16 @@ const Product = () => {
   ];
   const [collectionShots, setCollectionShots] = useState(3);
   // let newImages=new Array(6)
+  const {token} = useContext(AuthContext)
+
   let newImages=[]
   const [img, setImg] = useState("");
   const [images, setimages] = useState([])
-  const initialState={skuName:'',skuCompany:'', skuStyle:'', skuColor:'',skuPrice:'',skuTag:''}
+  const initialState={skuName:'',skuCompany:'', skuStyle:'', skuColor:'',skuPrice:'',skuTag:'',stockQty:'',promoPrice:''}
   const [productData, setproductData] = useState(initialState)
-  const {skuName,skuCompany, skuStyle, skuColor,skuprice,skuTag}=productData
+  const {skuName,skuCompany, skuStyle, skuColor,skuprice,skuTag,stockQty,promoPrice}=productData
+  const [tags, settags] = useState([])
+  
   
 
   const handleChangeInput=(e)=>{
@@ -58,6 +81,46 @@ const Product = () => {
       setimages(imagess)
       // setimages([...images,images[i]=e.target.files[0]])
       // console.log(images)
+}
+const handleChangeTag=(e)=>{
+  // e.preventDefault();
+
+  // console.
+  // console.log(e)
+  settags(e)
+  var names = e.map(function(item) {
+    return item['value'];
+  });
+  
+  // console.log(names)
+  const a=names.toString()
+  // console.log(a)
+  setproductData({...productData,skuTag:a })
+  // console.log(e.toString())
+  
+  // let tags=[]
+  // tags=skuTag
+  // tags.push(e.target)
+}
+const handleColors=(e)=>{
+  // e.preventDefault();
+
+  // console.
+  // console.log(e)
+  setcolorOptions(e)
+  var names = e.map(function(item) {
+    return item['value'];
+  });
+  
+  // console.log(names)
+  const a=names.toString()
+  console.log(a)
+  setproductData({...productData,skuColor:a })
+  // console.log(e.toString())
+  
+  // let tags=[]
+  // tags=skuTag
+  // tags.push(e.target)
 }
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -88,10 +151,14 @@ const handleSubmit = async (e) => {
   };
   const previewImage = (e,i) => {
     setImg(e.target.files[0]);
-    // console.log(e.target.files[0])
-    // handleChangeImages(e,i)
+    handleChangeInputFile(e,i)
 
   };
+
+
+  
+
+
   return (
 
     <div>
@@ -100,6 +167,7 @@ const handleSubmit = async (e) => {
           <div className="row">
             <div className="col-lg-5 col-md-12">
               <div className="mb-3 ">
+                
                 <input
                   type="text"
                   className="form-control  "
@@ -156,60 +224,56 @@ const handleSubmit = async (e) => {
 
               
               <div className="mb-3">
-                <Select
+                <CreatableSelect
                   options={options}
                   isMulti
                   name="skuTag"
                   className="basic-multi-select"
                   classNamePrefix="select"
                   placeholder="Tags"
-                  onChange={handleChangeInput}
-                  value={skuTag}
+                  onChange={handleChangeTag}
+                  value={tags}
                 />
                 <small className="text-primary">This field is required</small>
               </div>
+              
               <div className=" row">
                 <div className="col mb-3">
-                  <Select options={colorOptions} placeholder="Color"></Select>
+                  <CreatableSelect options={colorOptions} placeholder="Color" isMulti name='color' value={colorOptions} onChange={handleColors}></CreatableSelect>
                 </div>
-                <div className="col mb-3">
+                {/* <div className="col mb-3">
                   <Select
                     options={deliveryOptions}
                     placeholder="Delivery"
                   ></Select>
-                </div>
+                </div> */}
               </div>
+             
               <div className="mb-3">
                 <input
-                  type="text"
+                  type="number"
                   className="form-control "
-                  name="product_name"
+                  name="stockQty"
                   id=""
-                  placeholder="Dimensions"
+                  placeholder="Quantity"
+                  value={stockQty}
+                  onChange={handleChangeInput}
                 />
                 <small className="text-primary">This field is required</small>
               </div>
               <div className="mb-3">
                 <input
-                  type="text"
+                  type="number"
                   className="form-control "
-                  name="material"
+                  name="promoPrice"
                   id=""
-                  placeholder="Material"
+                  placeholder="Promo Price"
+                  value={promoPrice}
+                  onChange={handleChangeInput}
                 />
                 <small className="text-primary">This field is required</small>
               </div>
-              <div className="mb-3">
-                <input
-                  type="text"
-                  className="form-control "
-                  name="product_name"
-                  id=""
-                  placeholder="Weights"
-                />
-                <small className="text-primary">This field is required</small>
-              </div>
-              <div className="mb-3">
+              {/* <div className="mb-3">
                 <textarea
                   type="text"
                   className="form-control "
@@ -219,8 +283,8 @@ const handleSubmit = async (e) => {
                   rows="4"
                 />
                 <small className="text-primary">This field is required</small>
-              </div>
-              <div className="mb-3">
+              </div> */}
+              {/* <div className="mb-3">
                 <textarea
                   type="text"
                   className="form-control "
@@ -229,7 +293,7 @@ const handleSubmit = async (e) => {
                   placeholder="Additional Instructions"
                   rows="4"
                 />
-              </div>
+              </div> */}
             </div>
             <div className="col-lg-7 col-md-12">
               <div className="d-flex flex-column">
@@ -250,8 +314,8 @@ const handleSubmit = async (e) => {
                           />
                           <label class="custom-file-label" for="customFile2">
                             {
-                              images[i]? images[i].name  : <> Upload Image #{i+1}</>
-
+                             
+                             images[i]? images[i].name: <> Upload Image # {i}</>
                             }
                           </label>
                         </div>
@@ -319,8 +383,8 @@ const handleSubmit = async (e) => {
                            onChange={(e)=>previewImage(e,i+3)}
                          />
                          <label class="custom-file-label" for="customFile2">
-                         {
-                              images[i+3]? images[i+3].name  : <> Upload Image #{i+4}</>
+                         { 
+                                                          images[i+3]? images[i+3].name: <> Upload Image # {i+3}</>
 
                             }
                          </label>
@@ -372,7 +436,7 @@ const handleSubmit = async (e) => {
                       <button type="button" class="btn btn-primary mb-3">
                         In Stock
                       </button>
-                      <button type="button" class="btn btn-primary " disabled>
+                      <button type="button" class="btn btn-primary mb-3 " disabled>
                         No Stock
                       </button>
                     </div>
@@ -397,7 +461,7 @@ const handleSubmit = async (e) => {
               // style={{ marginRight: 0 }}
             >
               <button className="btn">Cancel</button>
-              <button className="btn">Save</button>
+              <button className="btn" onClick={handleSubmit}>Save</button>
             </div>
           </div>
         </form>
