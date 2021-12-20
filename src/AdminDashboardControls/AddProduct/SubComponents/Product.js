@@ -137,24 +137,24 @@ const handleSubmit = async (e) => {
      console.log(data)
 
 
-    //  try {
-    //   const tok = await axios.post("http://localhost:4000/api/product/create", data,{
-    //     headers:{
-    //       authorization : token
-    //     }
-    //   })
-    //   console.log(tok)
+     try {
+      const tok = await axios.post("http://localhost:4000/api/product/create", data,{
+        headers:{
+          authorization : token
+        }
+      })
+      console.log(tok)
       
-    // } catch (error) {
-    //   console.log(error)
-    // }
-  // console.log(data)
-  // const tok = await axios.post("http://localhost:4000/api/product/create", data,{
-  //   headers:{
-  //     authorization : token
-  //   }
-  // })
-  // console.log(tok)
+    } catch (error) {
+      console.log(error)
+    }
+  console.log(data)
+  const tok = await axios.post("http://localhost:4000/api/product/create", data,{
+    headers:{
+      authorization : token
+    }
+  })
+  console.log(tok)
 
 
 
