@@ -15,33 +15,33 @@ const Product = () => {
     { value: "strawberry", label: "Strawberry" },
     { value: "vanilla", label: "Vanilla" },
   ];
-  // const colorOptions = [
-  //   {
-  //     value: "red",
-  //     label: "Red",
-  //   },
-  //   {
-  //     value: "green",
-  //     label: "Green",
-  //   },
-  //   {
-  //     value: "yellow",
-  //     label: "Yellow",
-  //   },
-  // ];
+  const colorOptionss = [
+    {
+      value: "red",
+      label: "Red",
+    },
+    {
+      value: "green",
+      label: "Green",
+    },
+    {
+      value: "yellow",
+      label: "Yellow",
+    },
+  ];
   const [colorOptions, setcolorOptions] = useState([
-       {
-          value: "red",
-          label: "Red",
-        },
-        {
-          value: "green",
-          label: "Green",
-        },
-        {
-          value: "yellow",
-          label: "Yellow",
-        },
+      //  {
+      //     value: "red",
+      //     label: "Red",
+      //   },
+      //   {
+      //     value: "green",
+      //     label: "Green",
+      //   },
+      //   {
+      //     value: "yellow",
+      //     label: "Yellow",
+      //   },
   ])
   const deliveryOptions = [
     {
@@ -264,7 +264,7 @@ const handleSubmit = async (e) => {
               
               <div className=" row">
                 <div className="col mb-3">
-                  <CreatableSelect options={colorOptions} placeholder="Color" isMulti name='color' value={colorOptions} onChange={handleColors}></CreatableSelect>
+                  <CreatableSelect options={colorOptionss} placeholder="Color" isMulti name='color' value={colorOptions} onChange={handleColors}></CreatableSelect>
                 </div>
                 {/* <div className="col mb-3">
                   <Select
