@@ -56,7 +56,7 @@ const handleChangeInputFile=(e,i)=>{
   const handleSubmit = async (e) => {
     e.preventDefault();
     const mImage=images
-    const data={userData,mImage}
+    const data={...userData,mImage}
     console.log(data)
     // console.log(data)
     // const tok = await axios.post("http://localhost:4000/api/merchant/create", data,{

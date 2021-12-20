@@ -125,7 +125,7 @@ const handleColors=(e)=>{
 const handleSubmit = async (e) => {
   e.preventDefault();
   const mImage=images
-  const data={productData,mImage}
+  const data={...productData,mImage}
   console.log(data)
   // console.log(data)
   // const tok = await axios.post("http://localhost:4000/api/product/create", data,{
