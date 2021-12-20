@@ -7,7 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from "../../../Context/AuthContext";
 import axios from "axios";
-
+import Loader from "../../../components/Loader/Loader";
+import {LoaderContext} from '../../../App'
 const Product = () => {
   const history = useHistory();
 
@@ -71,7 +72,8 @@ const Product = () => {
   const [productData, setproductData] = useState(initialState)
   const { skuName, skuCompany, skuStyle, skuColor, skuprice, skuTag, stockQty, promoPrice } = productData
   const [tags, settags] = useState([])
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  const{loading,setLoading}=useContext(LoaderContext)
 
   const notify = () => toast("Product  Added Successfully");
 
@@ -180,6 +182,7 @@ const Product = () => {
 
     <div>
       <ToastContainer />
+      
       <div className="container py-4">
         <form ref={forms}>
           <div className="row">

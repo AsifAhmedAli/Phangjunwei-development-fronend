@@ -105,6 +105,7 @@ export function AuthContextProvider(props) {
 
   return (
     <AuthContext.Provider value={{ token, setToken,profile,setProfileData }}>
+
       <ApolloProvider client={client}>{props.children}</ApolloProvider>
     </AuthContext.Provider>
   );
