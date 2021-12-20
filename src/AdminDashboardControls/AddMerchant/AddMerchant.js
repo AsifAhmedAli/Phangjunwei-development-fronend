@@ -6,6 +6,7 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from "../../Context/AuthContext";
+import { LoaderContext } from "../../App";
 // import {CREATE_MERCHANT} from '../../graphql/mutations'
 
 
@@ -15,9 +16,9 @@ export default function AddMerchant() {
   const [bannerImages, setbannerImages] = useState(3);
   const [img, setImg] = useState("");
   const [images, setimages] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const { token } = useContext(AuthContext);
-
+  const {loading,setLoading}=useContext(LoaderContext)
   const initialState = { name: '', address: '', contact: '', email: '', password: '' }
   const [userData, setuserData] = useState(initialState)
   const { name, address, contact, email, password } = userData
