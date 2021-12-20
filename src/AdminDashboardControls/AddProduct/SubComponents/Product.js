@@ -1,6 +1,7 @@
 import React,{useState,useContext,useRef} from "react";
 import Select from "react-select";
 import CreatableSelect from 'react-select/creatable';
+import {useParams} from 'react-router-dom'
 
 
 import AuthContext from "../../../Context/AuthContext";
@@ -60,6 +61,8 @@ const Product = () => {
   // let newImages=new Array(6)
   const {token} = useContext(AuthContext)
   const forms = useRef(null)
+  const {companyId}=useParams()
+  console.log(companyId)
 
 
   let newImages=[]
@@ -133,6 +136,7 @@ const handleSubmit = async (e) => {
     console.log(datas)
     
      let data = new FormData(forms.current)
+     data.append('merchantId',companyId)
    
      console.log(data)
 
@@ -210,7 +214,7 @@ const handleSubmit = async (e) => {
                   </div>
                   <input
                     className="form-control "
-                    type="text"
+                    type="number"
                     name="skuprice"
                     id=""
                     placeholder="00"
