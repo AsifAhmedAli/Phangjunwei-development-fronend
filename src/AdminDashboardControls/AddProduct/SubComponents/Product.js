@@ -65,7 +65,7 @@ const Product = () => {
   let newImages=[]
   const [img, setImg] = useState("");
   const [images, setimages] = useState([])
-  const initialState={skuName:'',skuCompany:'', skuStyle:'', skuColor:'',skuPrice:'',skuTag:'',stockQty:'',promoPrice:''}
+  const initialState={skuName:'',skuCompany:'', skuStyle:'', skuColor:'',skuprice:'',skuTag:'',stockQty:'',promoPrice:''}
   const [productData, setproductData] = useState(initialState)
   const {skuName,skuCompany, skuStyle, skuColor,skuprice,skuTag,stockQty,promoPrice}=productData
   const [tags, settags] = useState([])
@@ -137,17 +137,17 @@ const handleSubmit = async (e) => {
      console.log(data)
 
 
-     try {
-      const tok = await axios.post("http://localhost:4000/api/product/create", data,{
-        headers:{
-          authorization : token
-        }
-      })
-      console.log(tok)
+    //  try {
+    //   const tok = await axios.post("http://localhost:4000/api/product/create", data,{
+    //     headers:{
+    //       authorization : token
+    //     }
+    //   })
+    //   console.log(tok)
       
-    } catch (error) {
-      console.log(error)
-    }
+    // } catch (error) {
+    //   console.log(error)
+    // }
   // console.log(data)
   // const tok = await axios.post("http://localhost:4000/api/product/create", data,{
   //   headers:{
@@ -327,7 +327,7 @@ const handleSubmit = async (e) => {
                           <div class="custom-file mb-3">
                           <input
                             type="file"
-                            name="file"
+                            name="mImage"
                             class="custom-file-input change"
                             id="customFile1"
                             
@@ -397,7 +397,7 @@ const handleSubmit = async (e) => {
                          <div class="custom-file mb-3">
                          <input
                            type="file"
-                           name="file"
+                           name="mImage"
                            class="custom-file-input change"
                            id="customFile1"
                            
