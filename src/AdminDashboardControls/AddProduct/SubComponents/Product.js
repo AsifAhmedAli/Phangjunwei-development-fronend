@@ -94,12 +94,12 @@ const Product = () => {
     // console.
     // console.log(e)
     settags(e)
-    var names = e.map(function (item) {
+    let names = e.map(function (item) {
       return item['value'];
     });
 
     // console.log(names)
-    const a = names.toString()
+    let a = names.toString()
     // console.log(a)
     setproductData({ ...productData, skuTag: a })
     // console.log(e.toString())
@@ -114,12 +114,12 @@ const Product = () => {
     // console.
     // console.log(e)
     setcolorOptions(e)
-    var names = e.map(function (item) {
+    let names = e.map(function (item) {
       return item['value'];
     });
 
     // console.log(names)
-    const a = names.toString()
+    let a = names.toString()
     console.log(a)
     setproductData({ ...productData, skuColor: a })
     // console.log(e.toString())
@@ -133,7 +133,10 @@ const Product = () => {
     const mImage = images
     const datas = { ...productData, mImage }
     let data = new FormData(forms.current)
+
     data.append('merchantId', companyId)
+    data.append('skuTag',datas.skuTag)
+    data.append('skuColor',datas.skuColor)
 
     try {
       setLoading(true)
@@ -153,12 +156,12 @@ const Product = () => {
       console.log(error)
     }
 
-    const tok = await axios.post("http://localhost:4000/api/product/create", data, {
-      headers: {
-        authorization: token
-      }
-    })
-    console.log(tok)
+    // const tok = await axios.post("http://localhost:4000/api/product/create", data, {
+    //   headers: {
+    //     authorization: token
+    //   }
+    // })
+    // console.log(tok)
   }
 
   const addCollectionShots = (e) => {
@@ -240,7 +243,7 @@ const Product = () => {
                 <CreatableSelect
                   options={options}
                   isMulti
-                  name="skuTag"
+                  name="Tag"
                   className="basic-multi-select"
                   classNamePrefix="select"
                   placeholder="Tags"
