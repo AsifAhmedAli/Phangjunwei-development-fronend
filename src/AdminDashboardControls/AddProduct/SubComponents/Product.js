@@ -73,7 +73,7 @@ const Product = () => {
   const [tags, settags] = useState([])
   const [loading, setLoading] = useState(false);
 
-  const notify = () => toast("Merchant Added Successfully");
+  const notify = () => toast("Product  Added Successfully");
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target
@@ -146,6 +146,7 @@ const Product = () => {
         }
       }).then(res => {
         setLoading(false)
+        console.log(res)
         notify();
       }).catch(err => {
         setLoading(false)
