@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 import { useState } from "react";
 import './Auth.css';
 import { useMutation } from "@apollo/client";
-import { CREATE_USER } from '../../../graphql/mutations'
+import { CREATE_USER } from '../graphql/mutations'
 import { useHistory } from "react-router-dom";
-export default function Auth() {
+export default function Register() {
 
     // intializaton
     const initialState = { name: '', email: '', password: '' }
