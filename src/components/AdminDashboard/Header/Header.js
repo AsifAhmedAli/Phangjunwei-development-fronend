@@ -1,10 +1,15 @@
 import { BellIcon, ChatIcon, SupportIcon } from '../../../images/dashboard';
 import './Header.css';
+import { useMutation } from '@apollo/client';
+import { LOGOUT } from '../../../graphql/mutations';
 
 export default function Header() {
+    const [LogoutMutation, { loading, error, data }] = useMutation(LOGOUT);
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
+    const handleLogout = async () => {
+        localStorage.removeItem('firstLogin');
+        const respons = await LogoutMutation();
+        console.log(respons);
         window.location.reload();
     }
 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import './Auth.css';
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from '../graphql/mutations'
@@ -14,7 +14,7 @@ export default function Auth() {
     const { email, password } = userData
     const history = useHistory()
 
-    const {token,setToken,profile,setProfileData}=useContext(AuthContext)
+    const { token, setToken, profile, setProfileData } = useContext(AuthContext)
 
     const [login_user, { data, loading, error }] = useMutation(LOGIN_USER);
 
@@ -25,28 +25,28 @@ export default function Auth() {
     }
 
     // handling submsion
-    const handleSubmit=async (e)=>{
-      e.preventDefault()
-      const result= await login_user({variables: userData})
-    //   console.log(result.data)
-    //   console.log(result.data.login.token)
-    //   console.log(result.data.login.email)
-    //   console.log(result.data.login.role)
-      
-    setToken(result.data.login.token)
-    setProfileData(result.data.login.email,result.data.login.role)
-    history.push('/dashboard/admin/merchants')
-   
-    
-    
-     
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const result = await login_user({ variables: userData })
+        //   console.log(result.data)
+        //   console.log(result.data.login.token)
+        //   console.log(result.data.login.email)
+        //   console.log(result.data.login.role)
+
+        setToken(result.data.login.token)
+        setProfileData(result.data.login.email, result.data.login.role)
+        history.push('/dashboard/merchants')
+
+
+
+
     }
-    
+
     // useEffect(() => {
     //     console.log("how are you")
-       
-          
-        
+
+
+
     // },[])
 
 
