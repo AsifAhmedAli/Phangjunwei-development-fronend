@@ -151,6 +151,8 @@ const Product = () => {
         console.log(res)
         notify();
         setproductData(initialState)
+        settags([])
+        setcolorOptions([])
       }).catch(err => {
         setLoading(false)
         history.go(0);
@@ -184,7 +186,7 @@ const Product = () => {
       <ToastContainer />
 
       <div className="container py-4">
-        <form ref={forms}>
+        <form ref={forms}  onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-lg-5 col-md-12">
               <div className="mb-3 ">
@@ -197,6 +199,7 @@ const Product = () => {
                   placeholder="Product Name"
                   onChange={handleChangeInput}
                   valu={skuName}
+                  required
                 />
                 {/* <label for="product_name">Hi</label> */}
                 {/* <small className="text-primary">This field is required</small> */}
@@ -216,6 +219,7 @@ const Product = () => {
                     placeholder="00"
                     onChange={handleChangeInput}
                     value={skuprice}
+                    required
 
                   />
                   {/* <small className="text-primary">This field is required</small> */}
@@ -239,6 +243,7 @@ const Product = () => {
                     id=""
                     placeholder="Company"
                     onChange={handleChangeInput}
+                    required
                   />
                 </div>
               </div>
@@ -255,7 +260,7 @@ const Product = () => {
                   onChange={handleChangeTag}
                   value={tags}
                 />
-                <small className="text-primary">This field is required</small>
+                {/* <small className="text-primary">This field is required</small> */}
               </div>
 
               <div className=" row">
@@ -274,8 +279,9 @@ const Product = () => {
                   placeholder="Quantity"
                   value={stockQty}
                   onChange={handleChangeInput}
+                  required
                 />
-                <small className="text-primary">This field is required</small>
+                {/* <small className="text-primary">This field is required</small> */}
               </div>
               <div className="mb-3">
                 <input
@@ -287,7 +293,7 @@ const Product = () => {
                   value={promoPrice}
                   onChange={handleChangeInput}
                 />
-                <small className="text-primary">This field is required</small>
+                {/* <small className="text-primary">This field is required</small> */}
               </div>
 
             </div>
@@ -305,6 +311,7 @@ const Product = () => {
                             class="custom-file-input change"
                             id="customFile1"
                             onChange={(e) => previewImage(e, i)}
+                            required
                           />
                           <label class="custom-file-label" for="customFile2">
                             {
@@ -326,6 +333,7 @@ const Product = () => {
                             name="mImage"
                             class="custom-file-input change"
                             id="customFile1"
+                            required
 
                             onChange={(e) => previewImage(e, i + 3)}
                           />
@@ -369,11 +377,12 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className="save-btns justify-content-end w-100">
-              <button className="btn">Cancel</button>
-              <button className="btn" onClick={handleSubmit}>Save</button>
-            </div>
+           
           </div>
+          <div className="save-btns justify-content-end w-100">
+              <button className="btn" type="reset">Cancel</button>
+              <button className="btn" type="submit">Save</button>
+            </div>
         </form>
       </div>
     </div>
