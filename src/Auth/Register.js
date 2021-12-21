@@ -39,7 +39,7 @@ export default function Register() {
     }
 
     return (
-        <div className="login-screen">
+        <div className="login-screen reg-screen">
             <ToastContainer />
             <div className="content">
                 <div className="texts">
