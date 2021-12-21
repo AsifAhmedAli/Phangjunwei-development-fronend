@@ -177,6 +177,8 @@ const Product = () => {
         setproductData(initialState)
         settags([])
         setcolorOptions([])
+        setImg("")
+        setimages([])
       }).catch(err => {
         setLoading(false)
         history.go(0);

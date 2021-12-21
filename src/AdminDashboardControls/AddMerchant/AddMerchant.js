@@ -60,17 +60,19 @@ export default function AddMerchant() {
 
     try {
       setLoading(true)
-      const tok = await axios.post("http://localhost:4000/api/merchant/create", data, {
+       axios.post("http://localhost:4000/api/merchant/create", data, {
         headers: {
           authorization: token
         }
-      })
-
-      if (tok.status === 200) {
+      }).then(res=>{
         setLoading(false);
         notify();
         setuserData(initialState);
-      }
+        setimages([])
+        setImg("")
+      })
+
+      
 
     } catch (error) {
       console.log(error)

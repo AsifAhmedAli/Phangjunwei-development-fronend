@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import './Auth.css';
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from '../graphql/mutations'
 import { useHistory } from "react-router-dom";
+import { LoaderContext } from "../App";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Register() {
 
     // intializaton
@@ -11,8 +14,8 @@ export default function Register() {
     const [userData, setUserData] = useState(initialState)
     const { name, email, password } = userData;
     const history = useHistory()
-
-    const [registerUser, { data, loading, error }] = useMutation(CREATE_USER);
+    const {loading,setLoading}=useContext(LoaderContext)
+    const [registerUser, { data, error }] = useMutation(CREATE_USER);
 
     // control state of form
     const handleChangeInput = (e) => {
@@ -20,14 +23,23 @@ export default function Register() {
         setUserData({ ...userData, [name]: value })
     }
 
+     const notify = (msg) => toast(msg);
+
     // handling submsion
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const result = await registerUser({ variables: userData })
+        setLoading(true);
+        registerUser({ variables: userData }).then(data => {
+            setLoading(false);
+            notify("User registered successfully");
+        }).catch((error) => {
+            notify('An error occured, please refresh');
+        })
     }
 
     return (
         <div className="login-screen">
+            <ToastContainer/>
             <div className="content">
                 <div className="texts">
                     <h1 className="title">Burrows User Registration</h1>
