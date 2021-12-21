@@ -6,7 +6,7 @@ import Header from "./common/Header";
 import Partners from "./common/Partners";
 import MiniStripPromo from "./common/MiniStripPromo";
 import Loader from "./components/Loader/Loader";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const styles = {
@@ -24,6 +24,13 @@ export const LoaderContext = createContext();
 
 function App({ location }) {
   const [loading, setLoading] = useState(false);
+  useEffect(()=>{
+    if (loading) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 5000);
+    }
+  },[loading])
 
   return (
     <LoaderContext.Provider value={{ loading, setLoading }}>

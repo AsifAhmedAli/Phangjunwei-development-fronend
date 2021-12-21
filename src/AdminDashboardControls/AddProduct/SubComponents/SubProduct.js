@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import Select from "react-select";
 import CreatableSelect from 'react-select/creatable';
 import { useParams } from 'react-router-dom';
@@ -9,8 +9,21 @@ import AuthContext from "../../../Context/AuthContext";
 import axios from "axios";
 import Loader from "../../../components/Loader/Loader";
 import { LoaderContext } from '../../../App'
+import { useQuery } from "@apollo/client";
+import { GET_PRODUCTS } from "../../../graphql/queries";
 const SubProduct = () => {
   const history = useHistory();
+  const{loading,error,data}=useQuery(GET_PRODUCTS)
+  if(!loading){
+      console.log(data.allProducts)
+ 
+  }
+   
+  const [products, setproducts] = useState([])
+  // console.log(data.allProducts)
+  // if(loadings){
+  //    console.log(data.allProducts.content)
+  // }
 
   const options = [
     { value: "chocolate", label: "Chocolate" },
@@ -45,6 +58,22 @@ const SubProduct = () => {
     //     label: "Yellow",
     //   },
   ])
+  const styleOptions=[{
+    value: "modren",
+    label: "Modren"
+  },
+  {
+    value: "minimal",
+    label: "Minimal"
+  },
+  {
+    value: "vintage",
+    label: "Vintage"
+  },
+  {
+    value: "classic",
+    label: "Classic"
+  },]
   const deliveryOptions = [
     {
       value: "week",
@@ -73,13 +102,20 @@ const SubProduct = () => {
   const { skuName, skuCompany, skuStyle, skuColor, skuprice, skuTag, stockQty, promoPrice } = productData
   const [tags, settags] = useState([])
   // const [loading, setLoading] = useState(false);
-  const { loading, setLoading } = useContext(LoaderContext)
+  const {  setLoading } = useContext(LoaderContext)
 
   const notify = () => toast("Product  Added Successfully");
 
   const handleChangeInput = (e) => {
+    // console.log(e)
+
     const { name, value } = e.target
     setproductData({ ...productData, [name]: value })
+  }
+  const handleStyle=(e)=>{
+      console.log(e.value)
+      setproductData([{...productData,skuStyle: e.value}])
+      
   }
   const handleChangeInputFile = (e, i) => {
     // console.log(e.target.files[0])
@@ -139,6 +175,7 @@ const SubProduct = () => {
     data.append('merchantId', companyId)
     data.append('skuTag', datas.skuTag)
     data.append('skuColor', datas.skuColor)
+    data.append('skuStyle',datas.skuStyle)
 
     try {
       setLoading(true)
@@ -153,6 +190,8 @@ const SubProduct = () => {
         setproductData(initialState)
         settags([])
         setcolorOptions([])
+        setImg("")
+        setimages([])
       }).catch(err => {
         setLoading(false)
         history.go(0);
@@ -179,6 +218,10 @@ const SubProduct = () => {
     handleChangeInputFile(e, i)
 
   };
+  useEffect(()=>{
+    // console.log(data.allProducts)
+
+  })
 
   return (
 
@@ -190,6 +233,7 @@ const SubProduct = () => {
           <div className="row">
             <div className="col-lg-5 col-md-12">
               <div className="mb-3 ">
+                
 
                 <input
                   type="text"
@@ -263,6 +307,47 @@ const SubProduct = () => {
                 {/* <small className="text-primary">This field is required</small> */}
               </div>
 
+
+              <div className="mb-3">
+                <Select
+                  options={styleOptions}
+                  
+                  name="style"
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                  placeholder="Style"
+                  onChange={handleStyle}
+                  value={skuStyle}
+                />
+                {/* <small className="text-primary">This field is required</small> */}
+              </div>
+              <div className="mb-3">
+                <Select
+                  options={styleOptions}
+                  
+                  name="style"
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                  placeholder="Style"
+                  onChange={handleStyle}
+                  value={skuStyle}
+                />
+
+
+                {/* <select name="parentid" id="">
+                  {
+                    data.allProducts.map((pro)=>{
+                      return <options></options>
+                    })
+                  }
+                </select> */}
+                {/* <small className="text-primary">This field is required</small> */}
+              </div>
+
+
+
+              
+
               <div className=" row">
                 <div className="col mb-3">
                   <CreatableSelect options={colorOptionss} placeholder="Color" isMulti name='color' value={colorOptions} onChange={handleColors}></CreatableSelect>
@@ -295,6 +380,7 @@ const SubProduct = () => {
                 />
                 {/* <small className="text-primary">This field is required</small> */}
               </div>
+
 
             </div>
             <div className="col-lg-7 col-md-12">
