@@ -14,7 +14,7 @@ export default function Register() {
     const [userData, setUserData] = useState(initialState)
     const { name, email, password } = userData;
     const history = useHistory()
-    const {loading,setLoading}=useContext(LoaderContext)
+    const { loading, setLoading } = useContext(LoaderContext)
     const [registerUser, { data, error }] = useMutation(CREATE_USER);
 
     // control state of form
@@ -23,7 +23,7 @@ export default function Register() {
         setUserData({ ...userData, [name]: value })
     }
 
-     const notify = (msg) => toast(msg);
+    const notify = (msg) => toast(msg);
 
     // handling submsion
     const handleSubmit = async (e) => {
@@ -34,22 +34,22 @@ export default function Register() {
             notify("User registered successfully");
         }).catch((error) => {
             notify('An error occured, please refresh');
-            
+
         })
     }
 
     return (
         <div className="login-screen">
-            <ToastContainer/>
+            <ToastContainer />
             <div className="content">
                 <div className="texts">
-                    <h1 className="title">Burrows User Registration</h1>
+                    <h1 className="title">Burrows Registration</h1>
                     <p className="desc">Hello! Please Register to your account.</p>
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className="inputs">
-                        <input type="text" placeholder="Full name" name="name" onChange={handleChangeInput} value={name} required/>
-                        <input type="text" placeholder="Username" name="email" onChange={handleChangeInput} value={email} required/>
+                        <input type="text" placeholder="Full name" name="name" onChange={handleChangeInput} value={name} required />
+                        <input type="text" placeholder="Username" name="email" onChange={handleChangeInput} value={email} required />
                         <input type="password" placeholder="Password" name="password" onChange={handleChangeInput} value={password} required />
                     </div>
                     <div className="remember-forgot">

@@ -54,13 +54,13 @@ export default function Auth() {
         <div className="login-screen">
             <div className="content">
                 <div className="texts">
-                    <h1 className="title">Burrows Admin</h1>
+                    <h1 className="title">Burrows Login</h1>
                     <p className="desc">Welcome back! Please login to your account.</p>
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className="inputs">
                         <input type="text" placeholder="Email" name="email" onChange={handleChangeInput} value={email} required />
-                        <input type="password" placeholder="Password" name="password" onChange={handleChangeInput} value={password}  required/>
+                        <input type="password" placeholder="Password" name="password" onChange={handleChangeInput} value={password} required />
                     </div>
                     <div className="remember-forgot">
                         <div className="remember">
@@ -75,7 +75,7 @@ export default function Auth() {
                     </div>
                     <div className="btns">
                         <button type="submit" className="btn">Login</button>
-                        <Link className="btn"  to='/register'>Register</Link>
+                        <Link className="btn" to='/register'>Register</Link>
                     </div>
                 </form>
 

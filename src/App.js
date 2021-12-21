@@ -31,12 +31,14 @@ function App({ location }) {
 
       <div
         style={
-          location.pathname.startsWith("/dashboard")
+          (location.pathname.startsWith("/dashboard") ||
+            location.pathname.startsWith('/register') ||
+            location.pathname.startsWith('/login'))
             ? styles.customContainer
             : styles.customContainerFluid
         }
       >
-        {!location.pathname.startsWith("/dashboard") && (
+        {(!location.pathname.startsWith("/dashboard") && !location.pathname.startsWith('/register') && !location.pathname.startsWith('/login')) && (
           <>
             <Header />
             <div className="fourth-navigations">
@@ -45,8 +47,12 @@ function App({ location }) {
           </>
         )}
         <Routes />
-        {!location.pathname.startsWith("/dashboard") && <Partners />}
-        {!location.pathname.startsWith("/dashboard") && <Footer />}
+        {(!location.pathname.startsWith("/dashboard") &&
+          !location.pathname.startsWith('/register') &&
+          !location.pathname.startsWith('/login')) && <Partners />}
+        {(!location.pathname.startsWith("/dashboard") &&
+          !location.pathname.startsWith('/register') &&
+          !location.pathname.startsWith('/login')) && <Footer />}
       </div>
     </LoaderContext.Provider>
   );

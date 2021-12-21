@@ -84,9 +84,7 @@ export default function Routes() {
       <Route path="/dashboard/admin" exact>
         {
           token ? <AdminDashboardFront /> : <AdminDashboard />
-
         }
-
       </Route>
 
       <AdminPrivateRouter path="/dashboard/merchants" exact>
