@@ -45,6 +45,22 @@ const Product = () => {
     //     label: "Yellow",
     //   },
   ])
+  const styleOptions=[{
+    value: "modren",
+    label: "Modren"
+  },
+  {
+    value: "minimal",
+    label: "Minimal"
+  },
+  {
+    value: "vintage",
+    label: "Vintage"
+  },
+  {
+    value: "classic",
+    label: "Classic"
+  },]
   const deliveryOptions = [
     {
       value: "week",
@@ -78,8 +94,15 @@ const Product = () => {
   const notify = () => toast("Product  Added Successfully");
 
   const handleChangeInput = (e) => {
+    // console.log(e)
+
     const { name, value } = e.target
     setproductData({ ...productData, [name]: value })
+  }
+  const handleStyle=(e)=>{
+      console.log(e.value)
+      setproductData([{...productData,skuStyle: e.value}])
+      
   }
   const handleChangeInputFile = (e, i) => {
     // console.log(e.target.files[0])
@@ -139,6 +162,7 @@ const Product = () => {
     data.append('merchantId', companyId)
     data.append('skuTag', datas.skuTag)
     data.append('skuColor', datas.skuColor)
+    data.append('skuStyle',datas.skuStyle)
 
     try {
       setLoading(true)
@@ -263,6 +287,21 @@ const Product = () => {
                 {/* <small className="text-primary">This field is required</small> */}
               </div>
 
+
+              <div className="mb-3">
+                <Select
+                  options={styleOptions}
+                  
+                  name="style"
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                  placeholder="Style"
+                  onChange={handleStyle}
+                  value={skuStyle}
+                />
+                {/* <small className="text-primary">This field is required</small> */}
+              </div>
+
               <div className=" row">
                 <div className="col mb-3">
                   <CreatableSelect options={colorOptionss} placeholder="Color" isMulti name='color' value={colorOptions} onChange={handleColors}></CreatableSelect>
@@ -295,6 +334,7 @@ const Product = () => {
                 />
                 {/* <small className="text-primary">This field is required</small> */}
               </div>
+
 
             </div>
             <div className="col-lg-7 col-md-12">
