@@ -59,8 +59,8 @@ export default function Auth() {
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className="inputs">
-                        <input type="text" placeholder="Username" name="email" onChange={handleChangeInput} value={email} />
-                        <input type="password" placeholder="Password" name="password" onChange={handleChangeInput} value={password} />
+                        <input type="text" placeholder="Email" name="email" onChange={handleChangeInput} value={email} required />
+                        <input type="password" placeholder="Password" name="password" onChange={handleChangeInput} value={password}  required/>
                     </div>
                     <div className="remember-forgot">
                         <div className="remember">
@@ -74,7 +74,7 @@ export default function Auth() {
                         </div>
                     </div>
                     <div className="btns">
-                        <button className="btn">Login</button>
+                        <button type="submit" className="btn">Login</button>
                         <button className="btn">Register</button>
                     </div>
                 </form>
