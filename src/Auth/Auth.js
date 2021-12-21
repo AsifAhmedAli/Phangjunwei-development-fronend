@@ -75,7 +75,7 @@ export default function Auth() {
                     </div>
                     <div className="btns">
                         <button type="submit" className="btn">Login</button>
-                        <button className="btn">Register</button>
+                        <Link className="btn"  to='/register'>Register</Link>
                     </div>
                 </form>
 

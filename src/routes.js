@@ -8,6 +8,7 @@ import RecentView from "./product/RecentView";
 import StyleInspire from "./product/StyleInspire";
 import StripPromo from "./common/StripPromo";
 import PageCarousel from "./common/PageCarousel";
+import Register from "./Auth/Register";
 
 import MerchantCarousel from "./merchant/MerchantCarousel";
 import MerchantHome from "./merchant/MerchantHome";
@@ -58,6 +59,10 @@ export default function Routes() {
   const { token, profile } = useContext(AuthContext)
   return (
     <Switch>
+
+      <Route path='/register'>
+        <Register></Register>
+      </Route>
       <Route path="/" exact>
         <div className="home-page">
           <PageCarousel isHomePage={true} isCategory={false} />
