@@ -2,6 +2,12 @@ import { BellIcon, ChatIcon, SupportIcon } from '../../../images/dashboard';
 import './Header.css';
 
 export default function Header() {
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        window.location.reload();
+    }
+
     return (
         <header id="dashboard-navbar">
             <div className="content">
@@ -12,8 +18,8 @@ export default function Header() {
                     <img src={ChatIcon} alt="chat" />
                     <img src={SupportIcon} alt="support" />
                     <img src={BellIcon} alt="bell" />
-                    <button className="profile">
-                        Profile
+                    <button className="logout" onClick={handleLogout}>
+                        Logout
                     </button>
                 </div>
             </div>

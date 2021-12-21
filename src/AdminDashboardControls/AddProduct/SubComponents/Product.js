@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from "../../../Context/AuthContext";
 import axios from "axios";
 import Loader from "../../../components/Loader/Loader";
-import {LoaderContext} from '../../../App'
+import { LoaderContext } from '../../../App'
 const Product = () => {
   const history = useHistory();
 
@@ -73,7 +73,7 @@ const Product = () => {
   const { skuName, skuCompany, skuStyle, skuColor, skuprice, skuTag, stockQty, promoPrice } = productData
   const [tags, settags] = useState([])
   // const [loading, setLoading] = useState(false);
-  const{loading,setLoading}=useContext(LoaderContext)
+  const { loading, setLoading } = useContext(LoaderContext)
 
   const notify = () => toast("Product  Added Successfully");
 
@@ -137,8 +137,8 @@ const Product = () => {
     let data = new FormData(forms.current)
 
     data.append('merchantId', companyId)
-    data.append('skuTag',datas.skuTag)
-    data.append('skuColor',datas.skuColor)
+    data.append('skuTag', datas.skuTag)
+    data.append('skuColor', datas.skuColor)
 
     try {
       setLoading(true)
@@ -182,7 +182,7 @@ const Product = () => {
 
     <div>
       <ToastContainer />
-      
+
       <div className="container py-4">
         <form ref={forms}>
           <div className="row">
@@ -262,12 +262,7 @@ const Product = () => {
                 <div className="col mb-3">
                   <CreatableSelect options={colorOptionss} placeholder="Color" isMulti name='color' value={colorOptions} onChange={handleColors}></CreatableSelect>
                 </div>
-                {/* <div className="col mb-3">
-                  <Select
-                    options={deliveryOptions}
-                    placeholder="Delivery"
-                  ></Select>
-                </div> */}
+
               </div>
 
               <div className="mb-3">
@@ -294,27 +289,7 @@ const Product = () => {
                 />
                 <small className="text-primary">This field is required</small>
               </div>
-              {/* <div className="mb-3">
-                <textarea
-                  type="text"
-                  className="form-control "
-                  name="product_name"
-                  id=""
-                  placeholder="Product Details"
-                  rows="4"
-                />
-                <small className="text-primary">This field is required</small>
-              </div> */}
-              {/* <div className="mb-3">
-                <textarea
-                  type="text"
-                  className="form-control "
-                  name="product_name"
-                  id=""
-                  placeholder="Additional Instructions"
-                  rows="4"
-                />
-              </div> */}
+
             </div>
             <div className="col-lg-7 col-md-12">
               <div className="d-flex flex-column">
@@ -322,7 +297,6 @@ const Product = () => {
                   <div className="mx-2">
 
                     {
-
                       Array.from({ length: collectionShots }, (v, i) => i).map(i => (
                         <div class="custom-file mb-3">
                           <input
@@ -330,69 +304,21 @@ const Product = () => {
                             name="mImage"
                             class="custom-file-input change"
                             id="customFile1"
-
                             onChange={(e) => previewImage(e, i)}
                           />
                           <label class="custom-file-label" for="customFile2">
                             {
-
                               images[i] ? images[i].name : <> Upload Image # {i}</>
                             }
                           </label>
                         </div>
 
-                        // <input type="file" onChange={previewImage} />
                       ))
-
                     }
-                    {/* <div class="custom-file mb-3">
-                      <input
-                        type="file"
-                        name="file"
-                        class="custom-file-input change"
-                        id="customFile1"
-                        
-                        onChange={handleChangeImages}
-                      />
-                      <label class="custom-file-label" for="customFile2">
-                        Choose file
-                      </label>
-                    </div> */}
-                    {/* <div class="custom-file mb-3">
-                      <input
-                        type="file"
-                        class="custom-file-input"
-                        id="customFile"
-                      />
-                      <label class="custom-file-label" for="customFile">
-                        Choose file
-                      </label>
-                    </div> */}
-                    {/* <div class="custom-file mb-3">
-                      <input
-                        type="file"
-                        class="custom-file-input"
-                        id="customFile"
-                      />
-                      <label class="custom-file-label" for="customFile">
-                        Choose file
-                      </label>
-                    </div> */}
-                    {/* <div class="custom-file mb-3">
-                      <input
-                        type="file"
-                        class="custom-file-input"
-                        id="customFile"
-                      />
-                      <label class="custom-file-label" for="customFile">
-                        Choose file
-                      </label>
-                    </div> */}
 
                   </div>
                   <div className="mx-2">
                     {
-
                       Array.from({ length: collectionShots }, (v, i) => i).map(i => (
                         <div class="custom-file mb-3">
                           <input
@@ -410,43 +336,9 @@ const Product = () => {
                             }
                           </label>
                         </div>
-
-                        // <input type="file" onChange={previewImage} />
                       ))
-
                     }
 
-
-                    {/* <div class="custom-file mb-3">
-                      <input
-                        type="file"
-                        class="custom-file-input"
-                        id="customFile"
-                      />
-                      <label class="custom-file-label" for="customFile">
-                        Choose file
-                      </label>
-                    </div>
-                    <div class="custom-file mb-3">
-                      <input
-                        type="file"
-                        class="custom-file-input"
-                        id="customFile"
-                      />
-                      <label class="custom-file-label" for="customFile">
-                        Choose file
-                      </label>
-                    </div>
-                    <div class="custom-file mb-3">
-                      <input
-                        type="file"
-                        class="custom-file-input"
-                        id="customFile"
-                      />
-                      <label class="custom-file-label" for="customFile">
-                        Choose file
-                      </label>
-                    </div> */}
                   </div>
                 </div>
                 <div
@@ -477,10 +369,7 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div
-              className="save-btns justify-content-end w-100"
-            // style={{ marginRight: 0 }}
-            >
+            <div className="save-btns justify-content-end w-100">
               <button className="btn">Cancel</button>
               <button className="btn" onClick={handleSubmit}>Save</button>
             </div>

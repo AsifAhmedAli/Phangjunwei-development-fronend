@@ -39,7 +39,7 @@
     height: 100%;
 }
 
-#dashboard-navbar .content .right-section .profile {
+#dashboard-navbar .content .right-section .logout {
     border: none;
     outline: none;
     padding: 0 1.5rem;
@@ -47,7 +47,7 @@
     border-left: 2px solid rgba(0, 0, 0, 0.219);
 }
 
-#dashboard-navbar .content .right-section .profile:hover{
+#dashboard-navbar .content .right-section .logout:hover{
     background-color: rgba(0, 0, 0, 0.219);
 }
 
