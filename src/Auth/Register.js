@@ -34,6 +34,7 @@ export default function Register() {
             notify("User registered successfully");
         }).catch((error) => {
             notify('An error occured, please refresh');
+            
         })
     }
 
