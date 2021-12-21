@@ -159,8 +159,7 @@ const GET_MERCHANT_PRODUCTS_STYLES = gql`
     }
 `
 
-const GET_MERCHANT_PRODUCTS_CATEGORIES = gql
-    `
+const GET_MERCHANT_PRODUCTS_CATEGORIES = gql`
     query getMerchantProductsAndImages($id: Int!){
         merchantProducts(id: $id) {
             skuCategory
@@ -169,8 +168,7 @@ const GET_MERCHANT_PRODUCTS_CATEGORIES = gql
 `
 
 
-const GET_CART_BY_USER = gql
-    `
+const GET_CART_BY_USER = gql`
         query getCartByUser($userId: Int!){
             getCartByUser(id: $userId){
                 clientFirstName
@@ -184,8 +182,7 @@ const GET_CART_BY_USER = gql
     }
 `
 
-const GET_CART = gql
-    `
+const GET_CART = gql`
     query getCart($id: Int!){
         getCart(id: $getCartId) {
             clientFirstName
@@ -217,8 +214,7 @@ const GET_CART = gql
     }
 `
 
-const GET_ORDERS = gql
-    `
+const GET_ORDERS = gql`
     query getOrders{
         getOrders{
             clientEmail
@@ -240,8 +236,7 @@ const GET_ORDERS = gql
     }
 `
 
-const GET_ORDER = gql
-    `
+const GET_ORDER = gql`
     query Query($id: Int!) {
         getOrder(id: $id) {
             clientFirstName
@@ -304,8 +299,7 @@ const PRODUCT_IMAGES = gql`
     }
 `
 
-const GET_ORDER_BY_USER = gql
-    `
+const GET_ORDER_BY_USER = gql`
     query Query($userId: Int!) {
         getOrdersByUser(id: $userId) {
         clientFirstName
@@ -328,8 +322,7 @@ const GET_ORDER_BY_USER = gql
 `
 
 
-const GET_USER_WISHLIST = gql
-    `
+const GET_USER_WISHLIST = gql`
     query getUserWishlist($id: Int!) {
         getUser(id: $id) {
             wishlists {
