@@ -1,7 +1,6 @@
 import { gql } from '@apollo/client';
 
-const GET_USERS = gql
-    `
+const GET_USERS = gql`
         query allUser {
                 allUser {
                     id
@@ -12,8 +11,7 @@ const GET_USERS = gql
     `;
 
 
-const GET_USER = gql
-    `
+const GET_USER = gql`
 query getUser{
     getUser(id: $id){
         id
@@ -22,153 +20,141 @@ query getUser{
     }
 }`
 
-const GET_MERCHANTS = gql
-    `query allMerchants{
-  allMerchants{
-        id
-        name
-        description
-        address1
-        contact1
-        contact2
-        email
-        tier
-    }
-}`
-
-const GET_MERCHANT_COMPLETE = gql
-    `query allMerchants{
-  allMerchants{
-        id
-        name
-        description
-        address1
-        contact1
-        contact2
-        email
-        tier
-        products{
-                id
-                skuId
-                skuName
-                skuPrice1
-                skuPrice2
-                skuPrice4
-                srpPrice
-                promoPrice
-                stockQty
-                orderDetails{
-                            qty
-                            clientContactInfo
-                            order{
-                                    clientFirstName
-                                    clientLastName
-                                    clientEmail
-                                    clientContactInfo
-                                    deliveryOption
-                                    }
-                            product{
-                                    skuId
-                                }
-                            }
-                cartDetails{
-                            qty
-                            clientContactInfo
-                            cart{
-                                    clientFirstName
-                                    clientLastName
-                                }
-                            }
-                    }
-    }
-}`
-
-
-const GET_MERCHANT = gql
-    `
-        query getMerchant($id: Int!) {
-            getMerchant(id: $id){
-                id
-                address1
-                email
-                name
-            }
+const GET_MERCHANTS = gql`
+query allMerchants($size: Int, $offset: Int){
+    allMerchants(size: $size, offset: $offset) {
+        content {
+            password
+            id
+            name
+            address
+            contact
+            email
+            blocked
+            role
         }
-    `
+        totalPages
+    }
+}`
 
-const GET_PRODUCTS = gql
-    `
-        query allProducts{
-            allProducts{
+const GET_MERCHANT = gql`
+    query getMerchant($id: Int!) {
+        getMerchant(id: $id){
+            id
+            name
+            address
+            contact
+            email
+            password
+            blocked
+            role
+        }
+    }
+`
+
+const GET_PRODUCTS = gql`
+    query AllProducts($size: Int, $offset: Int) {
+        allProducts(size: $size, offset: $offset) {
+            totalPages
+            content {
                 id
                 skuName
-                skuId
-                skuColor
                 skuCompany
                 skuTag
-                skuPrice1
-                skuPrice2
+                skuCategory
+                skuStyle
+                skuColor
+                skuprice
+                type
+                parentId
                 promoPrice
-                srpPrice
-                skuPrice4
-                skuPrice3
+                inWishlist
+                stockQty
+                disabled
+            }
         }
     }
 `
-const GET_MERCHANT_PRODUCTS = gql
-    `
-    query getMerchantProducts($id: Int!){
-        merchantProducts(merchantId: $id) {
+
+const GET_PARENT_PRODUCTS = gql`
+    query parentProducts($type: String!, $merchantId: Int!) {
+        parentProducts(type: $type, merchantId: $merchantId) {
             id
-            skuId
-            skuColor
-            skuStyle
-            skuCategory
-            skuCompany
-            skuTag
             skuName
-            skuPrice3
-            skuPrice2
-            skuPrice1
-            srpPrice
+            skuTag
+            skuCompany
+            skuCategory
+            skuStyle
+            skuColor
+            skuprice
+            type
             promoPrice
-          }
+            inWishlist
+            disabled
+            stockQty
+            merchant {
+                id
+                email
+            }
+        }
     }
 `
 
-const GET_MERCHANT_PRODUCTS_STYLES = gql
-    `
+const GET_PRODUCT = gql`
+    query GetProduct($getProductId: Int!) {
+        getProduct(id: $getProductId) {
+            id
+            skuName
+            skuTag
+            skuCompany
+            skuCategory
+            skuStyle
+            skuColor
+            skuprice
+            type
+            parentId
+            promoPrice
+            inWishlist
+            disabled
+            stockQty
+            merchant {
+                id
+                name
+                email
+            }
+        }
+    }
+`
+
+const GET_MERCHANT_PRODUCTS = gql`
+    query getMerchantProducts($id: Int!,  $size: Int, $offset: Int){
+        merchantProducts(merchantId: $merchantId, size: $size, offset: $offset) {
+            content {
+                id
+                skuName
+                skuCompany
+                skuTag
+                skuCategory
+                skuStyle
+                skuColor
+                skuprice
+                type
+                parentId
+                promoPrice
+                inWishlist
+                disabled
+                stockQty
+            }
+            totalPages
+        }
+    }
+`
+
+const GET_MERCHANT_PRODUCTS_STYLES = gql`
     query getMerchantProductsStyles($id: Int!){
         merchantProducts(merchantId: $id) {
             id
-            skuId
             skuStyle
-          }
-    }
-`
-
-const GET_MERCHANT_PRODUCTS_WITH_IMAGES = gql
-    `
-    query getMerchantProductsAndImages($id: Int!){
-        getMerchant(id: $id) {
-            merchantAdImages
-            merchantMoodshotImages
-            merchantProductImages
-            products {
-                id
-                skuId
-                skuColor
-                skuStyle
-                skuCategory
-                skuCompany
-                skuTag
-                skuName
-                skuPrice3
-                skuPrice2
-                skuPrice1
-                srpPrice
-                promoPrice
-            }
           }
     }
 `
@@ -276,6 +262,47 @@ const GET_ORDER = gql
         }
     }
 `
+const MERCHANT_ORDERS = gql`
+    query MerchantOrders($merchantOrdersId: Int!) {
+        merchantOrders(id: $merchantOrdersId) {
+            OrderId
+            ProductId
+            MerchantId
+            clientFirstName
+            clientLastName
+            clientEmail
+            clientContactInfo
+            refCode
+            deliveryOption
+            deliveryFee
+            subTotal
+            promoCode
+            promoCodeValue
+            deliveryAddress
+            billingAddress
+            paymentInfo
+            paymentStatus
+            status
+        }
+    }
+`
+
+const MERCHANT_IMAGES = gql`
+    query MerchantImages($merchantId: Int!) {
+        merchantImages(id: $merchantId) {
+            collectionImg
+            bannerImg
+        }
+    }
+`
+
+const PRODUCT_IMAGES = gql`
+    query ProductImages($productImagesId: Int!) {
+        productImages(id: $productImagesId) {
+            mainImage
+        }
+    }
+`
 
 const GET_ORDER_BY_USER = gql
     `
@@ -334,10 +361,8 @@ export {
     GET_USER,
     GET_MERCHANTS,
     GET_MERCHANT,
-    GET_MERCHANT_COMPLETE,
     GET_PRODUCTS,
     GET_MERCHANT_PRODUCTS,
-    GET_MERCHANT_PRODUCTS_WITH_IMAGES,
     GET_MERCHANT_PRODUCTS_CATEGORIES,
     GET_MERCHANT_PRODUCTS_STYLES,
     GET_CART_BY_USER,
@@ -345,5 +370,9 @@ export {
     GET_CART,
     GET_ORDERS,
     GET_ORDER,
-    GET_ORDER_BY_USER
+    GET_ORDER_BY_USER,
+    MERCHANT_ORDERS,
+    MERCHANT_IMAGES,
+    GET_PRODUCT,
+    PRODUCT_IMAGES,
 };

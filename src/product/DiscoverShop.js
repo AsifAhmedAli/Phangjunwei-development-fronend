@@ -15,7 +15,7 @@ import collect1 from '../images/merchant/collection_1.png';
 import collect2 from '../images/merchant/collection_2.png';
 import collect3 from '../images/merchant/collection_3.png';
 import collect4 from '../images/merchant/collection_4.png';
-import { GET_MERCHANT_PRODUCTS_WITH_IMAGES } from '../graphql/queries';
+import { PRODUCT_IMAGES } from '../graphql/queries';
 import { useQuery } from '@apollo/client';
 
 // function CategoryStyle({title}) {
@@ -88,7 +88,7 @@ const responsive = {
 
 function DiscoverShop({ popularTag, title }, props) {
 
-    const { loading, error, data } = useQuery(GET_MERCHANT_PRODUCTS_WITH_IMAGES, {
+    const { loading, error, data } = useQuery(PRODUCT_IMAGES, {
         variables: {
             id: 4 // User's id hardcoded for now
         }
