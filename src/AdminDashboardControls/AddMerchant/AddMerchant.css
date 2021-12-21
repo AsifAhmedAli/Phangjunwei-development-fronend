@@ -4,9 +4,17 @@
 
 #add-merchant .add-merchant-card{
     padding: 3rem;
+   
+}
+.form-bg{
+    display: flex;
+    flex-direction: column;
     background-color: white;
     box-shadow: 0 0 .2rem rgba(0,0,0,0.1);
+    padding: 3rem;
+
 }
+
 
 #add-merchant .form-cols{
     display: flex;
@@ -58,8 +66,10 @@
 
 #add-merchant .save-btns{
     display: flex;
-    padding: 1rem 0;
+    padding: 1rem 1rem;
     float: right;
+    justify-content: end;
+    /* margin: 10; */
 }
 
 #add-merchant .save-btns .btn{
@@ -97,6 +107,6 @@
         width: 100%;
     }
     #add-merchant .save-btns{
-        float: none;
+        justify-content: center;
     }
 }

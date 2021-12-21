@@ -35,9 +35,9 @@ export default function Register() {
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className="inputs">
-                        <input type="text" placeholder="Full name" name="name" onChange={handleChangeInput} value={name} />
-                        <input type="text" placeholder="Username" name="email" onChange={handleChangeInput} value={email} />
-                        <input type="password" placeholder="Password" name="password" onChange={handleChangeInput} value={password} />
+                        <input type="text" placeholder="Full name" name="name" onChange={handleChangeInput} value={name} required/>
+                        <input type="text" placeholder="Username" name="email" onChange={handleChangeInput} value={email} required/>
+                        <input type="password" placeholder="Password" name="password" onChange={handleChangeInput} value={password} required />
                     </div>
                     <div className="remember-forgot">
                         <div className="remember">
@@ -51,8 +51,8 @@ export default function Register() {
                         </div>
                     </div>
                     <div className="btns">
-                        <button className="btn">Login</button>
-                        <button className="btn">Register</button>
+                        <Link to='/dashboard/admin' className="btn" >Login</Link>
+                        <button className="btn" type="submit">Register</button>
                     </div>
                 </form>
 

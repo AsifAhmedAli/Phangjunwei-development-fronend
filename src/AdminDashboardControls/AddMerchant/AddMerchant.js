@@ -88,7 +88,8 @@ export default function AddMerchant() {
         </h4>
         {loading ? 'Adding Merchant' : <div className="add-merchant-card">
           <h5 className="mb-4">New Merchant</h5>
-          <form className="form-cols" ref={forms} >
+          <form  ref={forms} className="form-bg" onSubmit={handleSubmit}>
+            <div className="form-cols" >
             <div className="colm-1 ">
               <h5 className="mb-3">Details:</h5>
               <div className="mb-3 ">
@@ -100,6 +101,7 @@ export default function AddMerchant() {
                   placeholder="Company Name"
                   value={name}
                   onChange={handleChangeInput}
+                  required
                 />
                 {/* <label for="product_name">Hi</label> */}
                 {/* <small className="text-primary">This field is required</small> */}
@@ -114,19 +116,21 @@ export default function AddMerchant() {
                   placeholder="Adress"
                   value={address}
                   onChange={handleChangeInput}
+                  required
                 />
                 {/* <label for="product_name">Hi</label> */}
                 {/* <small className="text-primary">This field is required</small> */}
               </div>
               <div className="mb-3 ">
                 <input
-                  type="text"
+                  type="number"
                   className="form-control "
                   name="contact"
                   id=""
                   placeholder="Phone"
                   value={contact}
                   onChange={handleChangeInput}
+                  required
 
                 />
                 {/* <label for="product_name">Hi</label> */}
@@ -134,13 +138,14 @@ export default function AddMerchant() {
               </div>
               <div className="mb-3 ">
                 <input
-                  type="text"
+                  type="email"
                   className="form-control "
                   name="email"
                   id=""
                   placeholder="Email"
                   value={email}
                   onChange={handleChangeInput}
+                  required
 
                 />
                 {/* <label for="product_name">Hi</label> */}
@@ -155,6 +160,7 @@ export default function AddMerchant() {
                   placeholder="Password"
                   value={password}
                   onChange={handleChangeInput}
+                  required
 
                 />
                 {/* <label for="product_name">Hi</label> */}
@@ -181,6 +187,7 @@ export default function AddMerchant() {
                         class="custom-file-input change"
                         id="customFile1"
                         onChange={(e) => previewImage(e, i)}
+                        required
                       />
                       <label class="custom-file-label" for="customFile2">
                         {
@@ -212,6 +219,7 @@ export default function AddMerchant() {
                       class="custom-file-input change"
                       id="customFile1"
                       onChange={(e) => previewImage(e, i + 3)}
+                      required
                     />
                     <label class="custom-file-label" for="customFile2">
                       {
@@ -240,13 +248,20 @@ export default function AddMerchant() {
                 {/* <img src={img} alt="images" style={{objectFit:"contain",width:"100%",height:"100%"}} className="" /> */}
               </div>
             </div>
+            </div>
+     
+            <br />
+            <div className="save-btns" >
+          <button className="btn" disabled={loading}>Cancel</button>
+          <button className="btn" type="submit"  disabled={loading}>Save</button>
+        </div>
             {/* <input type="submit" value="save" /> */}
           </form>
         </div>}
-        <div className="save-btns">
+        {/* <div className="save-btns">
           <button className="btn" disabled={loading}>Cancel</button>
           <button className="btn" onClick={handleSubmit} disabled={loading}>Save</button>
-        </div>
+        </div> */}
       </section>
     </DashboardBars>
   );
