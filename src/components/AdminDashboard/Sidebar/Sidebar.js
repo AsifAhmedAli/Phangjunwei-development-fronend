@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import './Sidebar.css';
 
 export default function Sidebar({ toggleSidebar, setToggleSidebar }) {
-    console.log(toggleSidebar);
     return (
         <div id='dashboard-sidebar' className={`${toggleSidebar ? 'dashboard-sidebar-close' : 'dashboard-sidebar-open'}`}>
             <div className="close-toggle" onClick={() => setToggleSidebar(true)}>

@@ -9,14 +9,14 @@ import {
   from,
 } from "@apollo/client";
 import axios from "axios";
-  axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 
 
 const AuthContext = createContext();
 export function AuthContextProvider(props) {
   const [profile, setProfile] = useState({
-    email : '',
-    role : ''
+    email: '',
+    role: ''
   })
   const [token, settoken] = useState("");
 
@@ -24,9 +24,8 @@ export function AuthContextProvider(props) {
     localStorage.setItem("firstLogin", true);
     settoken(toks);
   }
-  async function setProfileData(emails,roles) {
-    console.log(emails,roles)
-     setProfile({email: emails,role:roles})
+  async function setProfileData(emails, roles) {
+    setProfile({ email: emails, role: roles })
     // setProfile({...profile,role})
   }
 
@@ -37,7 +36,7 @@ export function AuthContextProvider(props) {
 
   const authMiddleware = new ApolloLink((operation, forward) => {
     // add the authorization to the headers
-    operation.setContext(async({ headers = {} }) => {
+    operation.setContext(async ({ headers = {} }) => {
 
       // const firsLogin=localStorage.getItem('firstLogin')
       // if(firsLogin){
@@ -55,14 +54,14 @@ export function AuthContextProvider(props) {
       //         }
       //       })
       //       setToken(tok.data.data.generateAccessToken.token)
-            
-      // }
-        
 
-         return {
+      // }
+
+
+      return {
         headers: {
           ...headers,
-          authorization: token||null ,
+          authorization: token || null,
         },
       };
     });
@@ -77,12 +76,12 @@ export function AuthContextProvider(props) {
       httpLink,
     ]),
   });
-  useEffect(async() => {
-    
-    const firsLogin=localStorage.getItem('firstLogin')
-    if(firsLogin){
-           const tok = await axios.post("http://localhost:4000/graphql", {
-            query: `
+  useEffect(async () => {
+
+    const firsLogin = localStorage.getItem('firstLogin')
+    if (firsLogin) {
+      const tok = await axios.post("http://localhost:4000/graphql", {
+        query: `
             mutation Mutation {
              generateAccessToken {
              token  
@@ -91,20 +90,20 @@ export function AuthContextProvider(props) {
              }
            }
             `,
-          },{
-            headers:{
-              authorization : token 
-            }
-          })
-          settoken(tok.data.data.generateAccessToken.token)
-          setProfileData(tok.data.data.generateAccessToken.email,tok.data.data.generateAccessToken.role)
-          
+      }, {
+        headers: {
+          authorization: token
+        }
+      })
+      settoken(tok.data.data.generateAccessToken.token)
+      setProfileData(tok.data.data.generateAccessToken.email, tok.data.data.generateAccessToken.role)
+
     }
-    
-  },[token] )
+
+  }, [token])
 
   return (
-    <AuthContext.Provider value={{ token, setToken,profile,setProfileData }}>
+    <AuthContext.Provider value={{ token, setToken, profile, setProfileData }}>
 
       <ApolloProvider client={client}>{props.children}</ApolloProvider>
     </AuthContext.Provider>

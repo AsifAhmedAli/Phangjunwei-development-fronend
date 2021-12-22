@@ -6,6 +6,7 @@ import { LOGIN_USER } from '../graphql/mutations'
 import { useContext } from "react";
 import AuthContext from "../Context/AuthContext";
 import { useHistory } from "react-router-dom";
+import { Alert } from "react-bootstrap";
 export default function Auth() {
 
     // intializaton
@@ -27,28 +28,21 @@ export default function Auth() {
     // handling submsion
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const result = await login_user({ variables: userData })
-        //   console.log(result.data)
-        //   console.log(result.data.login.token)
-        //   console.log(result.data.login.email)
-        //   console.log(result.data.login.role)
+        try {
+            const result = await login_user({ variables: userData })
+            setToken(result.data.login.token)
+            setProfileData(result.data.login.email, result.data.login.role)
+            if (result.data.login.role === 'admin' || result.data.login.role === 'Superadmin') {
+                history.push('/dashboard/merchants')
+            } else {
+                history.push('/')
+            }
 
-        setToken(result.data.login.token)
-        setProfileData(result.data.login.email, result.data.login.role)
-        history.push('/dashboard/merchants')
-
-
-
-
+        }
+        catch (err) {
+            console.log(err)
+        }
     }
-
-    // useEffect(() => {
-    //     console.log("how are you")
-
-
-
-    // },[])
-
 
     return (
         <div className="login-screen">
@@ -57,6 +51,7 @@ export default function Auth() {
                     <h1 className="title">Burrows Login</h1>
                     <p className="desc">Welcome back! Please login to your account.</p>
                 </div>
+                {error && <Alert variant="danger">{error.graphQLErrors[0].message}</Alert>}
                 <form onSubmit={handleSubmit}>
                     <div className="inputs">
                         <input type="text" placeholder="Email" name="email" onChange={handleChangeInput} value={email} required />

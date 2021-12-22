@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import { LoaderContext } from "../App";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Alert } from "react-bootstrap";
 export default function Register() {
 
     // intializaton
@@ -32,9 +33,9 @@ export default function Register() {
         registerUser({ variables: userData }).then(data => {
             setLoading(false);
             notify("User registered successfully");
+            setUserData(initialState);
         }).catch((error) => {
-            notify('An error occured, please refresh');
-
+            notify('An error occured, please try again');
         })
     }
 
@@ -46,10 +47,11 @@ export default function Register() {
                     <h1 className="title">Burrows Registration</h1>
                     <p className="desc">Hello! Please Register to your account.</p>
                 </div>
+                {error && <Alert variant="danger">{error.graphQLErrors[0].message}</Alert>}
                 <form onSubmit={handleSubmit}>
                     <div className="inputs">
                         <input type="text" placeholder="Full name" name="name" onChange={handleChangeInput} value={name} required />
-                        <input type="text" placeholder="Username" name="email" onChange={handleChangeInput} value={email} required />
+                        <input type="email" placeholder="Email" name="email" onChange={handleChangeInput} value={email} required />
                         <input type="password" placeholder="Password" name="password" onChange={handleChangeInput} value={password} required />
                     </div>
                     <div className="remember-forgot">

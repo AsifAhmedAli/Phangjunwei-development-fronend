@@ -13,7 +13,7 @@ const AdminPrivateRouter = (props) => {
       </Route>
   }
   else {
-    return <Redirect to="/dashboard/admin" exact />
+    return <Redirect to="/" exact />
   }
 
   //   return firstLogin && token && profile.role==='SuperAdmin' ? <Route {...props} /> : <Redirect to="/dashboard/admin" />;

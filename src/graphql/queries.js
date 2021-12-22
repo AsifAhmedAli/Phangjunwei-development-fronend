@@ -1,14 +1,17 @@
 import { gql } from '@apollo/client';
 
 const GET_USERS = gql`
-query allUser {
-        allUser {
-            id
-            name
-            email
-        }
+query AllUser($size: Int, $offset: Int) {
+  allUser(size: $size, offset: $offset) {
+    content {
+      id
+      name
+      email
+      role
     }
-`;
+    totalPages
+  }
+}`
 
 
 const GET_USER = gql`
@@ -24,7 +27,6 @@ const GET_MERCHANTS = gql`
 query allMerchants($size: Int, $offset: Int){
     allMerchants(size: $size, offset: $offset) {
         content {
-            password
             id
             name
             address
@@ -368,4 +370,5 @@ export {
     MERCHANT_IMAGES,
     GET_PRODUCT,
     PRODUCT_IMAGES,
+    GET_PARENT_PRODUCTS
 };
