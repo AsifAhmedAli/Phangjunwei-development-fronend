@@ -13,8 +13,7 @@ function RecentView({ customTitle }) {
             id: 1 // User's id hardcoded for now
         }
     });
-    const wishlistProducts = data?.getUser?.wishlists;
-    console.log("Wishlist products:", wishlistProducts);
+    const wishlistProducts = data && data.getUser.wishlists;
 
     let settings = {
         slidesToShow: 5,

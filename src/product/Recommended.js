@@ -4,17 +4,24 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ProductCard from '../product/ProductCard';
 import { useState } from "react";
-import { GET_MERCHANT_PRODUCTS } from '../graphql/queries';
+import { GET_PRODUCTS } from '../graphql/queries';
 import { useQuery } from '@apollo/client';
 
 function Recommended() {
-    const [len, setLen] = useState(new Array(10).fill(0))
-    const { loading, error, data } = useQuery(GET_MERCHANT_PRODUCTS, {
+    const [offset, setOffset] = useState(0);
+    const { loading, error, data, fetchMore } = useQuery(GET_PRODUCTS, {
         variables: {
-            id: 1,
+            offset: offset
         }
     });
-    const products = data?.merchantProducts;
+
+    let products = data && data.allProducts.content;
+    const totalPages = data && data.allProducts.totalPages;
+
+    const moreProducts = async () => {
+        await fetchMore({ variables: { offset: offset + 1 } })
+    }
+
     return (
         <>
             <Row className="page-product-list-more recommended-div">
@@ -50,9 +57,7 @@ function Recommended() {
 
                     <Row className="text-center mb-3">
                         <Col>
-                            <Button variant="outline-secondary" onClick={() => {
-                                setLen(new Array(len.length + 4).fill(0))
-                            }}>View more</Button>
+                            <Button variant="outline-secondary" onClick={moreProducts}>View more</Button>
                         </Col>
                     </Row>
                 </Col>
