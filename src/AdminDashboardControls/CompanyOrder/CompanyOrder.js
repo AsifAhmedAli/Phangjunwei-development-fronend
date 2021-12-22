@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React,{useState} from 'react'
-=======
-import React, { useState } from 'react'
->>>>>>> b24bfd93efc754b8f89a3152dac810adf5fc71a8
 import DashboardBars from '../../components/DashboardBars/DashboardBars'
 import DashboardPagination from '../../components/AdminDashboard/DashboardPagination/DashboardPagination'
 import ListTable2 from '../../components/AdminDashboard/ListTable2/ListTable2'

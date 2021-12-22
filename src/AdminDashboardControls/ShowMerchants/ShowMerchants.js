@@ -22,7 +22,7 @@ export default function ShowMerchants() {
             setMerchants(data.allMerchants.content );
             console.log(merchants)
         }
-    },[])
+    },[data])
      
     if (error) return <p>Error</p>
   
