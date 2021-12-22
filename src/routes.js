@@ -95,18 +95,18 @@ export default function Routes() {
         <AddMerchant />
       </AdminPrivateRouter>
 
-      <AdminPrivateRouter path="/dashboard/merchant/:companyId" exact>
+      <AdminPrivateRouter path="/dashboard/merchant/:merchantId" exact>
         <CompanyInfo />
       </AdminPrivateRouter>
       {/* <Route path="/dashboard/admin/merchant/:companyId/inbox" exact>
         <AdminInbox></AdminInbox>
       </Route> */}
 
-      <AdminPrivateRouter path="/dashboard/merchant/:companyId/products" exact>
+      <AdminPrivateRouter path="/dashboard/merchant/:merchantId/products" exact>
         <CompanyProducts />
       </AdminPrivateRouter>
 
-      <AdminPrivateRouter path="/dashboard/merchant/:companyId/product/add" exact>
+      <AdminPrivateRouter path="/dashboard/merchant/:merchantId/product/add" exact>
         <AddProduct />
       </AdminPrivateRouter>
       <AdminPrivateRouter path="/dashboard/customers" exact>
