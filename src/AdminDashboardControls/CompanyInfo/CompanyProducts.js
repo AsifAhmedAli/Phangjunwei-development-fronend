@@ -1,7 +1,8 @@
 import { useQuery } from "@apollo/client";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import ListTable from "../../components/AdminDashboard/ListTable/ListTable";
+import ListTable2 from "../../components/AdminDashboard/ListTable2/ListTable2";
 import DashboardBars from "../../components/DashboardBars/DashboardBars";
 import { GET_MERCHANT_PRODUCTS } from "../../graphql/queries";
 import goBack from "../../helpers/goBack";
@@ -20,9 +21,12 @@ export default function CompanyProducts() {
         },
     });
 
-    if (data) {
-        setMerchantProducts({ merchantProducts, ...data.merchantProducts });
-    }
+    useEffect(async()=>{
+        if (data) {
+            setMerchantProducts(data.allMerchants.content );
+            console.log(merchantProducts)
+        }
+    },[data])
 
     return (
         <DashboardBars>
@@ -33,7 +37,21 @@ export default function CompanyProducts() {
                     <span>&#x3e; Products</span>
                 </h4>
                 {loading ? 'loading....' : <>
-                    <ListTable product />
+                    {/* <ListTable product /> */}
+                    {loading ? 'loading...' :<ListTable2 cols={[  "id",
+                "Name",
+                "Company",
+                "skuTag",
+                "skuCategory",
+                "skuStyle",
+                "skuColor",
+                "skuprice",
+                "type",
+                "promoPrice",
+                "inWishlist",
+                "disabled",
+                "stockQty"]} data={merchantProducts} buttontxt={"Edit"} table_title={"All Merchants"} />}
+
                 </>}
             </section>
         </DashboardBars>

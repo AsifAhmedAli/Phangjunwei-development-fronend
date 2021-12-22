@@ -18,7 +18,7 @@ export default function ShowMerchants() {
         },
     });
     useEffect(async()=>{
-        if (!loading) {
+        if (data) {
             setMerchants(data.allMerchants.content );
             console.log(merchants)
         }
