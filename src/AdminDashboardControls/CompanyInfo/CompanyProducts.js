@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import ListTable from "../../components/AdminDashboard/ListTable/ListTable";
 import DashboardBars from "../../components/DashboardBars/DashboardBars";
 import { GET_MERCHANT_PRODUCTS } from "../../graphql/queries";

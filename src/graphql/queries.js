@@ -59,7 +59,6 @@ const GET_PRODUCTS = gql`
         allProducts(size: $size, offset: $offset) {
             totalPages
             content {
-                id
                 skuName
                 skuCompany
                 skuTag
@@ -329,21 +328,15 @@ const GET_USER_WISHLIST = gql`
         getUser(id: $id) {
             wishlists {
               id
-              description
               product {
                 id
                 skuName
-                skuId
                 skuColor
                 skuCompany
                 skuTag
+                skuPrice
                 inWishlist
-                skuPrice1
-                skuPrice2
                 promoPrice
-                srpPrice
-                skuPrice4
-                skuPrice3
               }
             }
         }
