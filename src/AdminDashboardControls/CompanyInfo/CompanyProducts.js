@@ -4,6 +4,7 @@ import ListTable from "../../components/AdminDashboard/ListTable/ListTable";
 import DashboardBars from "../../components/DashboardBars/DashboardBars";
 import { GET_MERCHANT_PRODUCTS } from "../../graphql/queries";
 import goBack from "../../helpers/goBack";
+import {useHistory} from 'react-router-dom'
 
 export default function CompanyProducts() {
     const history = useHistory();

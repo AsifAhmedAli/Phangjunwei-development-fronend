@@ -32,8 +32,8 @@ query allMerchants($size: Int, $offset: Int){
             address
             contact
             email
-            blocked
-            role
+            
+            
         }
         totalPages
     }
