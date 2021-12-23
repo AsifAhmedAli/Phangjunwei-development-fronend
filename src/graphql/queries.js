@@ -32,8 +32,6 @@ query allMerchants($size: Int, $offset: Int){
             address
             contact
             email
-            
-            
         }
         totalPages
     }
@@ -129,7 +127,7 @@ const GET_PRODUCT = gql`
 
 const GET_MERCHANT_PRODUCTS = gql`
     query getMerchantProducts($id: Int!,  $size: Int, $offset: Int){
-        merchantProducts(merchantId: $merchantId, size: $size, offset: $offset) {
+        merchantProducts(merchantId: $id, size: $size, offset: $offset) {
             content {
                 id
                 skuName

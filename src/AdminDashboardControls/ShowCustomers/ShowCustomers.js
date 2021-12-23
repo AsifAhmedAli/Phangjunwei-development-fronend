@@ -69,7 +69,7 @@ const ShowCustomers = () => {
                     <h1 className="title mb-4">Customers</h1>
                     {loading ? 'loading ....' :
                         <>
-                            <ListTable2 cols={["Customer ID", "Customer Name", "Total Orders", "Pending Orders", "Price", "Status"]} data={users} buttontxt={"Edit"} table_title={"All customers"} />
+                            <ListTable2 cols={["Customer ID", "Customer Name", "Price", "Status"]} data={person} buttontxt={"Edit"} table_title="All customers" />
                             <DashboardPagination />
                         </>
                     }

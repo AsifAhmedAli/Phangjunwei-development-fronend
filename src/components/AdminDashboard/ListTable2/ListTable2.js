@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import './ListTable2.css'
 
 const ListTable2 = ({ cols, data, buttontxt, buttondis, table_title }) => {
-
-
   return (
     <div className="show-merchants-table">
 
@@ -30,7 +28,18 @@ const ListTable2 = ({ cols, data, buttontxt, buttondis, table_title }) => {
                 return <tr key={index}>
                   {
                     Object.entries(value).map(([key, tds]) => {
-                      return <td>{tds}</td>
+                      switch (table_title) {
+                        case 'All Merchants':
+                          return <td key={key}><Link to={`/dashboard/merchant/${value.id}`}>{tds}</Link></td>
+                        case 'All Products':
+                          return <td key={key}><Link to={`/dashboard/merchant/${value.id}/product/${value.id}`}>{tds}</Link></td>
+                        case 'All Customers':
+                          return <td key={key}><Link to={`/dashboard/customer/${value.id}`}>{tds}</Link></td>
+                        case 'All Orders':
+                          return <td key={key}><Link to={`/dashboard/order/${value.id}`}>{tds}</Link></td>
+                        default:
+                          return <td key={key}>{tds}</td>
+                      }
                     })
                   }
                   {
