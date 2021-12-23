@@ -68,10 +68,10 @@ function MerchantDiscover({popularTag}) {
   }
   return (
       <>
-        <Row className="page-info-break mt-5">
+        <Row className="page-info-break ">
           <Col>
-          <div className="discover-break-title ">You may also like</div>
-            <div className="pb-4">Lorem ipsum dolor sit amet. Qui quod voluptate At deserunt tempore sed impedit volupatatibus.</div>
+          <div className="break-title text-uppercase">You may also like</div>
+            <div className="break-desc">Lorem ipsum dolor sit amet. Qui quod voluptate At deserunt tempore sed impedit voluptatibus.</div>
             <div className="text-center d-flex justify-content-center" id={"inspire-slider"}>
               {/*<Carousel*/}
               {/*  swipeable={false}*/}
@@ -95,10 +95,10 @@ function MerchantDiscover({popularTag}) {
 
                 <div>
                 <div className="carousel-card-everything">
-
+                  
                   <div>
                    <div className="popular-tag">Popular</div>
-                      <img src={"https://source.unsplash.com/400x200?1"} className="img-fluid" alt=""/>
+                      <img src={"https://source.unsplash.com/random?3"} className="img-fluid" alt=""/>
                       <div className={"caption-wrapper"}>
                       <p className="style-title">Ravaror - Dining table</p>
                         <p className="style-desc-org">$299</p>
@@ -111,7 +111,7 @@ function MerchantDiscover({popularTag}) {
                   <div className="carousel-card-everything">
                   <div>
                     <div className="popular-tag">Bestseller</div>
-                      <img src={"https://source.unsplash.com/400x200?2"} className="img-fluid" alt=""/>
+                      <img src={"https://source.unsplash.com/random?2"} className="img-fluid" alt=""/>
                       <div className={"caption-wrapper"}>
                       <p className="style-title">Eldbert - Swivel chair</p>
                         <p className="style-desc-org">$48.90</p>
@@ -124,7 +124,7 @@ function MerchantDiscover({popularTag}) {
                   <div className="carousel-card-everything">
                   <div>
                     <div className="popular-tag">Sale</div>
-                      <img src={"https://source.unsplash.com/400x200?3"} className="img-fluid" alt=""/>
+                      <img src={"https://source.unsplash.com/random?1"} className="img-fluid" alt=""/>
                       <div className={"caption-wrapper"}>
                       <p className="style-title">Kivik - Two-seat sofa</p>
                         <p className="style-desc-org">$595</p>
@@ -137,7 +137,7 @@ function MerchantDiscover({popularTag}) {
                   <div className="carousel-card-everything">
                   <div>
                     <div className="popular-tag">Popular</div>
-                      <img src={"https://source.unsplash.com/400x200?4"} className="img-fluid" alt=""/>
+                      <img src={"https://source.unsplash.com/random?3"} className="img-fluid" alt=""/>
                       <div className={"caption-wrapper"}>
                       <p className="style-title">Ravaror - Dining table</p>
                         <p className="style-desc-org">$299</p>
@@ -150,7 +150,7 @@ function MerchantDiscover({popularTag}) {
                   <div className="carousel-card-everything">
                   <div>
                     <div className="popular-tag">Bestseller</div>
-                      <img src={"https://source.unsplash.com/400x200?5"} className="img-fluid" alt=""/>
+                      <img src={"https://source.unsplash.com/random?2"} className="img-fluid" alt=""/>
                       <div className={"caption-wrapper"}>
                       <p className="style-title">Eldbert - Swivel chair</p>
                       <p className="style-desc-org">$48.90</p>
@@ -163,7 +163,7 @@ function MerchantDiscover({popularTag}) {
                   <div className="carousel-card-everything">
                   <div>
                     <div className="popular-tag">Sale</div>
-                      <img src={"https://source.unsplash.com/400x200?6"} className="img-fluid" alt=""/>
+                      <img src={"https://source.unsplash.com/random?1"} className="img-fluid" alt=""/>
                       <div className={"caption-wrapper"}>
                       <p className="style-title">Kivik - Two-seat sofa</p>
                       <p className="style-desc-org">$595</p>

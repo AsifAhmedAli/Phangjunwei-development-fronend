@@ -11,25 +11,6 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 export default function CompanyProducts() {
-    let history = useHistory();
-    const [offset, setOffset] = useState(0);
-    // Get id from params
-    const merchantId = history.location.pathname.split('/')[3];
-    const [merchantProducts, setMerchantProducts] = useState([]);
-    const { loading, error, data } = useQuery(GET_MERCHANT_PRODUCTS, {
-        variables: {
-            offset: offset,
-            merchantId: +merchantId
-        },
-    });
-
-    if (data) {
-        setMerchantProducts({ merchantProducts, ...data.merchantProducts });
-    }
-
-    const goToPreviousPath = () => {
-        history.goBack()
-    }
 
     return (
         <DashboardBars>

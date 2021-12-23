@@ -155,6 +155,57 @@ function MerchantHome() {
                 </Modal.Body>
             </Modal>
 
+            <Row className="merchant-stats">
+                <Col md={1}>&nbsp;</Col>
+                <Col md={5} className="merchant-details">
+                    <div className="logo"><img src={sampleLogo} alt="Merchant Logo" /></div>
+                    <div>
+                        <p><strong>Company Name</strong></p>
+                        <p>Address: Lorem ipsum lorem ipsum
+                            Lorem ipsum lorem ipsum
+                        </p>
+                        <p>Contact: +1234 5678</p>
+                        <p>Email: abc@gmail.com</p>
+                    </div>
+                </Col>
+                <Col md={4} className="merchant-info">
+                    <Row className="stat">
+                        <Col md={6}>
+                            <img src={packaged} alt="Products" />
+                            Products: <span>68</span>
+                        </Col>
+                        <Col md={6}>
+                            <img src={shipping} alt="Delivery" />
+                            Delivery: <span>Within 7 days</span>
+                        </Col>
+                    </Row>
+
+                    <Row className="stat">
+                        <Col md={6}>
+                            <img src={rating} alt="Rating" />
+                            Rating: <span>4.8</span>
+                        </Col>
+                        <Col md={6}>
+                            <img src={profile} alt="Joined" />
+                            Joined: <span>2 months ago</span>
+                        </Col>
+                    </Row>
+
+                    <Row className="stat">
+                        <Col md={6}>
+                            <img src={chat} alt="Response" />
+                            Response: <span>100%</span>
+                        </Col>
+                        <Col md={6}>
+                            <img src={follow} alt="Followers" />
+                            Followers: <span>109</span>
+                        </Col>
+                    </Row>
+
+                </Col>
+                <Col md={2}>&nbsp;</Col>
+            </Row>
+
             <Row className="merchant-main-menu">
                 <Col md={1}>&nbsp;</Col>
                 <Col md={8}>
@@ -176,7 +227,6 @@ function MerchantHome() {
             <Row className="merchant-products">
                 <Col md={1}>&nbsp;</Col>
                 <Col md={2} className="category-choices">
-                    <Row className="category-spacing"></Row>
                     <Category />
                     <Category />
                     <Category />
@@ -186,6 +236,7 @@ function MerchantHome() {
                 </Col>
                 <Col md={9} className="search-product-list">
                     <Row>
+                        <Col md={1}>&nbsp;</Col>
                         <Col md={6} className="section-title d-flex justify-content-start align-items-end">{'All Products (201)'}</Col>
 
                         <Col md={3} className="text-center justify-content-start align-items-end">
@@ -195,7 +246,7 @@ function MerchantHome() {
                             </div>
                         </Col>
 
-                        <Col md={3} className="text-center justify-content-start align-items-end">
+                        <Col md={2} className="text-center justify-content-start align-items-end">
                             <Form.Group controlId="selFilter" className="filter">
                                 <Form.Control as="select" Style={"font-weight: bold;"}>
                                     <option>Filter By</option>

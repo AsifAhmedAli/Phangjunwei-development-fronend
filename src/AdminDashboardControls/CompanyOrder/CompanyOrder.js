@@ -1,24 +1,11 @@
-<<<<<<< HEAD
-import React,{useState} from 'react'
-=======
 import React, { useState } from 'react'
->>>>>>> b24bfd93efc754b8f89a3152dac810adf5fc71a8
 import DashboardBars from '../../components/DashboardBars/DashboardBars'
 import DashboardPagination from '../../components/AdminDashboard/DashboardPagination/DashboardPagination'
 import ListTable2 from '../../components/AdminDashboard/ListTable2/ListTable2'
 import goBack from '../../helpers/goBack'
-import { GET_ORDERS } from '../../graphql/queries'
-import { useQuery } from '@apollo/client'
 
 
 const CompanyOrder = () => {
-    const [allOrders, setAllOrders] = useState([]);
-    const { loading, error, data } = useQuery(GET_ORDERS);
-
-    if (data) {
-        setAllOrders({ allOrders, ...data.allOrders });
-    }
-
     const person = [
         {
             td1: "1",
@@ -58,12 +45,9 @@ const CompanyOrder = () => {
                         <a onClick={goBack}>Company A</a>
                         <span>&#x3e; Orders</span>
                     </h4>
-                    {loading ? 'loading....' : <>
-                        <ListTable2 cols={["Order ID", "Transaction Date", "Item", "Customer Name", "Amount", "Status",]} data={person} buttontxt={"View Invoice"} />
+                    <ListTable2 cols={["Order ID", "Transaction Date", "Item", "Customer Name", "Amount", "Status",]} data={person} buttontxt={"View Invoice"} />
 
-                        <DashboardPagination />
-                    </>
-                    }
+                    <DashboardPagination />
                 </section>
             </DashboardBars>
 

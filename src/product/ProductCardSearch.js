@@ -13,8 +13,7 @@ function ProductCardSearch({ popularTag, isWishlist, productName, productPrice, 
                 <div className="card-wishlist">{isWishlist ? <HeartFill size={18} color="#FF8200" /> : <Heart size={18} color="#FF8200" />}</div>
                 <div><img src={sample_prod_img} /></div>
                 <div className="name text-left">{productName}</div>
-                <div className="text-left tags-edit">
-                {/*<div className="tags text-left">*/}
+                <div className="tags text-left">
                     <span>{productCompany}</span>
                     <span>{productExtraInfo}</span>
                 </div>

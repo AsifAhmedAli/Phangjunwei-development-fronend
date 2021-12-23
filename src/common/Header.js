@@ -22,20 +22,7 @@ import cat_img1 from '../images/menu/category_icon1.jpg';
 import cat_img2 from '../images/menu/category_icon2.jpg';
 import img_placeholder from '../images/menu/img_cat_placeholder.jpg';
 
-import { GET_MERCHANT } from '../graphql/queries';
-import { useQuery } from '@apollo/client';
-
-
 function Header() {
-
-    const { loading, data } = useQuery(
-        GET_MERCHANT,
-        {
-            variables: {
-                id: 10
-            }
-        }
-    );
     const [isRecentSearchFocus, setIsRecentSearchFocus] = useState(false);
 
     const showRecentSearch = (e) => {
@@ -79,140 +66,133 @@ function Header() {
             } else {
                 document.getElementById('other-cat-menu').style.display = 'none';
             }
-        }, 350);
+        }, 2000);
     }
 
     return (
         <>
-            <div className="page-header-top-div">
-                <Row className="page-header-top">
-                    <Col md={8} />
-                    <Col md={4} className='first-header-elements'>
-                        <ul className="top-menu">
-                            <li>COVID-19 Updates</li>
-                            <li><a href="/faqs">FAQ</a></li>
-                            <li className="currency"><img src={sg_curr} /></li>
-                        </ul>
-                    </Col>
-                </Row>
-            </div>
+            <Row className="page-header-top">
+                <Col md={8}>&nbsp;</Col>
+                <Col md={4}>
+                    <ul className="top-menu">
+                        <li>COVID-19 Updates</li>
+                        <li><a href="/faqs">FAQ</a></li>
+                        <li className="currency"><img src={sg_curr} /></li>
+                    </ul>
+                </Col>
+            </Row>
 
-            <div className='page-header-searchbar-div'>
-                <Row className="page-header-searchbar">
-                    <Col md={4} lg={3} sm={4} className="text-center"><img src={burrow_rabbit_logo} alt="burrows-brand" className="logo-brand" />&nbsp;&nbsp;<a href="/"><img src={burrow_logo} alt="burrows-logo" className="burrows-white" /></a></Col>
-                    <Col md={4} lg={6} sm={4} className="text-center">
-                        <InputGroup className="search-control">
-                            <img src={icon_search} alt="search-icon" className="search-icon" />
-                            <FormControl
-                                placeholder="Search"
-                                aria-label="Search"
-                                size='sm'
-                                aria-describedby="basic-addon1"
-                                onClick={showRecentSearch}
-                                onMouseOut={onSearchLeave}
-                            />
-                            <img src={icon_scan} alt="scan-icon" className="scan-icon" />
-                        </InputGroup>
-                        <div className="text-center recent-search" id="recent-search-box" onFocus={recentSearchFocus} onMouseEnter={recentSearchFocus} onMouseOut={recentSearchOut}>
-                            <div className="searchterm">Sofa</div>
-                            <div className="searchterm">Chair</div>
-                            <div className="searchterm">Table</div>
-                            <div className="clear">Clear recent searches</div>
-                        </div>
-                    </Col>
-                    <Col md={4} lg={3} sm={4} className="text-center user-menu">
-                        <a href="/account/wishlist"><span><Heart size={20} /><p>Wishlist</p></span></a>
-                        <a href="/my-cart"><span><Handbag size={20} /><p>Cart</p></span></a>
-                        <a href="/account/purchases"><span><Person size={20} /><p>Profile</p></span></a>
-                    </Col>
-                </Row>
-            </div>
+            <Row className="page-header-searchbar">
+                <Col md={4} className="text-center"><img src={burrow_rabbit_logo} alt="burrows-brand" className="logo-brand" />&nbsp;&nbsp;<a href="/"><img src={burrow_logo} alt="burrows-logo" /></a></Col>
+                <Col md={4} className="text-center">
+                    <InputGroup className="search-control">
+                        <img src={icon_search} alt="search-icon" className="search-icon" />
+                        <FormControl
+                            placeholder="Search"
+                            aria-label="Search"
+                            aria-describedby="basic-addon1"
+                            onClick={showRecentSearch}
+                            onMouseOut={onSearchLeave}
+                        />
+                        <img src={icon_scan} alt="scan-icon" className="scan-icon" />
+                    </InputGroup>
+                    <div className="text-center recent-search" id="recent-search-box" onFocus={recentSearchFocus} onMouseEnter={recentSearchFocus} onMouseOut={recentSearchOut}>
+                        <div className="searchterm">Sofa</div>
+                        <div className="searchterm">Chair</div>
+                        <div className="searchterm">Table</div>
+                        <div className="clear">Clear recent searches</div>
+                    </div>
+                </Col>
+                <Col md={4} className="text-center user-menu">
+                    <a href="/account/wishlist"><span><Heart size={26} /><p>Wishlist</p></span></a>
+                    <a href="/my-cart"><span><Handbag size={26} /><p>Cart</p></span></a>
+                    <a href="/account/purchases"><span><Person size={26} /><p>Profile</p></span></a>
+                </Col>
+            </Row>
 
-            <div className="page-header-category-menu-div">
-                <Row className="page-header-category-menu text-center">
-                    <Col>
-                        <ul className={"categories-links"}>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Sale</li>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>All</li>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Table</li>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Sofa</li>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Shelves</li>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Dining</li>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Beds</li>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Mattresses</li>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Lighting</li>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Decor</li>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Kitchen</li>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Lifestyle</li>
-                            <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Accessories</li>
-                        </ul>
-                        <div className="text-center popup-submenu sale-menu" id="sale-menu">
-                            <Row>
-                                <Col>&nbsp;</Col>
-                                <Col><img src={promo1} alt="promo-1" /></Col>
-                                <Col><img src={promo2} alt="promo-2" /></Col>
-                                <Col><img src={promo3} alt="promo-3" /></Col>
-                                <Col><img src={promo4} alt="promo-4" /></Col>
-                                <Col>&nbsp;</Col>
-                            </Row>
-                        </div>
-                        <div className="text-center popup-submenu all-cat-menu" id="all-cat-menu">
-                            <Row>
-                                <Col md={2} className="main-menu text-center">
-                                    <div className="menu-list">
-                                        <div className="menu-item"><img src={cat_img1} /><span>Living Room</span></div>
-                                        <div className="menu-item"><img src={cat_img2} /><span>Dining Room</span></div>
-                                        <div className="menu-item"><img src={cat_img2} /><span>Bedroom</span></div>
-                                    </div>
-                                </Col>
-                                <Col md={10} className="sub-menu text-left">
-                                    <div className="menu-items">
-                                        <div>All Sofas</div>
-                                        <div>Sectional Sofas</div>
-                                        <div>Sofas</div>
-                                        <div>2 Seater Sofas</div>
-                                        <div>Sofa Beds</div>
-                                        <div>Armchairs</div>
-                                    </div>
-                                    <div className="menu-items">
-                                        <div>Footstools</div>
-                                        <div>Coffee Tables</div>
-                                        <div>Side Tables</div>
-                                        <div>TV Consoles</div>
-                                        <div>{'Shelves & Cabinets'}</div>
-                                        <div>Dining Room Sets</div>
-                                    </div>
-                                    <div className="menu-items">
-                                        <div className="last-item">All Living Room</div>
-                                    </div>
-                                </Col>
-                            </Row>
-                        </div>
-                        <div className="text-center popup-submenu all-cat-menu" id="other-cat-menu">
-                            <Row>
-                                <Col md={12} className="sub-menu text-left">
-                                    <div className="menu-items">
-                                        <div>Lorem Ipsum</div>
-                                        <div>Lorem Ipsum</div>
-                                        <div>Lorem Ipsum</div>
-                                        <div>Lorem Ipsum</div>
-                                        <div>Lorem Ipsum</div>
-                                    </div>
-                                    <div className="menu-items">
-                                        <div>Lorem Ipsum</div>
-                                        <div>Lorem Ipsum</div>
-                                        <div>Lorem Ipsum</div>
-                                        <div>Lorem Ipsum</div>
-                                    </div>
-                                    <div className="category-image-view">
-                                        <img src={img_placeholder} alt="placeholder-img-category" />
-                                    </div>
-                                </Col>
-                            </Row>
-                        </div>
-                    </Col>
-                </Row>
-            </div>
+            <Row className="page-header-category-menu text-center">
+                <Col>
+                    <ul className={"categories-links"}>
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Sale</li>
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>All</li>
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Table</li> 
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Sofa</li>
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Shelves</li>
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Dining</li>
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Beds</li>
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Mattresses</li>
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Lighting</li>
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Decor</li>
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Kitchen</li>
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Lifestyle</li>
+                        <li onMouseOver={handleMenuStripClick} onClick={handleMenuStripClick} onMouseLeave={handleCloseMenuStripClick}>Accessories</li>
+                    </ul>
+                    <div className="text-center popup-submenu sale-menu" id="sale-menu">
+                        <Row>
+                            <Col>&nbsp;</Col>
+                            <Col><img src={promo1} alt="promo-1" /></Col>
+                            <Col><img src={promo2} alt="promo-2" /></Col>
+                            <Col><img src={promo3} alt="promo-3" /></Col>
+                            <Col><img src={promo4} alt="promo-4" /></Col>
+                            <Col>&nbsp;</Col>
+                        </Row>
+                    </div>
+                    <div className="text-center popup-submenu all-cat-menu" id="all-cat-menu">
+                        <Row>
+                            <Col md={2} className="main-menu text-center">
+                                <div className="menu-list">
+                                    <div className="menu-item"><img src={cat_img1} /><span>Living Room</span></div>
+                                    <div className="menu-item"><img src={cat_img2} /><span>Dining Room</span></div>
+                                    <div className="menu-item"><img src={cat_img2} /><span>Bedroom</span></div>
+                                </div>
+                            </Col>
+                            <Col md={10} className="sub-menu text-left">
+                                <div className="menu-items">
+                                    <div>All Sofas</div>
+                                    <div>Sectional Sofas</div>
+                                    <div>Sofas</div>
+                                    <div>2 Seater Sofas</div>
+                                    <div>Sofa Beds</div>
+                                    <div>Armchairs</div>
+                                </div>
+                                <div className="menu-items">
+                                    <div>Footstools</div>
+                                    <div>Coffee Tables</div>
+                                    <div>Side Tables</div>
+                                    <div>TV Consoles</div>
+                                    <div>{'Shelves & Cabinets'}</div>
+                                    <div>Dining Room Sets</div>
+                                </div>
+                                <div className="menu-items">
+                                    <div className="last-item">All Living Room</div>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                    <div className="text-center popup-submenu all-cat-menu" id="other-cat-menu">
+                        <Row>
+                            <Col md={12} className="sub-menu text-left">
+                                <div className="menu-items">
+                                    <div>Lorem Ipsum</div>
+                                    <div>Lorem Ipsum</div>
+                                    <div>Lorem Ipsum</div>
+                                    <div>Lorem Ipsum</div>
+                                    <div>Lorem Ipsum</div>
+                                </div>
+                                <div className="menu-items">
+                                    <div>Lorem Ipsum</div>
+                                    <div>Lorem Ipsum</div>
+                                    <div>Lorem Ipsum</div>
+                                    <div>Lorem Ipsum</div>
+                                </div>
+                                <div className="category-image-view">
+                                    <img src={img_placeholder} alt="placeholder-img-category" />
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </Col>
+            </Row>
         </>
     );
 }

@@ -68,81 +68,80 @@ function Collections({title}) {
     }
     return (
         <>
-            <Row className="page-info-break text-center">
+            <Row className="page-info-break ">
                 <Col>
                     <div className="break-title">{title}</div>
                     <div className="break-desc">Lorem ipsum dolor sit amet. Qui quod voluptate At deserunt tempore sed impedit voluptatibus....</div>
-                    <div className="text-to-center d-flex justify-content-center" id={"merchant-slider"}>
+                    <div className="text-center d-flex justify-content-center" id={"merchant-slider"}>
 
                         <Slider {...settings}>
 
-                            {/* add in a new classname instead of before-inspire and inspire-image-div */}
-                            <div className="before-inspire-card">
-                                <div className="carousel-card-everything inspire-image-div">
+                            <div>
+                                <div className="carousel-card-everything">
                                     <div>
                                         <img src={"https://source.unsplash.com/random?3"} className="img-fluid" alt=""/>
                                         <div className={"caption-wrapper"}>
-                                            <div className="style-title">HardWood</div>
+                                            <p className="style-title">HardWood</p>
                                             <p className="style-desc">Lorem ipsum dolor sit amet. Qui quod voluptate At</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="before-inspire-card">
-                                <div className="carousel-card-everything inspire-image-div">
+                            <div>
+                                <div className="carousel-card-everything">
                                     <div>
                                         <img src={"https://source.unsplash.com/random?2"} className="img-fluid" alt=""/>
                                         <div className={"caption-wrapper"}>
-                                            <div className="style-title">Kitchen</div>
+                                            <p className="style-title">Kitchen</p>
                                             <p className="style-desc">Lorem ipsum dolor sit amet. Qui quod voluptate At</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="before-inspire-card">
-                                <div className="carousel-card-everything inspire-image-div">
+                            <div>
+                                <div className="carousel-card-everything">
                                     <div>
                                         <img src={"https://source.unsplash.com/random?1"} className="img-fluid" alt=""/>
                                         <div className={"caption-wrapper"}>
-                                            <div className="style-title">White</div>
+                                            <p className="style-title">White</p>
                                             <p className="style-desc">Lorem ipsum dolor sit amet. Qui quod voluptate At</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="before-inspire-card">
-                                <div className="carousel-card-everything inspire-image-div">
+                            <div>
+                                <div className="carousel-card-everything">
                                     <div>
                                         <img src={"https://source.unsplash.com/random?3"} className="img-fluid" alt=""/>
                                         <div className={"caption-wrapper"}>
-                                            <div className="style-title">Contemporary</div>
+                                            <p className="style-title">Contemporary</p>
                                             <p className="style-desc">Lorem ipsum dolor sit amet. Qui quod voluptate At</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="before-inspire-card"> 
-                                <div className="carousel-card-everything inspire-image-div">
+                            <div>
+                                <div className="carousel-card-everything">
                                     <div>
                                         <img src={"https://source.unsplash.com/random?2"} className="img-fluid" alt=""/>
                                         <div className={"caption-wrapper"}>
-                                            <div className="style-title">Modern</div>
+                                            <p className="style-title">Modern</p>
                                             <p className="style-desc">Lorem ipsum dolor sit amet. Qui quod voluptate At</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="before-inspire-card">
-                                <div className="carousel-card-everything inspire-image-div">
+                            <div>
+                                <div className="carousel-card-everything">
                                     <div>
                                         <img src={"https://source.unsplash.com/random?1"} className="img-fluid" alt=""/>
                                         <div className={"caption-wrapper"}>
-                                            <div className="style-title">Industrial</div>
+                                            <p className="style-title">Industrial</p>
                                             <p className="style-desc">Lorem ipsum dolor sit amet. Qui quod voluptate At</p>
                                         </div>
                                     </div>

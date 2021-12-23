@@ -16,12 +16,12 @@ function MoreIdea() {
     const[current, setCurrent] = useState("bedroom")
     return (
         <>
-            <Row className="page-info-break more-ideas-main-div more-ideas text-center">
-                <Col className='p-0'>
-                    <div className="break-title-3 ">More ideas and inspiration</div>
-                    <div className="break-desc-3 ">Lorem ipsum dolor sit amet. Qui quod voluptate At deserunt tempore sed impedit voluptatibus.</div>
+            <Row className="page-info-break more-ideas text-center">
+                <Col>
+                    <div className="break-title-3 text-left">More ideas and inspiration</div>
+                    <div className="break-desc-3 text-left">Lorem ipsum dolor sit amet. Qui quod voluptate At deserunt tempore sed impedit voluptatibus.</div>
                     <div className="category-pill pl-3">
-                        <ul className={"flex-small-pills"}>
+                        <ul className={"flex-small-pills text-left"}>
                             {buttons.map((m, key) => {
                                 return(
                                     <li onClick={()=>{setCurrent(m)}} className={current === m? "selected": ""} >

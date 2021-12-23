@@ -7,27 +7,27 @@ import cat_img from '../images/category/cat_1.png'
 
 function PageCarousel({isHomePage, isCategory}) {
     return (
-        <div className="home-page-carousel">
-            <Row className="page-header-category-menu carousel  text-center">
+        <>
+            <Row className="page-header-category-menu carousel text-center">
                 <Col className="p-0">
                     <Carousel>
                         <Carousel.Item>
                             <img
-                                className="d-block w-100 home-slider-image"
+                                className="d-block w-100"
                                 src={isHomePage ? carousel_img : (isCategory ? cat_img : merchant_img)}
                                 alt="First slide"
                             />
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
-                                className="d-block w-100 home-slider-image"
+                                className="d-block w-100"
                                 src={isHomePage ? carousel_img : (isCategory ? cat_img : merchant_img)}
                                 alt="Second slide"
                             />
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
-                                className="d-block w-100 home-slider-image"
+                                className="d-block w-100"
                                 src={isHomePage ? carousel_img : (isCategory ? cat_img : merchant_img)}
                                 alt="Third slide"
                             />
@@ -36,7 +36,7 @@ function PageCarousel({isHomePage, isCategory}) {
                     </Carousel>
                 </Col>
             </Row>
-        </div>
+        </>
     );
 }
 

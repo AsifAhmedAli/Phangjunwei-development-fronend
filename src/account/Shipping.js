@@ -11,7 +11,7 @@ import google_card from '../images/card-googlepay2.png';
 import maestro_card from '../images/card-maestro2.png';
 import master_card from '../images/card-master2.png';
 import { useState } from 'react';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { GoogleLogin, GoogleLogout  } from 'react-google-login';
 
 function Shipping() {
     const [showFBLogout, setShowFBLogout] = useState(false);
@@ -19,16 +19,18 @@ function Shipping() {
     const [loginName, setLoginName] = useState('');
 
     const responseGoogle = (response) => {
+        console.log(response);
 
         if (response.tokenId) {
             setShowGLogout(true);
-            if (response.profileObj) {
+            if(response.profileObj) {
                 setLoginName(response.profileObj.givenName + ' ' + response.profileObj.familyName);
             }
         }
     }
 
     const googleLogout = (response) => {
+        console.log(response);
         setShowGLogout(false);
     }
 
@@ -57,14 +59,15 @@ function Shipping() {
 
         fetch("http://localhost:4242/create-checkout-session", requestOptions)
             .then(response => response.text())
-            .then(result => result)
-            .catch(error => error);
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
     }
 
     const handleFBLogin = (e) => {
         window.FB.login(function (response) {
             if (response.status === 'connected') {
                 window.FB.api('/me', function (res) {
+                    console.log(res);
                     //alert('Welcome back ' + res.name);
                     setLoginName(res.name);
                     setShowFBLogout(true);
@@ -78,6 +81,7 @@ function Shipping() {
 
     const handleFBLogout = (e) => {
         window.FB.logout(function (response) {
+            console.log(response);
             setShowFBLogout(false);
         });
     }

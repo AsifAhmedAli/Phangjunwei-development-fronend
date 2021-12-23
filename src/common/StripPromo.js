@@ -5,18 +5,18 @@ import Col from 'react-bootstrap/Col';
 function StripPromo() {
     return (
         <>
-            <Row className=" text-center-thumbsup">
-                <Col className={"col-3 col-md-3 thumbsup-text"}>
-                    <img src={like_icon} alt="like icon" className="thumbsup-img" /> Lorem ipsum dolor
+            <Row className="page-merchant-break text-center">
+                <Col className={"col-6 col-md-3"}>
+                    <img src={like_icon} alt="like icon" /> Lorem ipsum dolor
                 </Col>
-                <Col className={"col-3 col-md-3 thumbsup-text"}>
-                    <img src={like_icon} alt="like icon" className="thumbsup-img"/> Lorem ipsum dolor
+                <Col className={"col-6 col-md-3"}>
+                    <img src={like_icon} alt="like icon"/> Lorem ipsum dolor
                 </Col>
-                <Col className={"col-3 col-md-3 thumbsup-text"}>
-                    <img src={like_icon} alt="like icon" className="thumbsup-img"/> Lorem ipsum dolor
+                <Col className={"col-6 col-md-3"}>
+                    <img src={like_icon} alt="like icon"/> Lorem ipsum dolor
                 </Col>
-                <Col className={"col-3 col-md-3 thumbsup-text"}>
-                    <img src={like_icon} alt="like icon" className="thumbsup-img"/> Lorem ipsum dolor
+                <Col className={"col-6 col-md-3"}>
+                    <img src={like_icon} alt="like icon"/> Lorem ipsum dolor
                 </Col>
             </Row>
         </>
