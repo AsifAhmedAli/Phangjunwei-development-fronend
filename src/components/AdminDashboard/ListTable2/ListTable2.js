@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import './ListTable2.css'
 
 const ListTable2 = ({ cols, data, buttontxt, buttondis, table_title }) => {
+
+
   return (
     <div className="show-merchants-table">
 
@@ -13,7 +15,7 @@ const ListTable2 = ({ cols, data, buttontxt, buttondis, table_title }) => {
           <thead className="merchant-table-head avenir-black">
             <tr >
               {cols.map((value, index) => {
-                return <th key={index} scope="col ">{value}</th>
+                return <th scope="col ">{value}</th>
               })}
               {
                 !buttondis ? <th scope="col">Operation</th> : <></>
@@ -25,21 +27,10 @@ const ListTable2 = ({ cols, data, buttontxt, buttondis, table_title }) => {
 
             {
               data.map((value, index) => {
-                return <tr key={index}>
+                return <tr>
                   {
                     Object.entries(value).map(([key, tds]) => {
-                      switch (table_title) {
-                        case 'All Merchants':
-                          return <td key={key}><Link to={`/dashboard/merchant/${value.id}`}>{tds}</Link></td>
-                        case 'All Products':
-                          return <td key={key}><Link to={`/dashboard/merchant/${value.id}/product/${value.id}`}>{tds}</Link></td>
-                        case 'All Customers':
-                          return <td key={key}><Link to={`/dashboard/customer/${value.id}`}>{tds}</Link></td>
-                        case 'All Orders':
-                          return <td key={key}><Link to={`/dashboard/order/${value.id}`}>{tds}</Link></td>
-                        default:
-                          return <td key={key}>{tds}</td>
-                      }
+                      return <td>{tds}</td>
                     })
                   }
                   {

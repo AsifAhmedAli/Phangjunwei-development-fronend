@@ -32,6 +32,8 @@ query allMerchants($size: Int, $offset: Int){
             address
             contact
             email
+            
+            
         }
         totalPages
     }
@@ -127,7 +129,7 @@ const GET_PRODUCT = gql`
 
 const GET_MERCHANT_PRODUCTS = gql`
     query getMerchantProducts($id: Int!,  $size: Int, $offset: Int){
-        merchantProducts(merchantId: $id, size: $size, offset: $offset) {
+        merchantProducts(merchantId: $merchantId, size: $size, offset: $offset) {
             content {
                 id
                 skuName
@@ -341,32 +343,6 @@ const GET_USER_WISHLIST = gql`
     }
 `
 
-const USER_ORDERS = gql`
-    query GetUserOrders($userId: Int!) {
-        getUserOrders(id: $userId) {
-            OrderId
-            ProductId
-            MerchantId
-            clientFirstName
-            clientEmail
-            clientLastName
-        }
-    }
-`
-const GET_USER_ORDER_WITH_STATUS = gql`
-    query GetUserInfo($userId: Int!) {
-        getUserInfo(id: $userId) {
-            totalOrders
-            pendingOrders
-            user {
-                id
-                name
-                email
-                role
-            }
-        }
-    }
-`
 
 export {
     GET_USERS,
@@ -387,7 +363,5 @@ export {
     MERCHANT_IMAGES,
     GET_PRODUCT,
     PRODUCT_IMAGES,
-    GET_PARENT_PRODUCTS,
-    USER_ORDERS,
-    GET_USER_ORDER_WITH_STATUS
+    GET_PARENT_PRODUCTS
 };

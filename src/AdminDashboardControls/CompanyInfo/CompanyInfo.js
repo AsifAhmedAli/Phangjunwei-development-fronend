@@ -6,38 +6,24 @@ import { ThreeDots, PencilFill, XLg } from 'react-bootstrap-icons';
 import { person_info_image } from '../../images/dashboard';
 import ListTable from "../../components/AdminDashboard/ListTable/ListTable";
 import goBack from '../../helpers/goBack';
-import { GET_MERCHANT, GET_MERCHANT_PRODUCTS, GET_PARENT_PRODUCTS } from "../../graphql/queries";
+import { GET_MERCHANT, GET_PARENT_PRODUCTS } from "../../graphql/queries";
 import { useQuery } from "@apollo/client";
-import { useEffect, useState } from "react";
-import ListTable2 from "../../components/AdminDashboard/ListTable2/ListTable2";
+import { useState } from "react";
 
 export default function CompanyInfo() {
     const history = useHistory();
     // Get id from params
     const merchantId = history.location.pathname.split('/')[3];
-    const [merchant, setMerchant] = useState(null);
-    const [products, setProducts] = useState([]);
+    const [merchant, setMerchant] = useState([]);
     const { loading, error, data } = useQuery(GET_MERCHANT, {
         variables: {
             id: +merchantId
         },
     });
 
-    const { loading: loading2, error: error2, data: data2 } = useQuery(GET_MERCHANT_PRODUCTS, {
-        variables: {
-            id: +merchantId
-        }
-    })
-
-    useEffect(() => {
-        if (data) {
-            setMerchant(data.getMerchant);
-        }
-        if (data2) {
-            setProducts([products, ...data2.merchantProducts.content]);
-        }
-    }, [])
-
+    if (data) {
+        setMerchant({ merchant, ...data.getMerchant });
+    }
 
     return (
         <DashboardBars>
@@ -131,7 +117,7 @@ export default function CompanyInfo() {
                             </div>
                         </div>
 
-                        {loading2 ? 'loading...' : <ListTable cols={["Product ID", "Product Name", "Total Orders", "Price", "Status"]} data={products} buttontxt={"Edit"} table_title="All Products" />}
+                        <ListTable product location={history.location.pathname} />
                     </>}
             </section>
         </DashboardBars>

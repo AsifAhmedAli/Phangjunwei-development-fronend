@@ -1,12 +1,11 @@
 import { useQuery } from "@apollo/client";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import ListTable from "../../components/AdminDashboard/ListTable/ListTable";
-import ListTable2 from "../../components/AdminDashboard/ListTable2/ListTable2";
 import DashboardBars from "../../components/DashboardBars/DashboardBars";
 import { GET_MERCHANT_PRODUCTS } from "../../graphql/queries";
 import goBack from "../../helpers/goBack";
-// import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 export default function CompanyProducts() {
     const history = useHistory();
@@ -21,12 +20,9 @@ export default function CompanyProducts() {
         },
     });
 
-    useEffect(async()=>{
-        if (data) {
-            setMerchantProducts(data.allMerchants.content );
-            console.log(merchantProducts)
-        }
-    },[data])
+    if (data) {
+        setMerchantProducts({ merchantProducts, ...data.merchantProducts });
+    }
 
     return (
         <DashboardBars>
@@ -37,21 +33,7 @@ export default function CompanyProducts() {
                     <span>&#x3e; Products</span>
                 </h4>
                 {loading ? 'loading....' : <>
-                    {/* <ListTable product /> */}
-                    {loading ? 'loading...' :<ListTable2 cols={[  "id",
-                "Name",
-                "Company",
-                "skuTag",
-                "skuCategory",
-                "skuStyle",
-                "skuColor",
-                "skuprice",
-                "type",
-                "promoPrice",
-                "inWishlist",
-                "disabled",
-                "stockQty"]} data={merchantProducts} buttontxt={"Edit"} table_title={"All Merchants"} />}
-
+                    <ListTable product />
                 </>}
             </section>
         </DashboardBars>

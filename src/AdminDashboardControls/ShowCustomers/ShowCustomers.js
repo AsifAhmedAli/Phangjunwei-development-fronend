@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import ListTable from '../../components/AdminDashboard/ListTable/ListTable'
 import ListTable2 from '../../components/AdminDashboard/ListTable2/ListTable2'
 import DashboardBars from '../../components/DashboardBars/DashboardBars'
-import { COUNT_USER_ORDERS, GET_USERS } from '../../graphql/queries'
+import { GET_USERS } from '../../graphql/queries'
 import DashboardPagination from '../../components/AdminDashboard/DashboardPagination/DashboardPagination'
 import { useQuery } from '@apollo/client'
 const ShowCustomers = () => {
@@ -15,13 +15,10 @@ const ShowCustomers = () => {
         },
     });
 
-    useEffect(() => {
-        if (data) {
-            setUsers([users, ...data.allUser.content]);
-        }
-    }, [data])
-
     if (error) return <p>Error fetching Data, Login Again</p>
+    if (data) {
+        setUsers({ users, ...data.allUser.content });
+    }
 
     const person = [
         {
@@ -69,7 +66,7 @@ const ShowCustomers = () => {
                     <h1 className="title mb-4">Customers</h1>
                     {loading ? 'loading ....' :
                         <>
-                            <ListTable2 cols={["Customer ID", "Customer Name", "Price", "Status"]} data={person} buttontxt={"Edit"} table_title="All customers" />
+                            <ListTable2 cols={["Customer ID", "Customer Name", "Total Orders", "Pending Orders", "Price", "Status"]} data={users} buttontxt={"Edit"} table_title={"All customers"} />
                             <DashboardPagination />
                         </>
                     }
