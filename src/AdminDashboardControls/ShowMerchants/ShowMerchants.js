@@ -17,21 +17,20 @@ export default function ShowMerchants() {
             offset: offset
         },
     });
-    useEffect(async()=>{
+    useEffect(async () => {
         if (data) {
-            setMerchants(data.allMerchants.content );
-            console.log(merchants)
+            setMerchants(data.allMerchants.content);
         }
-    },[data])
-     
+    }, [data])
+
     if (error) return <p>Error</p>
-  
-   
+
+
 
     return (
         <section id="show-merchants">
             <h1 className="title mb-4">Merchants</h1>
-            {loading ? 'loading...' :<ListTable2 cols={["ID", "Name", "Adress", "Contact","Email",]} data={merchants} buttontxt={"Edit"} table_title={"All Merchants"} />}
+            {loading ? 'loading...' : <ListTable2 cols={["ID", "Name", "Adress", "Contact", "Email",]} data={merchants} buttontxt={"Edit"} table_title={"All Merchants"} />}
             {loading ? ' ' : <DashboardPagination />}
         </section>
     )

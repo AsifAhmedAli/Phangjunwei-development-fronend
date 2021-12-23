@@ -15,7 +15,7 @@ const ListTable2 = ({ cols, data, buttontxt, buttondis, table_title }) => {
           <thead className="merchant-table-head avenir-black">
             <tr >
               {cols.map((value, index) => {
-                return <th scope="col ">{value}</th>
+                return <th key={index} scope="col ">{value}</th>
               })}
               {
                 !buttondis ? <th scope="col">Operation</th> : <></>
@@ -27,7 +27,7 @@ const ListTable2 = ({ cols, data, buttontxt, buttondis, table_title }) => {
 
             {
               data.map((value, index) => {
-                return <tr>
+                return <tr key={index}>
                   {
                     Object.entries(value).map(([key, tds]) => {
                       return <td>{tds}</td>

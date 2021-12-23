@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ListTable from '../../components/AdminDashboard/ListTable/ListTable'
 import ListTable2 from '../../components/AdminDashboard/ListTable2/ListTable2'
 import DashboardBars from '../../components/DashboardBars/DashboardBars'
-import { GET_USERS } from '../../graphql/queries'
+import { COUNT_USER_ORDERS, GET_USERS } from '../../graphql/queries'
 import DashboardPagination from '../../components/AdminDashboard/DashboardPagination/DashboardPagination'
 import { useQuery } from '@apollo/client'
 const ShowCustomers = () => {
@@ -15,10 +15,13 @@ const ShowCustomers = () => {
         },
     });
 
+    useEffect(() => {
+        if (data) {
+            setUsers([users, ...data.allUser.content]);
+        }
+    }, [data])
+
     if (error) return <p>Error fetching Data, Login Again</p>
-    if (data) {
-        setUsers({ users, ...data.allUser.content });
-    }
 
     const person = [
         {
